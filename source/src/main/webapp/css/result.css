@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/*全体*/
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #D5FFD7;
+    color: #463B25;
+}
+
+/*ヘッダー*/
+.header{
+    background-color: #7EAF92;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #463B25;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 999px;
+}
+
+.active{
+    background:#F6B4C3;
+}
+
+/* 登録完了画面 */
+
+.complete-page{
+    position: relative;
+    min-height: 82vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.complete-box{
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.complete-box h2{
+    font-size: 72px;
+    font-weight: bold;
+    color: #8B6E63;
+    margin-bottom: 50px;
+}
+
+.back-btn{
+    display: inline-block;
+    width: 300px;
+    padding: 12px 0;
+    background: #fff;
+    border: 1px solid #7CFF00;
+    border-radius: 12px;
+
+    color: #7CFF00;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+.back-btn:hover{
+    opacity: 0.8;
+}
+
+/* 背景の丸 */
+
+.circle{
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.pink{
+    background: rgba(246, 180, 195, 0.7);
+}
+
+.green{
+    background: rgba(122, 230, 127, 0.7);
+}
+
+.white{
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* 左上 */
+.left-top{
+    width: 250px;
+    height: 250px;
+    top: -30px;
+    left: -60px;
+}
+
+/* 右上 */
+.right-top{
+    width: 250px;
+    height: 250px;
+    top: -20px;
+    right: 300px;
+}
+
+/* 文字の後ろ */
+.center-left{
+    width: 250px;
+    height: 250px;
+    top: 160px;
+    left: 350px;
+}
+
+/* 右下 */
+.right-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -60px;
+    right: 400px;
+}
+
+/* 左下 */
+.left-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -60px;
+    left: -30px;
+}
+
+/* 右中央 */
+.right-center{
+    width: 250px;
+    height: 250px;
+    top: 250px;
+    right: -50px;
+}
