@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 	<title>通知設定</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/e1/css/alert.css">
 </head>
 
 <body>
 	<header class="header">
-    	<h1 class="logo">Motta?</h1>
+		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
         <nav class="nav">
         	<ul>
 				<li><a href="#">TOP</a></li>
@@ -22,7 +22,7 @@
 			</ul>
 		</nav>
 	</header>
-	<form class="date-area" action="AlertServlet.jsp" method="post">
+	<form class="date-area" action="AlertServlet" method="post">
 
             <label>通知日</label>
             <input type="date" name="date" required>

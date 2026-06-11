@@ -10,10 +10,10 @@ body {
 /*ヘッダー*/
 .header {
 	background-color: #7EAF92;
-	padding: 20px 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav ul {
@@ -35,6 +35,13 @@ body {
 .active {
 	background: #F6B4C3;
 }
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+    
+}
+
 /* 検索画面 */
 .search-page {
 	position: relative;
