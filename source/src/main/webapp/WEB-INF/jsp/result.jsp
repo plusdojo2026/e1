@@ -5,17 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>登録完了</title>
-<link rel="stylesheet" href="css/styleba.css">
+<link rel="stylesheet" href="/e1/css/result.css">
 </head>
 <body>
 
 <header class="header">
-    <h1>Motta?</h1>
+    <a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 
     <nav class="nav">
         <ul>
             <li><a href="#">TOP</a></li>
-            <li><a href="#" class="active">登録</a></li>
+            <li><a href="#">登録</a></li>
             <li><a href="#">一覧</a></li>
             <li><a href="#">検索</a></li>
             <li><a href="#">チェックリスト</a></li>

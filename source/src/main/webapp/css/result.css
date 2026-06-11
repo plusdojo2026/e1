@@ -35,7 +35,12 @@ body{
 .active{
     background:#F6B4C3;
 }
-
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+    
+}
 /* 登録完了画面 */
 
 .complete-page{
