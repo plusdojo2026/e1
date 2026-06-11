@@ -1,0 +1,212 @@
+@charset "UTF-8";
+/* ===== 全体 ===== */
+body{
+margin: 0;
+font-family: sans-serif;
+background-color: #D5FFD7;
+color: #463B25;
+}
+
+/* ===== ヘッダー ===== */
+.header{
+background-color: #7EAF92;
+padding: 20px 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+/* ===== ナビゲーションリスト ===== */
+.nav ul{
+display: flex;
+list-style: none;
+gap: 30px;
+margin: 0;
+padding: 0;
+}
+
+/* ===== ナビゲーションリンク ===== */
+.nav a{
+text-decoration: none;
+color: #463B25;
+font-size: 20px;
+padding: 10px 20px;
+border-radius: 999px;
+}
+
+/* ===== 現在のページ ===== */
+.active{
+background:#F6B4C3;
+}
+
+/* ===== メインエリア ===== */
+main{
+width: 90%;
+margin: 50px auto;
+}
+
+/* ===== 上部エリア ===== */
+.top-area{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 40px;
+}
+
+/* ===== 件数表示 ===== */
+.count{
+font-size: 25px;
+font-weight: bold;
+}
+
+/* ===== 並び替えエリア ===== */
+.sort-area{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+/* ===== 並び替えラベル ===== */
+.sort-area label{
+font-size: 20px;
+}
+
+/* ===== 並び替えセレクトボックス ===== */
+.sort-area select{
+border: none;
+border-radius: 20px;
+padding: 12px 20px;
+font-size: 18px;
+background-color: white;
+}
+
+
+/* ===== 一覧 ===== */
+.list-area{
+display: flex;
+flex-direction: column;
+gap: 25px;
+}
+
+
+
+/* ===== カード全体 ===== */
+.item-card{
+background-color: white;
+border-radius: 30px;
+padding: 18px 25px;
+display: flex;
+align-items: center;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ===== 忘れ物名 ===== */
+.item-name{
+width: 180px;
+background-color: #F6B4C3;
+border-radius: 25px;
+text-align: center;
+padding: 20px;
+font-size: 24px;
+font-weight: bold;
+}
+
+/* ===== 日付 ===== */
+.item-date{
+width: 220px;
+margin-left: 25px;
+padding-left: 40px;
+border-left: 2px dotted #F6B4C3;
+font-size: 20px;
+}
+
+/* ===== 天気 ===== */
+.weather{
+width: 80px;
+text-align: center;
+border-left: 2px dotted #F6B4C3;
+font-size: 18px;
+}
+
+/* ===== 場所 ===== */
+.item-place{
+width: 140px;
+padding-left: 40px;
+border-left: 2px dotted #F6B4C3;
+font-size: 20px;
+}
+
+/* ===== 原因 ===== */
+.item-reason{
+flex: 1;
+padding-left: 40px;
+border-left: 2px dotted #F6B4C3;
+font-size: 20px;
+}
+
+/* ===== ボタンエリア ===== */
+.item-buttons{
+display: flex;
+gap: 12px;
+margin-left: 20px;
+}
+
+/* ===== 編集ボタン ===== */
+.edit-btn{
+border: none;
+background-color: #F6B4C3;
+color: white;
+font-size: 24px;
+font-weight: bold;
+padding: 18px 28px;
+border-radius: 20px;
+cursor: pointer;
+}
+
+/* ===== 削除ボタン ===== */
+.delete-btn{
+border: 1px solid #9be05f;
+background-color: white;
+color: #76d500;
+font-size: 24px;
+font-weight: bold;
+padding: 16px 28px;
+border-radius: 20px;
+cursor: pointer;
+}
+
+/* ===== ボタンホバー ===== */
+.edit-btn:hover,
+.delete-btn:hover{
+opacity: 0.8;
+}
+
+/* ===== ページングエリア ===== */
+.paging{
+margin-top: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+}
+
+/* ===== ページングボタン ===== */
+.paging button{
+width: 55px;
+height: 55px;
+border: none;
+border-radius: 10px;
+background-color: white;
+font-size: 22px;
+cursor: pointer;
+}
+
+/* ===== ページングボタンホバー ===== */
+.paging button:hover{
+opacity: 0.8;
+}
+
+/* ===== ページ番号 ===== */
+.paging span{
+font-size: 22px;
+}
