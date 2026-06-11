@@ -1,6 +1,6 @@
 package dto;
 
-public class Lost_items {
+public class LostItems {
 private int id;
 private String name;
 private String location;

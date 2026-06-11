@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Lost_itemsDAO;
-import dto.Lost_items;
+import dao.LostItemsDao;
+import dto.LostItems;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -32,15 +32,15 @@ throws ServletException, IOException {
 
 request.setCharacterEncoding("UTF-8");
 
-Lost_items item = new Lost_items();
+LostItems item = new LostItems();
 
 item.setName(request.getParameter("name"));
 item.setLocation(request.getParameter("location"));
 item.setDate(request.getParameter("date"));
 
-Lost_itemsDAO dao = new Lost_itemsDAO();
+LostItemsDao dao = new LostItemsDao();
 
-List<Lost_items> result =
+List<LostItems> result =
 dao.select(item);
 
 request.setAttribute("resultList", result);
