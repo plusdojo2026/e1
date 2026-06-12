@@ -11,25 +11,26 @@ import dto.LostItems;
 
 public class LostItemsDao extends Dao{
 	
-	Connection con = getConnection();
-	List<LostItems> list = new ArrayList<LostItems>();
-	
+	Connection con = null;
+
 	public List<LostItems> select(LostItems item) {
+
+		List<LostItems> list = new ArrayList<LostItems>();
 
 		try {
 			con = getConnection();
 
 			String sql =
-			"SELECT * FROM lost_items " +
-			"WHERE name LIKE ? " +
-			"AND location LIKE ? " +
-			"AND lost_date LIKE ?";
+					"SELECT * FROM lost_items " +
+					"WHERE item_name LIKE ? " +
+					"AND location LIKE ? " +
+					"AND lost_date LIKE ?";
 
 			PreparedStatement pStmt = con.prepareStatement(sql);
 			
-			pStmt.setString(1, "%" + item.getName() + "%");
+			pStmt.setString(1, "%" + item.getItem_name() + "%");
 			pStmt.setString(2, "%" + item.getLocation() + "%");
-			pStmt.setString(3, "%" + item.getDate() + "%");
+			pStmt.setString(3, "%" + item.getLost_date() + "%");
 
 			ResultSet rs = pStmt.executeQuery();
 
@@ -38,13 +39,10 @@ public class LostItemsDao extends Dao{
 	            LostItems li = new LostItems();
 
 	            li.setId(rs.getInt("id"));
-	            li.setName(rs.getString("name"));
-	            li.setLocation(rs.getString("location"));
-
-	            // DBのカラム名を確認
-	            li.setDate(rs.getString("lost_date"));
-
+	            li.setItem_name(rs.getString("item_name"));
+	            li.setLost_date(rs.getString("lost_date"));
 	            li.setWeather(rs.getString("weather"));
+	            li.setLocation(rs.getString("location"));
 	            li.setReason(rs.getString("reason"));
 
 	            list.add(li);
