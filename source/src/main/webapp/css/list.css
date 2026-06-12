@@ -1,0 +1,173 @@
+@charset "UTF-8";
+/*全体*/
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #D5FFD7;
+    color: #463B25;
+}
+
+/*ヘッダー*/
+.header{
+    background-color: #7EAF92;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #463B25;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 999px;
+}
+
+.active{
+    background:#F6B4C3;
+}
+
+/*上部エリア*/
+main{
+    width: 90%;
+    margin: 50px auto;
+}
+
+.top-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.count{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sort-area{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-area label{
+    font-size: 20px;
+}
+
+.sort-area select{
+    border: none;
+    border-radius: 20px;
+
+    padding: 12px 20px;
+
+    font-size: 18px;
+    background-color: white;
+}
+
+/*一覧*/
+.list-area{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+/*カード全体*/
+.item-card{
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/*忘れ物名*/
+.item-name{
+    width: 140px;
+    flex-shrink: 0;
+    background-color: #F6B4C3;
+    border-radius: 25px;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/*日付*/
+.item-date{
+    width: 180px;
+    padding-left: 25px;
+    border-left: 2px dotted #F6B4C3;
+    font-size: 18px;
+}
+
+/*天気*/
+.weather{
+    width: 80px;
+    padding-left: 25px;
+    border-left: 2px dotted #F6B4C3;
+    font-size: 18px;
+    text-align: center;
+}
+
+/*場所*/
+.item-place{
+    width: 120px;
+    padding-left: 25px;
+    border-left: 2px dotted #F6B4C3;
+    font-size: 18px;
+}
+
+/*原因*/
+.item-reason{
+    flex: 1;
+    padding-left: 25px;
+    border-left: 2px dotted #F6B4C3;
+    font-size: 18px;
+}
+
+/*ページング*/
+.paging{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.paging button{
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.paging button:hover{
+    opacity: 0.8;
+}
+
+#pageNumbers{
+    display: flex;
+    gap: 15px;
+}
+
+.page-btn.active {
+    background-color: #F6B4C3;
+    color: #463B25;
+    font-weight: bold;
+}
