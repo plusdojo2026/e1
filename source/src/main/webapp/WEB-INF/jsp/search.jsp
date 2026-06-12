@@ -9,16 +9,17 @@
 </head>
 
 <body>
+	<!-- ヘッダー -->
 	<header class="header">
 		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 		<nav class="nav">
 			<ul>
-				<li><a href="#">TOP</a></li>
-				<li><a href="#">登録</a></li>
-				<li><a href="#">一覧</a></li>
-				<li><a href="#" class="active">検索</a></li>
-				<li><a href="#">チェックリスト</a></li>
-				<li><a href="#">ログアウト</a></li>
+					<li><a href="TopServlet">TOP</a></li>
+					<li><a href="#">登録</a></li>
+					<li><a href="ListServlet">一覧</a></li>
+					<li><a href="SearchServlet" class="active">検索</a></li>
+					<li><a href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="Logout">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>

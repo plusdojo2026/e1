@@ -13,18 +13,17 @@
 </head>
 	<body>
 	
-		<!-- ヘッダー -->
-		<header class="header">
-			<h1>Motta?</h1>
-	
-			<nav class="nav">
+	<!-- ヘッダー -->
+	<header class="header">
+		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<nav class="nav">
 				<ul>
-					<li><a href="#">TOP</a></li>
+					<li><a href="TopServlet">TOP</a></li>
 					<li><a href="#">登録</a></li>
-					<li><a href="#">一覧</a></li>
-					<li><a href="#" class="active">検索</a></li>
-					<li><a href="#">チェックリスト</a></li>
-					<li><a href="#">ログアウト</a></li>
+					<li><a href="ListServlet">一覧</a></li>
+					<li><a href="SearchServlet" class="active">検索</a></li>
+					<li><a href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="Logout">ログアウト</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -40,14 +39,47 @@
 	
 				<div class="count"><%= list.size() %>件</div>
 	
-				<div class="sort-area">
-					<label for="sort">並び替え：</label> <select id="sort">
-						<option>日付（新しい順）</option>
-						<option>日付（古い順）</option>
-					</select>
-				</div>
-	
-			</div>
+<%
+LostItems searchItem = (LostItems)request.getAttribute("item");
+String sort = (String)request.getAttribute("sort");
+
+if(sort == null){
+sort = "new";
+}
+%>
+
+<div class="sort-area">
+
+<form action="SearchServlet" method="post">
+
+    <input type="hidden" name="name"
+           value="<%= searchItem != null ? searchItem.getItem_name() : "" %>">
+
+    <input type="hidden" name="location"
+           value="<%= searchItem != null ? searchItem.getLocation() : "" %>">
+
+    <input type="hidden" name="date"
+           value="<%= searchItem != null ? searchItem.getLost_date() : "" %>">
+
+    <label for="sort">並び替え：</label>
+
+    <select id="sort" name="sort" onchange="this.form.submit()">
+
+        <option value="new"
+            <%= "new".equals(sort) ? "selected" : "" %>>
+            日付（新しい順）
+        </option>
+
+        <option value="old"
+            <%= "old".equals(sort) ? "selected" : "" %>>
+            日付（古い順）
+        </option>
+
+    </select>
+
+</form>
+
+</div>
 	
 			<!-- 一覧 -->
 			<div class="list-area">
@@ -149,6 +181,7 @@
 		    document.getElementById("nextBtn").disabled = page === totalPages;
 		
 		    currentPage = page;
+		    createPageButtons();
 			}
 			
 			// 前へ
@@ -165,27 +198,65 @@
 			    }
 			});
 			
-			//ページ数を自動取得
 			function createPageButtons() {
-		
-		    const pageNumbers = document.getElementById("pageNumbers");
-		
-		    pageNumbers.innerHTML = "";
-		
-		    for (let i = 1; i <= totalPages; i++) {
-		
-		        const btn = document.createElement("button");
-		
-		        btn.textContent = i;
-		        btn.classList.add("page-btn");
-		        btn.dataset.page = i;
-		
-		        btn.addEventListener("click", () => {
-		            showPage(i);
-		        });
-		
-		        pageNumbers.appendChild(btn);
-		    }
+
+			    const pageNumbers = document.getElementById("pageNumbers");
+
+			    pageNumbers.innerHTML = "";
+
+			    function addButton(page) {
+
+			        const btn = document.createElement("button");
+
+			        btn.textContent = page;
+			        btn.classList.add("page-btn");
+			        btn.dataset.page = page;
+
+			        if (page === currentPage) {
+			            btn.classList.add("active");
+			        }
+
+			        btn.addEventListener("click", () => {
+			            showPage(page);
+			            createPageButtons();
+			        });
+
+			        pageNumbers.appendChild(btn);
+			    }
+
+			    function addDots() {
+			        const span = document.createElement("span");
+			        span.textContent = "...";
+			        span.classList.add("dots");
+			        pageNumbers.appendChild(span);
+			    }
+
+			    // 最初のページ
+			    addButton(1);
+
+			    // 左側省略
+			    if (currentPage > 3) {
+			        addDots();
+			    }
+
+			    // 現在ページ周辺
+			    for (
+			        let i = Math.max(2, currentPage - 1);
+			        i <= Math.min(totalPages - 1, currentPage + 1);
+			        i++
+			    ) {
+			        addButton(i);
+			    }
+
+			    // 右側省略
+			    if (currentPage < totalPages - 2) {
+			        addDots();
+			    }
+
+			    // 最後のページ
+			    if (totalPages > 1) {
+			        addButton(totalPages);
+			    }
 			}
 			
 			// 初期表示

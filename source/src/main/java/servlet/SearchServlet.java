@@ -15,38 +15,67 @@ import dto.LostItems;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
-	
-	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response)
-			throws ServletException, IOException {
 
-	    request.getRequestDispatcher(
-		        "/WEB-INF/jsp/search.jsp")
-		        .forward(request, response);
-	}
+@Override
+protected void doGet(HttpServletRequest request,
+        HttpServletResponse response)
+        throws ServletException, IOException {
 
-protected void doPost(HttpServletRequest request,HttpServletResponse response)
-throws ServletException, IOException {
-	System.out.println("SearchServlet doPost開始");
-request.setCharacterEncoding("UTF-8");
+    request.getRequestDispatcher(
+            "/WEB-INF/jsp/search.jsp")
+            .forward(request, response);
+}
 
-LostItems item = new LostItems();
+@Override
+protected void doPost(HttpServletRequest request,
+        HttpServletResponse response)
+        throws ServletException, IOException {
 
-item.setItem_name(request.getParameter("name") == null ? "" : request.getParameter("name"));
-item.setLocation(request.getParameter("location"));
-item.setLost_date(request.getParameter("date"));
+    System.out.println("SearchServlet doPost開始");
 
-LostItemsDao dao = new LostItemsDao();
+    request.setCharacterEncoding("UTF-8");
 
-List<LostItems> result =dao.select(item);
-System.out.println("検索結果件数：" + result.size());
-request.setAttribute("resultList", result);
+    LostItems item = new LostItems();
 
-RequestDispatcher dispatcher =
-request.getRequestDispatcher(
-"/WEB-INF/jsp/search_result.jsp");
+    item.setItem_name(
+            request.getParameter("name") == null
+            ? ""
+            : request.getParameter("name"));
 
-dispatcher.forward(request, response);
+    item.setLocation(
+            request.getParameter("location") == null
+            ? ""
+            : request.getParameter("location"));
+
+    item.setLost_date(
+            request.getParameter("date") == null
+            ? ""
+            : request.getParameter("date"));
+
+    // 並び替え条件取得
+    String sort = request.getParameter("sort");
+
+    // 初回検索時は新しい順
+    if (sort == null) {
+        sort = "new";
+    }
+
+    LostItemsDao dao = new LostItemsDao();
+
+    List<LostItems> result = dao.select(item, sort);
+
+    System.out.println("検索結果件数：" + result.size());
+
+    request.setAttribute("resultList", result);
+    request.setAttribute("sort", sort);
+
+    // 検索条件保持用
+    request.setAttribute("item", item);
+
+    RequestDispatcher dispatcher =
+            request.getRequestDispatcher(
+                    "/WEB-INF/jsp/search_result.jsp");
+
+    dispatcher.forward(request, response);
 }
 }
