@@ -15,24 +15,33 @@ import dto.LostItems;
 @WebServlet("/ListServlet")
 public class ListServlet extends HttpServlet {
 
-    @Override
+    //一覧画面を表示する処理
+	@Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        String sort = request.getParameter("sort");
+    	// JSPから送られてきた並び替え条件を取得
+    	String sort = request.getParameter("sort");
 
-        if (sort == null) {
+    	// 新しい順をデフォルトに設定
+    	if (sort == null) {
             sort = "new";
         }
 
-        LostItemsDao dao = new LostItemsDao();
+    	// DAOのインスタンスを生成
+    	LostItemsDao dao = new LostItemsDao();
 
-        List<LostItems> itemList = dao.selectAll(sort);
+    	// DAOを呼び出して忘れ物一覧を取得
+        // sortの値によって並び替えを変更
+    	List<LostItems> itemList = dao.selectAll(sort);
 
-        request.setAttribute("itemList", itemList);
+    	// 取得した一覧データをJSPへ渡す
+    	request.setAttribute("itemList", itemList);
+    	// 現在の並び順もJSPへ渡す
         request.setAttribute("sort", sort);
 
+        // list.jspへ画面遷移
         request.getRequestDispatcher("/WEB-INF/jsp/list.jsp")
                 .forward(request, response);
     }

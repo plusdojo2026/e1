@@ -208,7 +208,7 @@ main{
 }
 
 /* 通知ボタン */
-.alert-btn a {
-    color: inherit;      /* 親要素と同じ文字色 */
+.alert-btn {
+    color: #ffffff;      
     text-decoration: none; /* 下線を消す */
 }

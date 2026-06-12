@@ -15,7 +15,30 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 }
+.nav ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+.nav a{
+    text-decoration: none;
+    color: #463B25;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 999px;
+}
 
+.active{
+    background:#F6B4C3;
+}
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+    
+}
 /* ===== ナビゲーションリスト ===== */
 .nav ul{
 display: flex;

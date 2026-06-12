@@ -12,59 +12,66 @@ import dto.LostItems;
 public class LostItemsDao extends Dao{
 	
 	Connection con = null;
+    // 検索 + 並び替え
+    public List<LostItems> select(LostItems item, String sort) {
 
-	public List<LostItems> select(LostItems item) {
+        List<LostItems> list = new ArrayList<LostItems>();
 
-		List<LostItems> list = new ArrayList<LostItems>();
+        try {
+            con = getConnection();
 
-		try {
-			con = getConnection();
+            String sql =
+                    "SELECT * FROM lost_items " +
+                    "WHERE item_name LIKE ? " +
+                    "AND location LIKE ? " +
+                    "AND lost_date LIKE ? ";
 
-			String sql =
-					"SELECT * FROM lost_items " +
-					"WHERE item_name LIKE ? " +
-					"AND location LIKE ? " +
-					"AND lost_date LIKE ?";
+            if ("old".equals(sort)) {
+                sql += "ORDER BY lost_date ASC";
+            } else {
+                sql += "ORDER BY lost_date DESC";
+            }
 
-			PreparedStatement pStmt = con.prepareStatement(sql);
-			
-			pStmt.setString(1, "%" + item.getItem_name() + "%");
-			pStmt.setString(2, "%" + item.getLocation() + "%");
-			pStmt.setString(3, "%" + item.getLost_date() + "%");
+            PreparedStatement pStmt = con.prepareStatement(sql);
 
-			ResultSet rs = pStmt.executeQuery();
+            pStmt.setString(1, "%" + item.getItem_name() + "%");
+            pStmt.setString(2, "%" + item.getLocation() + "%");
+            pStmt.setString(3, "%" + item.getLost_date() + "%");
 
-			while (rs.next()) {
+            ResultSet rs = pStmt.executeQuery();
 
-	            LostItems li = new LostItems();
+            while (rs.next()) {
 
-	            li.setId(rs.getInt("id"));
-	            li.setItem_name(rs.getString("item_name"));
-	            li.setLost_date(rs.getString("lost_date"));
-	            li.setWeather(rs.getString("weather"));
-	            li.setLocation(rs.getString("location"));
-	            li.setReason(rs.getString("reason"));
+                LostItems li = new LostItems();
 
-	            list.add(li);
-	        }
+                li.setId(rs.getInt("id"));
+                li.setItem_name(rs.getString("item_name"));
+                li.setLost_date(rs.getString("lost_date"));
+                li.setWeather(rs.getString("weather"));
+                li.setLocation(rs.getString("location"));
+                li.setReason(rs.getString("reason"));
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
+                list.add(li);
+            }
 
-	    } finally {
+        } catch (Exception e) {
+            e.printStackTrace();
 
-	        try {
-	            if (con != null) {
-	                con.close();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
+        } finally {
 
-	    return list;
-	}
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
 	
+	// 一覧画面用
 	public List<LostItems> selectAll(String sort) {
 
 	    List<LostItems> list = new ArrayList<LostItems>();
