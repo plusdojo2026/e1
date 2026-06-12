@@ -7,13 +7,13 @@
 	<title>通知設定</title>
 	<link rel="stylesheet" href="/e1/css/alert.css">
 </head>
-
 <body>
+	<!-- ヘッダー -->
 	<header class="header">
 		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
         <nav class="nav">
         	<ul>
-				<li><a href="#">TOP</a></li>
+				<li><a href="TopServlet">TOP</a></li>
 				<li><a href="#">登録</a></li>
 				<li><a href="#">一覧</a></li>
 				<li><a href="#">検索</a></li>
