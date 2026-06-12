@@ -1,0 +1,309 @@
+@charset "UTF-8";
+
+body {
+	margin: 30px;
+	font-family: sans-serif;
+	background-color: #D5FFD7;
+	color: #463B25;
+}
+
+.header {
+	background-color: #7EAF92;
+	padding: 20px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav ul {
+	display: flex;
+	list-style: none;
+	gap: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+.nav a {
+	text-decoration: none;
+	color: #463B25;
+	font-size: 20px;
+	padding: 10px 20px;
+	border-radius: 999px;
+}
+
+.active {
+	background: #F6B4C3;
+}
+
+main {
+	width: 50%;
+	margin: 40px auto 0 auto;
+}
+
+.top-area {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.count {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.sort-area {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.sort-area label {
+	font-size: 20px;
+}
+
+.sort-area select {
+	border: none;
+	border-radius: 20px;
+	padding: 12px 20px;
+	font-size: 18px;
+	background-color: white;
+}
+
+.list-area {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.item-card {
+	background-color: white;
+	border-radius: 30px;
+	padding: 25px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.item-name {
+	width: 180px;
+	background-color: #F6B4C3;
+	border-radius: 25px;
+	text-align: center;
+	padding: 20px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.item-date {
+	width: 240px;
+	margin-left: 25px;
+	padding-left: 40px;
+	border-left: 2px dotted #F6B4C3;
+	font-size: 20px;
+}
+
+.weather {
+	width: 120px;
+	text-align: center;
+	border-left: 2px dotted #F6B4C3;
+	font-size: 18px;
+}
+
+.item-place {
+	width: 160px;
+	padding-left: 40px;
+	border-left: 2px dotted #F6B4C3;
+	font-size: 20px;
+}
+
+.item-reason {
+	flex: 1;
+	padding-left: 40px;
+	border-left: 2px dotted #F6B4C3;
+	font-size: 20px;
+}
+
+.paging {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+.paging button {
+	width: 55px;
+	height: 55px;
+	border: none;
+	border-radius: 10px;
+	background-color: white;
+	font-size: 22px;
+	cursor: pointer;
+}
+
+.paging button:hover {
+	opacity: 0.8;
+}
+
+.paging span {
+	font-size: 22px;
+}
+
+.Motta_regist {
+	text-align: center;
+}
+
+input[type=submit] {
+	background-color: #F6B4C3;
+}
+
+input[type=reset] {
+	background-color: floralwhite;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 50px;
+	background: #7EAF92;
+}
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+	background-color: #D5FFD7;
+	color: #463B25;
+	text-align: center;
+}
+
+.nav ul {
+	display: flex;
+	list-style: none;
+	gap: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+.nav a {
+	text-decoration: none;
+	color: #463B25;
+	font-size: 20px;
+	padding: 10px 20px;
+	border-radius: 999px;
+}
+
+.active {
+	background: #F6B4C3;
+	border-radius: 20px;
+}
+
+.wrapper {
+	min-height: 100vh;
+	position: relative;
+	overflow: hidden;
+}
+
+.section-title {
+	width: 250px;
+	margin: 0 auto 20px;
+	text-align: center;
+	padding: 10px;
+	background: #ebb6c3;
+	border-radius: 20px;
+	font-weight: bold;
+}
+
+#beforeList, #afterList {
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+
+input[type="text"] {
+	top: 30px;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	margin: 10px;
+	width: 350px;
+	padding: 20px;
+	font-size: 20px;
+	border-radius: 15px;
+	border: 1px solid #66FF00;
+}
+
+;
+input[type="text"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
+}
+
+input[type="submit"] {
+	margin: 0px 20px 0px;
+	padding: 25px 25px;
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+input[value="登録"] {
+	background: #ebb6c3;
+	color: white;
+	padding: 10px 10px 10px;
+	width: 40%;
+	max-width: 200px;
+}
+
+input[value="リセット"] {
+	background: white;
+	color: #66FF00;
+	border: 1px solid #66FF00;
+	padding: 10px 10px 10px;
+	width: 40%;
+	max-width: 200px;
+}
+
+input[value=reason] {
+	padding: 40px;
+}
+
+.cause {
+	width: 300px;
+	height: 100px;
+}
+
+input[type="date"] {
+	width: 350px;
+	height: 50px;
+	font-size: 20px;
+	padding: 0 20px;
+	border: 1px solid #66FF00;
+	border-radius: 15px;
+}
+
+select[name="weather"] {
+	width: 390px;
+	height: 50px;
+	font-size: 20px;
+	padding: 0 20px;
+	border: 1px solid #66FF00;
+	border-radius: 15px;
+	margin: 10px;
+}
+
+input[type="date"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
+}
+
+select[name="weather"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
+}
+
+input[type="text"] {
+	
+}
+
+@import url("regist.html");
