@@ -25,7 +25,7 @@ public class ChecklistServlet extends HttpServlet {
 		
 
 		// チェックリストページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Checklist.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/checklist.jsp");
 		dispatcher.forward(request, response);
 	}
 	
