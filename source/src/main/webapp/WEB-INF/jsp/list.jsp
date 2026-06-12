@@ -1,0 +1,212 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/e1/css/list.css">
+<title>Moota?｜一覧</title>
+</head>
+<body>
+	<!-- ヘッダー -->
+	<header class="header">
+		<h1 class="logo">Motta?</h1>
+
+		<nav class="nav">
+			<ul>
+				<li><a href="#">TOP</a></li>
+				<li><a href="#">登録</a></li>
+				<li><a class="active" href="#">一覧</a></li>
+				<li><a href="#">検索</a></li>
+				<li><a href="#">チェックリスト</a></li>
+				<li><a href="#">ログアウト</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- メイン -->
+	<main>
+		<!--件数表示-->
+		<section class="top-area">
+			<p class="count">${itemList.size()}件</p>
+
+			<!--並び替え-->
+			<div class="sort-area">
+    <label for="sort">並び替え：</label>
+
+    <form action="/e1/ListServlet" method="get">
+       <select id="sort" name="sort" onchange="this.form.submit()">
+
+    <option value="new"
+        ${sort eq 'new' ? 'selected' : ''}>
+        日付(新しい順)
+    </option>
+
+    <option value="old"
+        ${sort eq 'old' ? 'selected' : ''}>
+        日付(古い順)
+    </option>
+
+</select>
+    </form>
+</div>
+</section>
+
+		<!--一覧-->
+		<section class="list-area">
+			<c:forEach var="item" items="${itemList}">
+				<article class="item-card">
+					<div class="item-name">${item.item_name}</div>
+					<div class="item-date" data-date="${item.lost_date}">📅${item.lost_date}</div>
+					<div class="weather">${item.weather}</div>
+					<div class="item-place">📍${item.location}</div>
+					<div class="item-reason">原因：${item.reason}</div>
+				</article>
+			</c:forEach>
+		</section>
+
+		<!--ページング-->
+		<section class="paging">
+			<button id="prevBtn">&lt;</button>
+
+			<div id="pageNumbers"></div>
+
+			<button id="nextBtn">&gt;</button>
+		</section>
+
+	</main>
+
+	<script>
+	// ページング
+	const itemsPerPage = 5;
+	const items = document.querySelectorAll(".item-card");
+	
+	let currentPage = 1;
+	const totalPages = Math.ceil(items.length / itemsPerPage);
+	
+	// ページ表示
+	function showPage(page) {
+
+    // 一覧を非表示
+    items.forEach(item => {
+        item.style.display = "none";
+    });
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    //件数表示
+   document.querySelector(".count").textContent = (start + 1) + "～" + Math.min(end, items.length) + "件 / 全" + items.length + "件";
+
+    // 対象ページだけ表示
+    for (let i = start; i < end && i < items.length; i++) {
+        items[i].style.display = "flex";
+    }
+
+    // ページ番号の色変更
+    document.querySelectorAll(".page-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    const activeBtn =
+    	document.querySelector(
+    	".page-btn[data-page='" + page + "']"
+    	);
+
+    if (activeBtn) {
+        activeBtn.classList.add("active");
+    }
+
+    // 前へ・次へボタン制御
+    document.getElementById("prevBtn").disabled = page === 1;
+    document.getElementById("nextBtn").disabled = page === totalPages;
+
+    currentPage = page;
+    createPageButtons();
+	}
+	
+	// 前へ
+	document.getElementById("prevBtn").addEventListener("click", () => {
+	    if (currentPage > 1) {
+	        showPage(currentPage - 1);
+	    }
+	});
+	
+	// 次へ
+	document.getElementById("nextBtn").addEventListener("click", () => {
+	    if (currentPage < totalPages) {
+	        showPage(currentPage + 1);
+	    }
+	});
+	
+	function createPageButtons() {
+
+	    const pageNumbers = document.getElementById("pageNumbers");
+
+	    pageNumbers.innerHTML = "";
+
+	    function addButton(page) {
+
+	        const btn = document.createElement("button");
+
+	        btn.textContent = page;
+	        btn.classList.add("page-btn");
+	        btn.dataset.page = page;
+
+	        if (page === currentPage) {
+	            btn.classList.add("active");
+	        }
+
+	        btn.addEventListener("click", () => {
+	            showPage(page);
+	            createPageButtons();
+	        });
+
+	        pageNumbers.appendChild(btn);
+	    }
+
+	    function addDots() {
+	        const span = document.createElement("span");
+	        span.textContent = "...";
+	        span.classList.add("dots");
+	        pageNumbers.appendChild(span);
+	    }
+
+	    // 最初のページ
+	    addButton(1);
+
+	    // 左側省略
+	    if (currentPage > 3) {
+	        addDots();
+	    }
+
+	    // 現在ページ周辺
+	    for (
+	        let i = Math.max(2, currentPage - 1);
+	        i <= Math.min(totalPages - 1, currentPage + 1);
+	        i++
+	    ) {
+	        addButton(i);
+	    }
+
+	    // 右側省略
+	    if (currentPage < totalPages - 2) {
+	        addDots();
+	    }
+
+	    // 最後のページ
+	    if (totalPages > 1) {
+	        addButton(totalPages);
+	    }
+	}
+
+	// 初期表示
+	createPageButtons();
+	showPage(1);
+</script>
+
+</body>
+</html>
