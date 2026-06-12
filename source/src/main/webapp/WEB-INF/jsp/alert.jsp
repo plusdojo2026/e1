@@ -17,23 +17,24 @@
 				<li><a href="#">登録</a></li>
 				<li><a href="#">一覧</a></li>
 				<li><a href="#">検索</a></li>
-				<li><a href="#">チェックリスト</a></li>
+				<li><a href="ChecklistServlet">チェックリスト</a></li>
 				<li><a href="#">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
+	<!-- フォーム -->
 	<form class="date-area" action="AlertServlet" method="post">
 
-            <label>通知日</label>
-            <input type="date" name="date" required>
+    	<label>通知日</label>
+        <input type="date" name="date" required>
 
-            <label class="time-label">通知時刻</label>
-            <input type="time" name="time" required>
+        <label class="time-label">通知時刻</label>
+        <input type="time" name="time" required>
 
-            <div class="button-area">
-                <button type="submit" class="btn-register">登録</button>
-                <button type="reset" class="btn-reset">リセット</button>
-            </div>
-		</form>     
+        <div class="button-area">
+        	<button type="submit" class="btn-register">登録</button>
+            <button type="reset" class="btn-reset">リセット</button>
+        </div>
+	</form>     
 	</body> 
 </html>
