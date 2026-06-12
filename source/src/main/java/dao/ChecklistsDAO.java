@@ -1,62 +1,59 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import dto.Checklist;
 
+public class ChecklistsDAO {
 
-public class ChecklistsDAO  extends Dao{
-
-	Connection con = getConnection();
-	List<Checklist> list = new ArrayList<Checklist>();
-	
-	public List<Checklist> select(Checklist item) {
+	public boolean insert(Checklist list) {
+		Connection conn = null;
+		boolean result = false;
 
 		try {
-			con = getConnection();
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			String sql =
-			"SELECT * FROM Checklists " +
-			"WHERE name LIKE ? " ;
-			
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/motta_db?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
 
-			PreparedStatement pStmt = con.prepareStatement(sql);
-			
-			pStmt.setString(1, "%" + item.getItem_name() + "%");
+			// SQL文を準備する
+			String sql = "INSERT INTO checklists (name) " + "VALUES (?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			ResultSet rs = pStmt.executeQuery();
+			// SQL文を完成させる
+			// SQL文を完成させる（INSERT）
+			if (list.getItem_name() != null) {
+				pStmt.setString(1, list.getItem_name());
+			} else {
+				pStmt.setString(1, "");
+			}
 
-			while (rs.next()) {
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-				Checklist li = new Checklist();
-
-	            li.setItem_name(rs.getString("name"));
-
-
-	           
-
-	            list.add(li);
-	        }
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-
-	    } finally {
-
-	        try {
-	            if (con != null) {
-	                con.close();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    return list;
+		// 結果を返す
+		return result;
 	}
 }
