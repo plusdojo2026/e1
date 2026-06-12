@@ -26,7 +26,7 @@
 				<li><a href="SearchServlet">検索</a></li>
 				<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
 				<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
-			</ul>>
+			</ul>
     </nav>
   </header>
 
