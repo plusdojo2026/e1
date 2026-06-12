@@ -37,9 +37,8 @@ body{
 }
 
 .logo img{
-    height: 60px;
-    width: auto;
-    display: block;
+    height: auto;
+    width: 200px;
 }
 
 /*上部エリア*/
