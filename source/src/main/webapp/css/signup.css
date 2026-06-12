@@ -16,7 +16,7 @@ body {
 /* 画面全体レイアウト */
 .container {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 }
 
@@ -27,6 +27,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0;
 }
 
 /* Mottaを中央配置 */
@@ -56,6 +57,7 @@ body {
 /* フォーム全体 */
 .signup-box {
 	width: 380px;
+	margin: 25px;
 }
 
 /* 新規登録タイトル */
@@ -64,12 +66,11 @@ body {
 	color: #9c6e6e;
 	font-size: 36px;
 	font-weight: 400;
-	margin-bottom: 20px;
+	margin-top: -18px;
 }
 
 /* 新規登録フォームラベル */
-.form-group2 label,
-.form-group3 label {
+.form-group2 label, .form-group3 label {
 	display: block;
 	font-size: 17px;
 	color: #9c6e6e;
@@ -77,16 +78,14 @@ body {
 }
 
 /* 新規登録フォーム入力欄選択時 */
-.form-group2 input[type="password"]:focus,
-.form-group3 input[type="email"]:focus,
-.form-group3 input[type="text"]:focus {
+.form-group2 input[type="password"]:focus, .form-group3 input[type="email"]:focus,
+	.form-group3 input[type="text"]:focus {
 	outline: none;
 	border: 2px solid #33A74A;
 }
 
 /* 新規登録フォーム入力欄 */
-.form-group2 input,
-.form-group3 input {
+.form-group2 input, .form-group3 input {
 	width: 100%;
 	height: 54px;
 	border: 1px solid #66FF00;
@@ -129,8 +128,7 @@ body {
 }
 
 /* 左右の区切る点線 */
-.divider::before,
-.divider::after {
+.divider::before, .divider::after {
 	content: "";
 	flex: 1;
 	border-bottom: 4px dotted #f0b7c5;
@@ -176,10 +174,12 @@ body {
 	margin-top: 4px;
 }
 
-/* サーブレットから渡されるエラーメッセージ表示 */
+/* サーブレットから渡されるエラーメッセージ */
 .error-message {
 	color: red;
-	text-align: center;
-	margin-bottom: 15px;
 	font-size: 20px;
+	margin-bottom: 10px;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
 }

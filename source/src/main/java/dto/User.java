@@ -3,10 +3,10 @@ package dto;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private int id;              // ID
-	private String user_id;      // ログインID
-	private String password;     // パスワード
-	private String name;         // 氏名
+	private int id; // ID
+	private String user_id; // ログインID
+	private String password; // パスワード
+	private String name; // 氏名
 	private String mail_address; // メールアドレス
 
 	public int getId() {

@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	// ログインフォームを取得
 	const form = document.getElementById("loginForm");
 
+	// 入力を始めたらログイン失敗メッセージを消す
+	document.getElementById("user_id").addEventListener("input", function() {
+		document.getElementById("loginErrorMessage").textContent = "";
+	});
+
+	document.getElementById("password").addEventListener("input", function() {
+		document.getElementById("loginErrorMessage").textContent = "";
+	});
+
 	// フォーム送信時の処理
 	form.addEventListener("submit", function(event) {
 
