@@ -47,7 +47,7 @@
 
       <label>
         <br>
-        <input type="text" placeholder="名称">
+        <input type="text" name="name" placeholder="名称">
       </label>
 
       <input type="submit" value="登録">
