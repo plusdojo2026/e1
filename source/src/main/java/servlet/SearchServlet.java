@@ -26,23 +26,21 @@ public class SearchServlet extends HttpServlet {
 		        .forward(request, response);
 	}
 
-protected void doPost(HttpServletRequest request,
-HttpServletResponse response)
+protected void doPost(HttpServletRequest request,HttpServletResponse response)
 throws ServletException, IOException {
-
+	System.out.println("SearchServlet doPost開始");
 request.setCharacterEncoding("UTF-8");
 
 LostItems item = new LostItems();
 
-item.setName(request.getParameter("name"));
+item.setItem_name(request.getParameter("name") == null ? "" : request.getParameter("name"));
 item.setLocation(request.getParameter("location"));
-item.setDate(request.getParameter("date"));
+item.setLost_date(request.getParameter("date"));
 
 LostItemsDao dao = new LostItemsDao();
 
-List<LostItems> result =
-dao.select(item);
-
+List<LostItems> result =dao.select(item);
+System.out.println("検索結果件数：" + result.size());
 request.setAttribute("resultList", result);
 
 RequestDispatcher dispatcher =
