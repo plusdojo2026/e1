@@ -64,7 +64,7 @@ body {
 	color: #9c6e6e;
 	font-size: 36px;
 	font-weight: 400;
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 }
 
 /* 新規登録フォームラベル */
@@ -176,7 +176,7 @@ body {
 	margin-top: 4px;
 }
 
-/* サーブレットから渡されるエラーメッセージ */
+/* サーブレットから渡されるエラーメッセージ表示 */
 .error-message {
 	color: red;
 	text-align: center;
