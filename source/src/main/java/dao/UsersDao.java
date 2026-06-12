@@ -8,8 +8,10 @@ import java.sql.SQLException;
 
 import dto.User;
 
+// usersテーブルを操作するDAOクラス
 public class UsersDao {
-	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+
+	// ログイン認証を行う ユーザーIDとパスワードが一致した場合trueを返す
 	public boolean isLoginOK(User user) {
 		Connection conn = null;
 		boolean loginResult = false;
@@ -18,25 +20,28 @@ public class UsersDao {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/motta_db?"
+			// データベースへ接続
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
-			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM users WHERE id=? AND password =?";
+			// ユーザーIDとパスワードを条件に検索するSQL
+			String sql = "SELECT count(*) FROM users WHERE user_id=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// プレースホルダへ値を設定
 			pStmt.setString(1, user.getUser_id());
 			pStmt.setString(2, user.getPassword());
 
-			// SELECT文を実行し、結果表を取得する
+			// SQLを実行
 			ResultSet rs = pStmt.executeQuery();
 
-			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			// 一致するレコードが1件存在する場合ログイン成功
 			rs.next();
 			if (rs.getInt("count(*)") == 1) {
 				loginResult = true;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			loginResult = false;
@@ -44,7 +49,8 @@ public class UsersDao {
 			e.printStackTrace();
 			loginResult = false;
 		} finally {
-			// データベースを切断
+
+			// データベース接続を終了
 			if (conn != null) {
 				try {
 					conn.close();
@@ -55,11 +61,11 @@ public class UsersDao {
 			}
 		}
 
-		// 結果を返す
+		// ログイン結果を返す
 		return loginResult;
 	}
 
-	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+	// ユーザー情報をusersテーブルへ登録する
 	public boolean insert(User user) {
 		Connection conn = null;
 		boolean signupResult = false;
@@ -68,46 +74,52 @@ public class UsersDao {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/motta_db?"
+			// データベースへ接続
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
-			// SQL文を準備する
-			String sql = "INSERT INTO users VALUES (?, ?, ?, ?)";
+			// ユーザー登録用SQL
+			String sql = "INSERT INTO users VALUES (0, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
+			// ユーザー情報をSQLへ設定
 			if (user.getUser_id() != null) {
 				pStmt.setString(1, user.getUser_id());
 			} else {
 				pStmt.setString(1, "");
 			}
+
 			if (user.getPassword() != null) {
 				pStmt.setString(2, user.getPassword());
 			} else {
 				pStmt.setString(2, "");
 			}
+
 			if (user.getName() != null) {
 				pStmt.setString(3, user.getName());
 			} else {
 				pStmt.setString(3, "");
 			}
+
 			if (user.getMail_address() != null) {
 				pStmt.setString(4, user.getMail_address());
 			} else {
 				pStmt.setString(4, "");
 			}
-			// SQL文を実行する
+
+			// SQLを実行し、1件登録できたら成功
 			if (pStmt.executeUpdate() == 1) {
 				signupResult = true;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
-			// データベースを切断
+
+			// データベース接続を終了
 			if (conn != null) {
 				try {
 					conn.close();
@@ -117,7 +129,57 @@ public class UsersDao {
 			}
 		}
 
-		// 結果を返す
+		// 登録結果を返す
 		return signupResult;
+	}
+
+	// メールアドレスまたはIDが既に登録されているか確認する
+	public boolean existsUser(String mailAddress, String userId) {
+
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースへ接続
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/e1?" + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+					"root", "password");
+
+			// メールアドレスまたはIDの重複を確認するSQL
+			String sql = "SELECT COUNT(*) FROM users WHERE mail_address=? OR user_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// 入力された値を設定
+			pStmt.setString(1, mailAddress);
+			pStmt.setString(2, userId);
+
+			// SQLを実行
+			ResultSet rs = pStmt.executeQuery();
+			rs.next();
+
+			// 1件以上存在する場合は重複あり
+			if (rs.getInt(1) > 0) {
+				result = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			// データベース接続を終了
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 重複チェック結果を返す
+		return result;
 	}
 }

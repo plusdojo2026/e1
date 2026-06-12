@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import dto.Checklist;
 
-public class ChecklistsDAO {
+public class ChecklistsDao {
 
 	public boolean insert(Checklist list) {
 		Connection conn = null;

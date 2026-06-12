@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+/* 全体共通設定 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ページ全体の設定 */
+body {
+	font-family: "Yu Gothic", sans-serif;
+	background: #ffffff;
+}
+
+/* 画面全体レイアウト */
+.container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+/* 左側エリア */
+.left-panel {
+	width: 40%;
+	background: #87b096;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Mottaを中央配置 */
+.logo-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+/* Mottaのロゴ画像 */
+.logo-image {
+	width: 80%;
+	max-width: 700px;
+	height: auto;
+}
+
+/* 右側エリア */
+.right-panel {
+	width: 60%;
+	background: #d8f3d0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* フォーム全体 */
+.signup-box {
+	width: 380px;
+}
+
+/* 新規登録タイトル */
+.signup-box h2 {
+	text-align: center;
+	color: #9c6e6e;
+	font-size: 36px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+
+/* 新規登録フォームラベル */
+.form-group2 label,
+.form-group3 label {
+	display: block;
+	font-size: 17px;
+	color: #9c6e6e;
+	margin-bottom: 8px;
+}
+
+/* 新規登録フォーム入力欄選択時 */
+.form-group2 input[type="password"]:focus,
+.form-group3 input[type="email"]:focus,
+.form-group3 input[type="text"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
+}
+
+/* 新規登録フォーム入力欄 */
+.form-group2 input,
+.form-group3 input {
+	width: 100%;
+	height: 54px;
+	border: 1px solid #66FF00;
+	border-radius: 12px;
+	background: #f4f4f4;
+	padding: 0 15px;
+	font-size: 16px;
+}
+
+/* 入力欄の余白 */
+.form-group2 {
+	margin-bottom: 28px;
+}
+
+.form-group3 {
+	margin-bottom: 12px;
+}
+
+/* 登録ボタン */
+.signup-btn {
+	width: 100%;
+	height: 54px;
+	border: none;
+	border-radius: 10px;
+	background: #f2b5c7;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+/* 区切る文字の配置(すでにアカウントをお持ちの方は) */
+.divider {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin: 30px 0;
+	color: #d4a5b0;
+	font-size: 16px;
+}
+
+/* 左右の区切る点線 */
+.divider::before,
+.divider::after {
+	content: "";
+	flex: 1;
+	border-bottom: 4px dotted #f0b7c5;
+}
+
+/* 区切る文字の色(すでにアカウントをお持ちの方は) */
+.divider span {
+	margin: 0 15px;
+	color: #8A6A5A;
+}
+
+/* 画面遷移ボタン(ログイン画面に戻る) */
+.register-btn {
+	position: relative;
+	width: 100%;
+	height: 54px;
+	background: #f4f4f4;
+	border: 1px solid #9be05f;
+	border-radius: 12px;
+	color: #76d500;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+/* ログイン画面に戻るボタンのテキスト */
+.register-btn .text {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* ログイン画面に戻るボタンの矢印 */
+.register-btn .arrow {
+	position: absolute;
+	right: 50px;
+}
+
+/* 入力チェックエラー表示 */
+.error {
+	color: red;
+	font-size: 20px;
+	display: block;
+	margin-top: 4px;
+}
+
+/* サーブレットから渡されるエラーメッセージ */
+.error-message {
+	color: red;
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 20px;
+}

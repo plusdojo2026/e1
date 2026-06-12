@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+/* 全体共通設定 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ページ全体の設定 */
+body {
+	font-family: "Yu Gothic", sans-serif;
+	background: #ffffff;
+}
+
+/* 画面全体レイアウト */
+.container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+/* 左側エリア */
+.left-panel {
+	width: 40%;
+	background: #87b096;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Mottaを中央配置 */
+.logo-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+/* Mottaのロゴ画像 */
+.logo-image {
+	width: 80%;
+	max-width: 700px;
+	height: auto;
+}
+
+/* 右側エリア */
+.right-panel {
+	width: 60%;
+	background: #d8f3d0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* フォーム全体 */
+.login-box {
+	width: 380px;
+}
+
+/* ログインタイトル */
+.login-box h2 {
+	text-align: center;
+	color: #9c6e6e;
+	font-size: 36px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+
+/* ID・パスワードのラベル */
+.form-group1 label, .form-group2 label {
+	display: block;
+	font-size: 17px;
+	color: #9c6e6e;
+	margin-bottom: 8px;
+}
+
+/* ログインIDの入力欄 */
+.form-group1 input {
+	width: 100%;
+	height: 54px;
+	border: 1px solid #F6B4C3;
+	border-radius: 12px;
+	background: #f4f4f4;
+	padding: 0 15px;
+	font-size: 16px;
+}
+
+/* ログインIDの入力欄を選択した時 */
+.form-group1 input[type="text"]:focus {
+	outline: none;
+	border: 1px solid #a7334e;
+}
+
+/* パスワードの入力欄 */
+.form-group2 input {
+	width: 100%;
+	height: 54px;
+	border: 1px solid #66FF00;
+	border-radius: 12px;
+	background: #f4f4f4;
+	padding: 0 15px;
+	font-size: 16px;
+}
+
+/* パスワードの入力欄を選択した時 */
+.form-group2 input[type="password"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
+}
+
+/* 入力欄の余白 */
+.form-group1, .form-group2 {
+	margin-bottom: 28px;
+}
+
+/* ログインボタン */
+.login-btn {
+	width: 100%;
+	height: 54px;
+	border: none;
+	border-radius: 10px;
+	background: #f2b5c7;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+/* 区切る文字の配置(または) */
+.divider {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin: 30px 0;
+	color: #d4a5b0;
+	font-size: 16px;
+}
+
+/* 左右の区切る点線 */
+.divider::before, .divider::after {
+	content: "";
+	flex: 1;
+	border-bottom: 4px dotted #f0b7c5;
+}
+
+/* 区切る文字の色(または) */
+.divider span {
+	margin: 0 15px;
+	color: #8A6A5A;
+}
+
+/* 画面遷移ボタン(新規登録はこちら) */
+.register-btn {
+	position: relative;
+	width: 100%;
+	height: 54px;
+	background: #f4f4f4;
+	border: 1px solid #9be05f;
+	border-radius: 12px;
+	color: #76d500;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+/* 新規登録はこちらボタンのテキスト */
+.register-btn .text {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* 新規登録はこちらボタンの矢印 */
+.register-btn .arrow {
+	position: absolute;
+	right: 50px;
+}
+
+/* 入力チェックエラー表示 */
+.error {
+	color: red;
+	font-size: 20px;
+	display: block;
+	margin-top: 5px;
+}
+
+/* サーブレットから渡されるエラーメッセージ */
+.error-message {
+	color: red;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+}
