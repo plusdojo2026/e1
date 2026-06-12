@@ -13,16 +13,18 @@
 <body>
 	<!-- ヘッダー -->
 	<header class="header">
-		<h1 class="logo">Motta?</h1>
+		<div class="logo">
+    	<img src="images/header_logo.png" alt="Motta?">
+		</div>
 
 		<nav class="nav">
 			<ul>
-				<li><a href="#">TOP</a></li>
-				<li><a href="#">登録</a></li>
-				<li><a class="active" href="#">一覧</a></li>
-				<li><a href="#">検索</a></li>
-				<li><a href="#">チェックリスト</a></li>
-				<li><a href="#">ログアウト</a></li>
+				<li><a href="${pageContext.request.contextPath}/TopServlet">TOP</a></li>
+				<li><a href="${pageContext.request.contextPath}/RegistServlet">登録</a></li>
+				<li><a class="active" href="${pageContext.request.contextPath}/ListServlet">一覧</a></li>
+				<li><a href="${pageContext.request.contextPath}/SearchServlet">検索</a></li>
+				<li><a href="${pageContext.request.contextPath}/ChecklistServlet">チェックリスト</a></li>
+				<li><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -142,36 +144,46 @@
 	    }
 	});
 	
+
+	//ページ番号ボタンを生成する関数
 	function createPageButtons() {
-
-	    const pageNumbers = document.getElementById("pageNumbers");
-
-	    pageNumbers.innerHTML = "";
-
+		// ページ番号を表示する要素を取得
+		const pageNumbers = document.getElementById("pageNumbers");
+		// 既存のページ番号を一旦削除
+		pageNumbers.innerHTML = "";
+		//ページ番号ボタンを作成する関数
 	    function addButton(page) {
-
+	    	// button要素を生成
 	        const btn = document.createElement("button");
-
+	    	 // ボタンにページ番号を表示
 	        btn.textContent = page;
+	     	// CSS用クラスを追加
 	        btn.classList.add("page-btn");
+	     	// ページ番号をデータ属性として保持
 	        btn.dataset.page = page;
-
+	    	 // 現在表示中のページならactiveクラスを付与
 	        if (page === currentPage) {
 	            btn.classList.add("active");
 	        }
-
+	     	// ボタンクリック時の処理
 	        btn.addEventListener("click", () => {
-	            showPage(page);
+	        	// 指定ページを表示
+	        	showPage(page);
+	        	// ページボタンを再生成
 	            createPageButtons();
 	        });
-
+	     	// 作成したボタンを画面へ追加
 	        pageNumbers.appendChild(btn);
 	    }
-
+		//「...」を表示する関数
 	    function addDots() {
+	    	// span要素を生成
 	        const span = document.createElement("span");
+	    	//「・・・」を表示
 	        span.textContent = "...";
+	    	// CSS用クラスを追加
 	        span.classList.add("dots");
+	     	// 画面へ追加
 	        pageNumbers.appendChild(span);
 	    }
 
