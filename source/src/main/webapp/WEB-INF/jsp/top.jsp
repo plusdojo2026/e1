@@ -25,15 +25,14 @@
 			</ul>
 		</nav>
 	</header>
+	<!-- メイン -->
 	<main>
 		<!--メッセージ-->
 		<section class="message-box">
 			<p>
 				🔔おはようございます！<br> 今日のチェックリストを確認しましょう
 			</p>
-			<button class="alert-btn">
-				<a href="AlertServlet">通知を設定</a>
-			</button>
+			<a href="AlertServlet" class="alert-btn">通知を設定</a>
 		</section>
 		<section class="dashboard">
 
