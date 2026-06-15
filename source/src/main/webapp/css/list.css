@@ -1,12 +1,15 @@
 @charset "UTF-8";
+/*ヘッダーを挿入*/
+html {
+    overflow-y: scroll;
+}
 /*全体*/
-body{
+body {
     margin: 0;
     font-family: sans-serif;
     background-color: #D5FFD7;
     color: #463B25;
 }
-
 /*ヘッダー*/
 .header{
     background-color: #7EAF92;
@@ -15,7 +18,6 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-
 .nav ul{
     display: flex;
     list-style: none;
@@ -23,7 +25,6 @@ body{
     margin: 0;
     padding: 0;
 }
-
 .nav a{
     text-decoration: none;
     color: #463B25;
@@ -35,12 +36,11 @@ body{
 .active{
     background:#F6B4C3;
 }
-
-/*ロゴ*/
-.logo img{
-    height: auto;
-    width: 200px;
-    cursor: pointer;
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+    
 }
 
 /*上部エリア*/
