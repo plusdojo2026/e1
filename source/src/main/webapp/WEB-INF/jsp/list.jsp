@@ -13,20 +13,15 @@
 <body>
 	<!-- ヘッダー -->
 	<header class="header">
-		<div class="logo">
-		<a href="${pageContext.request.contextPath}/TopServlet">
-    	<img src="images/header_logo.png" alt="Motta?">
-    	</a>
-		</div>
-
+		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 		<nav class="nav">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/TopServlet">TOP</a></li>
-				<li><a href="${pageContext.request.contextPath}/RegistServlet">登録</a></li>
-				<li><a class="active" href="${pageContext.request.contextPath}/ListServlet">一覧</a></li>
-				<li><a href="${pageContext.request.contextPath}/SearchServlet">検索</a></li>
-				<li><a href="${pageContext.request.contextPath}/ChecklistServlet">チェックリスト</a></li>
-				<li><a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a></li>
+					<li><a href="TopServlet">TOP</a></li>
+					<li><a href="RegistServlet">登録</a></li>
+					<li><a href="ListServlet" class="active">一覧</a></li>
+					<li><a href="SearchServlet">検索</a></li>
+					<li><a href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="Logout">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
