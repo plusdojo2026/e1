@@ -20,7 +20,8 @@ CREATE TABLE lost_items (
     lost_date VARCHAR(50) NOT NULL,
     weather VARCHAR(50),
     location VARCHAR(50) NOT NULL,
-    reason VARCHAR(200)
+    reason VARCHAR(200),
+    user_id VARCHAR(50) NOT NULL
 );
 
 /*チェックリストデータテーブル（checklists）作成*/
