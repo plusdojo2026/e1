@@ -52,11 +52,9 @@ public class LoginServlet extends HttpServlet {
 
 			// ログイン中ユーザーのIDを保存
 			session.setAttribute("user_id", user_id);
-
-			// TOP画面へ遷移
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
-
-			dispatcher.forward(request, response);
+			
+			// TOPページにリダイレクトする
+			response.sendRedirect("/e1/TopServlet");
 
 		} else {
 

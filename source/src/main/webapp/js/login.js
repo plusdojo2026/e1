@@ -45,15 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		if (hasError) {
 			event.preventDefault();
 		}
-
-		// ログイン失敗時のメッセージ表示
-		const loginError = document.getElementById("loginError");
-
-		// サーバー側からログイン失敗フラグが渡された場合
-		if (loginError && loginError.value === "true") {
-			document.getElementById("loginErrorMessage").textContent =
-				"ログインIDまたはパスワードに誤りがあります。";
-		}
 	});
 
 });
