@@ -8,39 +8,44 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.TopDao;
 import dto.Top;
 
+// Topページを表示するサーブレット
 @WebServlet("/TopServlet")
 public class TopServlet extends HttpServlet {
 
+	// Topページを表示する
     @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response)
+    		throws ServletException, IOException {
 
         try {
+        	// セッション取得
+        	HttpSession session = request.getSession();
 
-            TopDao dao = new TopDao();
+        	// ログイン中のユーザーIDを取得
+        	String userId = (String) session.getAttribute("user_id");
 
-            List<Top> ranking = dao.getRanking();
+        	// Lost_itemsテーブル操作用のDaoの生成
+        	TopDao dao = new TopDao();
 
-            int yearlyCount = dao.getYearlyCount();
-            int[] monthlyCount = dao.getMonthlyCount();
+        	// ランキング表示用
+        	List<Top> ranking = dao.getRanking(userId);
 
-            request.setAttribute("ranking", ranking);
-            request.setAttribute("yearlyCount", yearlyCount);
-            request.setAttribute("monthlyCount", monthlyCount);
-            
+        	// グラフ表示用
+        	int[] monthlyCount = dao.getMonthlyCount(userId);
 
-            request.getRequestDispatcher("/WEB-INF/jsp/top.jsp")
-                    .forward(request, response);
-
+        	request.setAttribute("ranking", ranking);
+        	request.setAttribute("monthlyCount", monthlyCount);
+        	
+        	// top.jspへ遷移
+        	request.getRequestDispatcher("/WEB-INF/jsp/top.jsp")
+            .forward(request, response);
         } catch (Exception e) {
             throw new ServletException(e);
         }
-
     }
-
 }

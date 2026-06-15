@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LostItemsDao;
 import dto.LostItems;
@@ -28,13 +29,20 @@ public class ListServlet extends HttpServlet {
     	if (sort == null) {
             sort = "new";
         }
+    	
+    	// セッション取得
+        HttpSession session = request.getSession();
+
+        // ログインユーザーID取得
+        String userId =
+            (String) session.getAttribute("user_id");
 
     	// DAOのインスタンスを生成
     	LostItemsDao dao = new LostItemsDao();
 
-    	// DAOを呼び出して忘れ物一覧を取得
-        // sortの値によって並び替えを変更
-    	List<LostItems> itemList = dao.selectAll(sort);
+    	// ログインユーザーの忘れ物だけ取得
+    	List<LostItems> itemList =
+    	        dao.selectAll(userId, sort);
 
     	// 取得した一覧データをJSPへ渡す
     	request.setAttribute("itemList", itemList);

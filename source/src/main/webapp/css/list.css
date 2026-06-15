@@ -36,9 +36,11 @@ body{
     background:#F6B4C3;
 }
 
+/*ロゴ*/
 .logo img{
     height: auto;
     width: 200px;
+    cursor: pointer;
 }
 
 /*上部エリア*/
