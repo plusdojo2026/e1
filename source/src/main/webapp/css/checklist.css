@@ -126,7 +126,7 @@ border-radius: 20px;
 
    /*チェックリスト */
 .check-card{
-    width:400px;
+    width:600px;
     margin:30px auto;
     padding:30px;
 
@@ -153,13 +153,24 @@ border-radius: 20px;
     font-weight:bold;
 }
 
+/*チェック前などのボタンの配置*/
+.check-container{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:60px;
+}
+
+.check-column{
+    width:300px;
+}
+
 /*チェックリスト*/
 #beforeList,
 #afterList{
     list-style:none;
     padding:0;
     text-align: left;
-
 }
 
 #beforeList li,
