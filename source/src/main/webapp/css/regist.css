@@ -73,7 +73,7 @@ border-radius: 20px;
     background: rgba(255, 255, 255, 0.7);
 }
 
-/* 左上 */
+
 .left-top{
     width: 250px;
     height: 250px;
@@ -81,7 +81,7 @@ border-radius: 20px;
     left: -60px;
 }
 
-/* 右上 */
+
 .right-top{
     width: 250px;
     height: 250px;
@@ -89,7 +89,7 @@ border-radius: 20px;
     right: 430px;
 }
 
-/* 文字の後ろ */
+
 .center-left{
     width: 250px;
     height: 250px;
@@ -97,7 +97,7 @@ border-radius: 20px;
     left: 400px;
 }
 
-/* 右下 */
+
 .right-bottom{
     width: 250px;
     height: 250px;
@@ -105,7 +105,7 @@ border-radius: 20px;
     right: 400px;
 }
 
-/* 左下 */
+
 .left-bottom{
     width: 250px;
     height: 250px;
@@ -113,14 +113,13 @@ border-radius: 20px;
     left: -30px;
 }
 
-/* 右中央 */
+
 .right-center{
     width: 250px;
     height: 250px;
     top: 250px;
     right: -50px;
 }
-
 
 /* 文字の後ろ */
 .center-left{
