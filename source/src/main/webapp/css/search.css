@@ -1,4 +1,7 @@
 /*全体*/
+html {
+    overflow-y: scroll;
+}
 body{
 margin: 0;
 font-family: sans-serif;
@@ -13,7 +16,9 @@ color: #463B25;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
+
 
 .nav ul{
 display: flex;
@@ -44,7 +49,6 @@ background:#F6B4C3;
 /* 検索画面 */
 .search-page{
     position: relative;
-    height: 700px;
     overflow: hidden;
 }
 /*上部エリア*/
