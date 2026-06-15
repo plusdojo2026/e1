@@ -13,7 +13,7 @@ public class LostItemsDao extends Dao{
 	
 	Connection con = null;
     // 検索 + 並び替え
-    public List<LostItems> select(LostItems item, String sort) {
+    public List<LostItems> select(LostItems item, String userId, String sort) {
 
         List<LostItems> list = new ArrayList<LostItems>();
 
@@ -22,6 +22,7 @@ public class LostItemsDao extends Dao{
 
             String sql =
                     "SELECT * FROM lost_items " +
+                    "WHERE user_id = ? " +
                     "WHERE item_name LIKE ? " +
                     "AND location LIKE ? " +
                     "AND lost_date LIKE ? ";
@@ -34,9 +35,10 @@ public class LostItemsDao extends Dao{
 
             PreparedStatement pStmt = con.prepareStatement(sql);
 
-            pStmt.setString(1, "%" + item.getItem_name() + "%");
-            pStmt.setString(2, "%" + item.getLocation() + "%");
-            pStmt.setString(3, "%" + item.getLost_date() + "%");
+            pStmt.setString(1, userId);
+            pStmt.setString(2, "%" + item.getItem_name() + "%");
+            pStmt.setString(3, "%" + item.getLocation() + "%");
+            pStmt.setString(4, "%" + item.getLost_date() + "%");
 
             ResultSet rs = pStmt.executeQuery();
 
@@ -50,6 +52,7 @@ public class LostItemsDao extends Dao{
                 li.setWeather(rs.getString("weather"));
                 li.setLocation(rs.getString("location"));
                 li.setReason(rs.getString("reason"));
+                li.setUser_id(rs.getString("user_id"));
 
                 list.add(li);
             }

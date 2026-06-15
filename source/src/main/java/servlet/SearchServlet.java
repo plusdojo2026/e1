@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LostItemsDao;
 import dto.LostItems;
@@ -34,6 +35,11 @@ protected void doPost(HttpServletRequest request,
     System.out.println("SearchServlet doPost開始");
 
     request.setCharacterEncoding("UTF-8");
+    
+    HttpSession session = request.getSession();
+
+    String userId =
+            (String) session.getAttribute("user_id");
 
     LostItems item = new LostItems();
 
@@ -62,7 +68,7 @@ protected void doPost(HttpServletRequest request,
 
     LostItemsDao dao = new LostItemsDao();
 
-    List<LostItems> result = dao.select(item, sort);
+    List<LostItems> result = dao.select(item, userId, sort);
 
     System.out.println("検索結果件数：" + result.size());
 
