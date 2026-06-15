@@ -2,8 +2,8 @@ package dto;
 
 public class Alert {
 
-    private int id;
-    private String alertDate;
+    private int id; 			// ID
+    private String alertDate; 	// 通知日時
 
     public int getId() {
         return id;
