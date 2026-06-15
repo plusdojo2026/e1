@@ -48,4 +48,9 @@ public class Regist {
 		this.reason = reason;
 	}
 
+	public void lost_items(String item_name) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
 }
