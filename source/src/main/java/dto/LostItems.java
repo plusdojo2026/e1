@@ -7,6 +7,7 @@ private String lost_date;
 private String weather;
 private String location;
 private String reason;
+private String user_id;
 
 public int getId() {
 return id;
@@ -48,5 +49,11 @@ return reason;
 }
 public void setReason(String reason) {
 this.reason = reason;
+}
+public String getUser_id() {
+    return user_id;
+}
+public void setUser_id(String user_id) {
+    this.user_id = user_id;
 }
 }

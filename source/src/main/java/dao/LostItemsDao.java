@@ -72,14 +72,14 @@ public class LostItemsDao extends Dao{
     }
 	
 	// 一覧画面用
-	public List<LostItems> selectAll(String sort) {
+    public List<LostItems> selectAll(String userId, String sort){
 
 	    List<LostItems> list = new ArrayList<LostItems>();
 
 	    try {
 	        con = getConnection();
 
-	        String sql = "SELECT * FROM lost_items ";
+	        String sql = "SELECT * FROM lost_items " + "WHERE user_id = ? ";
 
 	        if ("old".equals(sort)) {
 	            sql += "ORDER BY lost_date ASC";
@@ -87,9 +87,13 @@ public class LostItemsDao extends Dao{
 	            sql += "ORDER BY lost_date DESC";
 	        }
 
-	        PreparedStatement pStmt = con.prepareStatement(sql);
+	        PreparedStatement pStmt =
+	        	    con.prepareStatement(sql);
 
-	        ResultSet rs = pStmt.executeQuery();
+	        pStmt.setString(1, userId);
+
+	        ResultSet rs =
+	        	    pStmt.executeQuery();
 
 	        while (rs.next()) {
 
@@ -101,6 +105,7 @@ public class LostItemsDao extends Dao{
 	            li.setWeather(rs.getString("weather"));
 	            li.setLocation(rs.getString("location"));
 	            li.setReason(rs.getString("reason"));
+	            li.setUser_id(rs.getString("user_id"));
 
 	            list.add(li);
 	        }
