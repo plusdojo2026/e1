@@ -12,7 +12,7 @@ import dto.Top;
 public class TopDao extends Dao {
 
     // ランキング取得
-	public List<Top> getRanking() throws Exception {
+	public List<Top> getRanking(String userId) throws Exception {
 
 	    List<Top> list = new ArrayList<>();
 	    // データベース接続
@@ -21,11 +21,13 @@ public class TopDao extends Dao {
 	    String sql =
 	        "SELECT item_name, COUNT(*) AS count " +
 	        "FROM lost_items " +
+	        "WHERE user_id = ? " +
 	        "GROUP BY item_name " +
 	        "ORDER BY count DESC " +
 	        "LIMIT 5";
 
 	    PreparedStatement st = con.prepareStatement(sql);
+	    st.setString(1, userId);
 	    // SQLの実行
 	    ResultSet rs = st.executeQuery();
 
@@ -34,6 +36,7 @@ public class TopDao extends Dao {
 
 	        top.setItemName(rs.getString("item_name"));
 	        top.setCount(rs.getInt("count"));
+	        
 
 	        list.add(top);
 	    }
@@ -45,7 +48,7 @@ public class TopDao extends Dao {
 	    return list;
 	}
     // 月間忘れ物数
-    public int[] getMonthlyCount() throws Exception {
+    public int[] getMonthlyCount(String userId) throws Exception {
 
         int[] monthly = new int[12];
         // データベース接続
@@ -55,13 +58,17 @@ public class TopDao extends Dao {
             "SELECT MONTH(STR_TO_DATE(lost_date,'%Y-%m-%d')) AS month," +
             " COUNT(*) AS total" +
             " FROM lost_items" +
+            " WHERE user_id = ? " +
             " GROUP BY MONTH(STR_TO_DATE(lost_date,'%Y-%m-%d'))";
 
         PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, userId);
+        // データベース接続
         ResultSet rs = st.executeQuery();
 
         while(rs.next()){
             monthly[rs.getInt("month") - 1] = rs.getInt("total");
+            
         }
 
         rs.close();

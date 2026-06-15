@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.TopDao;
 import dto.Top;
@@ -22,19 +23,27 @@ public class TopServlet extends HttpServlet {
     		throws ServletException, IOException {
 
         try {
+        	// セッション取得
+        	HttpSession session = request.getSession();
+
+        	// ログイン中のユーザーIDを取得
+        	String userId = (String) session.getAttribute("user_id");
+
         	// Lost_itemsテーブル操作用のDaoの生成
-            TopDao dao = new TopDao();
-            // ランキング表示用
-            List<Top> ranking = dao.getRanking();
-            // グラフ表示用
-            int[] monthlyCount = dao.getMonthlyCount();
+        	TopDao dao = new TopDao();
 
-            request.setAttribute("ranking", ranking);
-            request.setAttribute("monthlyCount", monthlyCount);
-            
-            // top.jspへ遷移
-            request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+        	// ランキング表示用
+        	List<Top> ranking = dao.getRanking(userId);
 
+        	// グラフ表示用
+        	int[] monthlyCount = dao.getMonthlyCount(userId);
+
+        	request.setAttribute("ranking", ranking);
+        	request.setAttribute("monthlyCount", monthlyCount);
+        	
+        	// top.jspへ遷移
+        	request.getRequestDispatcher("/WEB-INF/jsp/top.jsp")
+            .forward(request, response);
         } catch (Exception e) {
             throw new ServletException(e);
         }
