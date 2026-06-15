@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -11,134 +11,112 @@
 
 <body>
 
-<div class="wrapper">
+	<div class="wrapper">
 
-  <!-- ヘッダー -->
-  <header class="header">
-    
-<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
-  
+		<!-- ヘッダー -->
+		<header class="header">
 
-    <nav class="nav">
-    <ul>
-				<li><a href="TopServlet">TOP</a></li>
-				<li><a href="RegistServlet">登録</a></li>
-				<li><a href="ListServlet">一覧</a></li>
-				<li><a href="SearchServlet">検索</a></li>
-				<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
-				<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
-			</ul>
-    </nav>
-  </header>
+			<a href="#"><img src="images/header_logo.png" alt="Motta?"
+				class="logo"></a>
 
-  <!-- メイン -->
-  <main>
 
-    <!-- 背景丸 -->
-    <div class="circle pink left-top"></div>
-    <div class="circle pink right-top"></div>
+			<nav class="nav">
+				<ul>
+					<li><a href="TopServlet">TOP</a></li>
+					<li><a href="RegistServlet">登録</a></li>
+					<li><a href="ListServlet">一覧</a></li>
+					<li><a href="SearchServlet">検索</a></li>
+					<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="LogoutServlet"
+						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
+				</ul>
+			</nav>
+		</header>
 
-    <div class="circle green center-left"></div>
-    <div class="circle green right-bottom"></div>
+		<!-- メイン -->
+		<main>
 
-    <div class="circle white left-bottom"></div>
-    <div class="circle white right-center"></div>
+			<!-- 背景丸 -->
+			<div class="circle pink left-top"></div>
+			<div class="circle pink right-top"></div>
 
-   <form id="login_form" action="ChecklistServlet" method="post">
+			<div class="circle green center-left"></div>
+			<div class="circle green right-bottom"></div>
 
-      <label>
-        <br>
-        <input type="text" name="item_name" placeholder="名称">
-      </label>
+			<div class="circle white left-bottom"></div>
+			<div class="circle white right-center"></div>
 
-   		<input type="submit" name="action" value="登録">
-		<input type="submit" name="action" value="削除">
+			<form id="login_form" action="ChecklistServlet" method="post">
 
-      <span id="error_message"></span>
+				<label> <br> <input type="text" name="item_name"
+					placeholder="名称">
+				</label> <input type="submit" name="action" value="登録"> <input
+					type="submit" name="action" value="削除"> <span
+					id="error_message"></span>
 
-    </form>
+			</form>
 
-    <!-- チェックリストカード -->
-    <div class="check-card">
+			<!-- チェックリストカード -->
+			<div class="check-card">
 
-      
+			<h2 class="section-title">チェック前</h2>
 
-      <ul id="beforeList">
-  <c:forEach var="e" items="${checklist}">
-    <li>
-      <input type="checkbox" class="item-check">
-      ${e.item_name}
-    </li>
-  </c:forEach>
-        <li>
-          <input type="checkbox" class="item-check">
-          スマートフォン
-        </li>
-        <li>
-          <input type="checkbox" class="item-check">
-          財布
-        </li>
-        <li>
-          <input type="checkbox" class="item-check">
-          ワイヤレスイヤフォン
-        </li>
-        <li>
-          <input type="checkbox" class="item-check">
-          充電コード
-        </li>
-        <li>
-          <input type="checkbox" class="item-check">
-          モバイルバッテリー
-        </li>
-        <li>
-          <input type="checkbox" class="item-check">
-          折りたたみ傘
-        </li>
-      </ul>
+				<ul id="beforeList">
+					<c:forEach var="e" items="${checklist}">
+						<li><input type="checkbox" class="item-check">
+							${e.item_name}</li>
+					</c:forEach>
+				</ul>
 
-      <h2 class="section-title">チェック後</h2>
+				<h2 class="section-title">チェック後</h2>
 
-      <ul id="afterList"></ul>
+				<ul id="afterList"></ul>
 
-    </div>
+			</div>
 
-  </main>
+		</main>
 
-</div>
+	</div>
 
-<script>
-let formObj = document.getElementById('login_form');
-let errorMessageObj = document.getElementById('error_message');
+	<script>
+		let formObj = document.getElementById('login_form');
+		let errorMessageObj = document.getElementById('error_message');
 
-/* 登録ボタン */
-formObj.onsubmit = function(event) {
+		/* 登録、削除ボタンをクリックしたときの処理 */
+		formObj.onsubmit = function(event) {
+			/* 名称を必須入力項目とします */
+			if (!formObj.item_name.value) {
+				errorMessageObj.textContent = '※持ち物の名前を入力してください！';
+				event.preventDefault();
+			} else {
+				/* エラーメッセージを消します */
+				errorMessageObj.textContent = null;
+				/* 確認ダイアログボックスを表示します */
+				if (window.confirm('実行します。よろしいですか？') === false) {
+					event.preventDefault();
+				}
+			}
+		};
 
-  
+		/* チェック移動 */
+		document.addEventListener("change", function(e) {
+			if (e.target.classList.contains("item-check")) {
 
-    if (!confirm('実行します。よろしいですか？')) {
-      event.preventDefault();
-    }
-};
+				const li = e.target.closest("li");
 
-/* チェック移動 */
-document.addEventListener("change", function (e) {
-  if (e.target.classList.contains("item-check")) {
+				if (e.target.checked) {
+					document.getElementById("afterList").appendChild(li);
+				} else {
+					document.getElementById("beforeList").appendChild(li);
+				}
+			}
+		});
 
-    const li = e.target.closest("li");
-
-    if (e.target.checked) {
-      document.getElementById("afterList").appendChild(li);
-    } else {
-      document.getElementById("beforeList").appendChild(li);
-    }
-  }
-});
-
-/* リセット */
-formObj.onreset = function() {
-  errorMessageObj.textContent = '';
-};
-</script>
+		/* リセット */
+		formObj.onreset = function() {
+			errorMessageObj.textContent = '';
+		};
+	</script>
 
 </body>
 </html>
