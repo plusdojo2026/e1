@@ -14,7 +14,9 @@
 	<!-- ヘッダー -->
 	<header class="header">
 		<div class="logo">
+		<a href="${pageContext.request.contextPath}/TopServlet">
     	<img src="images/header_logo.png" alt="Motta?">
+    	</a>
 		</div>
 
 		<nav class="nav">
