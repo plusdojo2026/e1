@@ -12,35 +12,31 @@ import javax.servlet.http.HttpServletResponse;
 import dao.TopDao;
 import dto.Top;
 
+// Topページを表示するサーブレット
 @WebServlet("/TopServlet")
 public class TopServlet extends HttpServlet {
 
+	// Topページを表示する
     @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response)
+    		throws ServletException, IOException {
 
         try {
-
+        	// Lost_itemsテーブル操作用のDaoの生成
             TopDao dao = new TopDao();
-
+            // ランキング表示用
             List<Top> ranking = dao.getRanking();
-
-            int yearlyCount = dao.getYearlyCount();
+            // グラフ表示用
             int[] monthlyCount = dao.getMonthlyCount();
 
             request.setAttribute("ranking", ranking);
-            request.setAttribute("yearlyCount", yearlyCount);
             request.setAttribute("monthlyCount", monthlyCount);
             
-
-            request.getRequestDispatcher("/WEB-INF/jsp/top.jsp")
-                    .forward(request, response);
+            // top.jspへ遷移
+            request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
 
         } catch (Exception e) {
             throw new ServletException(e);
         }
-
     }
-
 }

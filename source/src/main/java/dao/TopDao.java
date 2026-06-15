@@ -8,15 +8,16 @@ import java.util.List;
 
 import dto.Top;
 
+// Topページを表示するDaoクラス
 public class TopDao extends Dao {
 
     // ランキング取得
 	public List<Top> getRanking() throws Exception {
 
 	    List<Top> list = new ArrayList<>();
-
+	    // データベース接続
 	    Connection con = getConnection();
-
+	    // ランキング表示用SQL
 	    String sql =
 	        "SELECT item_name, COUNT(*) AS count " +
 	        "FROM lost_items " +
@@ -25,11 +26,10 @@ public class TopDao extends Dao {
 	        "LIMIT 5";
 
 	    PreparedStatement st = con.prepareStatement(sql);
-
+	    // SQLの実行
 	    ResultSet rs = st.executeQuery();
 
 	    while (rs.next()) {
-
 	        Top top = new Top();
 
 	        top.setItemName(rs.getString("item_name"));
@@ -44,39 +44,13 @@ public class TopDao extends Dao {
 
 	    return list;
 	}
-
-    // 年間忘れ物数
-    public int getYearlyCount() throws Exception {
-
-        Connection con = getConnection();
-
-        String sql =
-        		"SELECT COUNT(*) FROM lost_items " +
-        		"WHERE YEAR(STR_TO_DATE(lost_date,'%Y-%m-%d'))=YEAR(CURDATE())";
-
-        PreparedStatement st = con.prepareStatement(sql);
-
-        ResultSet rs = st.executeQuery();
-
-        int count = 0;
-
-        if(rs.next()){
-            count = rs.getInt(1);
-        }
-
-        rs.close();
-        st.close();
-        con.close();
-
-        return count;
-    }
     // 月間忘れ物数
     public int[] getMonthlyCount() throws Exception {
 
         int[] monthly = new int[12];
-
+        // データベース接続
         Connection con = getConnection();
-
+        // グラフ表示用SQL
         String sql =
             "SELECT MONTH(STR_TO_DATE(lost_date,'%Y-%m-%d')) AS month," +
             " COUNT(*) AS total" +
