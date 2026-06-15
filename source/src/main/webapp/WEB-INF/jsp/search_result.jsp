@@ -15,7 +15,7 @@
 	
 	<!-- ヘッダー -->
 	<header class="header">
-		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 		<nav class="nav">
 				<ul>
 					<li><a href="TopServlet">TOP</a></li>
@@ -39,14 +39,9 @@
 	
 				<div class="count"><%= list.size() %>件</div>
 	
-<%
-LostItems searchItem = (LostItems)request.getAttribute("item");
+<%LostItems searchItem = (LostItems)request.getAttribute("item");
 String sort = (String)request.getAttribute("sort");
-
-if(sort == null){
-sort = "new";
-}
-%>
+if(sort == null){sort = "new";}%>
 
 <div class="sort-area">
 
@@ -80,7 +75,7 @@ sort = "new";
 </form>
 
 </div>
-	
+</div>  <!-- top-area -->
 			<!-- 一覧 -->
 			<div class="list-area">
 	

@@ -34,7 +34,7 @@
 				<h2>新規登録</h2>
 
 				<!-- サーブレットから渡されたエラーメッセージ -->
-				<p class="error-message">
+				<p class="error-message" id="signupErrorMessage">
 					<%=request.getAttribute("errorMsg") != null ? request.getAttribute("errorMsg") : ""%>
 				</p>
 

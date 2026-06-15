@@ -11,7 +11,7 @@
 <body>
 	<!-- ヘッダー -->
 	<header class="header">
-		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 		<nav class="nav">
 			<ul>
 					<li><a href="TopServlet">TOP</a></li>
