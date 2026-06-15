@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -43,15 +44,15 @@
     <div class="circle white left-bottom"></div>
     <div class="circle white right-center"></div>
 
-    <form id="login_form" action="result.html">
+   <form id="login_form" action="ChecklistServlet" method="post">
 
       <label>
         <br>
-        <input type="text" name="name" placeholder="名称">
+        <input type="text" name="item_name" placeholder="名称">
       </label>
 
-      <input type="submit" value="登録">
-      <input type="submit" value="削除">
+   		<input type="submit" name="action" value="登録">
+		<input type="submit" name="action" value="削除">
 
       <span id="error_message"></span>
 
@@ -63,6 +64,12 @@
       
 
       <ul id="beforeList">
+  <c:forEach var="e" items="${checklist}">
+    <li>
+      <input type="checkbox" class="item-check">
+      ${e.item_name}
+    </li>
+  </c:forEach>
         <li>
           <input type="checkbox" class="item-check">
           スマートフォン
@@ -106,16 +113,11 @@ let errorMessageObj = document.getElementById('error_message');
 /* 登録ボタン */
 formObj.onsubmit = function(event) {
 
-  if (!formObj.name.value) {
-    errorMessageObj.textContent = '※名称を入力してください！';
-    event.preventDefault();
-  } else {
-    errorMessageObj.textContent = '';
+  
 
     if (!confirm('実行します。よろしいですか？')) {
       event.preventDefault();
     }
-  }
 };
 
 /* チェック移動 */
