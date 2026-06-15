@@ -1,11 +1,159 @@
 @charset "UTF-8";
 
-body {
-	margin: 30px;
-	font-family: sans-serif;
-	background-color: #D5FFD7;
-	color: #463B25;
+
+/*ヘッダー*/
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:#7EAF92;
 }
+
+/* ボディ */
+body{
+margin: 0;
+font-family: sans-serif;
+background-color: #D5FFD7;
+color: #463B25;
+text-align: center;
+
+}
+
+
+.nav ul{
+display: flex;
+list-style: none;
+gap: 30px;
+margin: 0;
+padding: 0;
+}
+
+.nav a{
+text-decoration: none;
+color: #463B25;
+font-size: 20px;
+padding: 10px 20px;
+border-radius: 999px;
+}
+
+.active{
+background:#F6B4C3;
+border-radius: 20px;
+}
+/* ワッパー */
+.wrapper{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+}
+/* 背景の丸 */
+
+.circle{
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.pink{
+    background: rgba(246, 180, 195, 0.7);
+}
+
+.green{
+    background: rgba(122, 230, 127, 0.7);
+}
+
+.white{
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* 左上 */
+.left-top{
+    width: 250px;
+    height: 250px;
+    top: 150px;
+    left: -60px;
+}
+
+/* 右上 */
+.right-top{
+    width: 250px;
+    height: 250px;
+    top: 180px;
+    right: 430px;
+}
+
+/* 文字の後ろ */
+.center-left{
+    width: 250px;
+    height: 250px;
+    top: 350px;
+    left: 400px;
+}
+
+/* 右下 */
+.right-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -150px;
+    right: 400px;
+}
+
+/* 左下 */
+.left-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -60px;
+    left: -30px;
+}
+
+/* 右中央 */
+.right-center{
+    width: 250px;
+    height: 250px;
+    top: 250px;
+    right: -50px;
+}
+
+
+/* 文字の後ろ */
+.center-left{
+    width: 250px;
+    height: 250px;
+    top: 350px;
+    left: 400px;
+}
+
+/* 右下 */
+.right-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -150px;
+    right: 400px;
+}
+
+/* 左下 */
+.left-bottom{
+    width: 250px;
+    height: 250px;
+    bottom: -60px;
+    left: -30px;
+}
+
+/* 右中央 */
+.right-center{
+    width: 250px;
+    height: 250px;
+    top: 250px;
+    right: -50px;
+}
+
 
 .header {
 	background-color: #7EAF92;
@@ -30,7 +178,12 @@ body {
 	padding: 10px 20px;
 	border-radius: 999px;
 }
-
+/* ロゴサイズ */
+.logo {
+    width: 200px; /* 好きなサイズに変更 */
+    height: auto; /* 縦横比を維持 */
+    
+}
 .active {
 	background: #F6B4C3;
 }
@@ -233,12 +386,6 @@ input[type="text"] {
 	border: 1px solid #66FF00;
 }
 
-;
-input[type="text"]:focus {
-	outline: none;
-	border: 2px solid #33A74A;
-}
-
 input[type="submit"] {
 	margin: 0px 20px 0px;
 	padding: 25px 25px;
@@ -302,8 +449,8 @@ select[name="weather"]:focus {
 	border: 2px solid #33A74A;
 }
 
-input[type="text"] {
-	
+input[type="text"]:focus {
+	outline: none;
+	border: 2px solid #33A74A;
 }
-
 @import url("regist.html");
