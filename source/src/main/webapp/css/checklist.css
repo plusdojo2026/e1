@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+html {
+    overflow-y: scroll;
+}
 /*ヘッダー*/
 
 .header{
