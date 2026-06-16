@@ -15,7 +15,7 @@
 		<nav class="nav">
 			<ul>
 					<li><a href="TopServlet">TOP</a></li>
-					<li><a href="RegistSevlet">登録</a></li>
+					<li><a href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a href="SearchServlet" class="active">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
