@@ -1,9 +1,10 @@
 @charset "UTF-8";
+
+/* スクロールバー */
 html {
     overflow-y: scroll;
 }
-/*全体*/
-
+/* 全体 */
 body {
     margin: 0;
     font-family: sans-serif;
@@ -18,6 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+/*　ナビゲーション　*/
 .nav ul{
     display: flex;
     list-style: none;
@@ -32,23 +34,20 @@ body {
     padding: 10px 20px;
     border-radius: 999px;
 }
-
+/*　現在ページの表示　*/
 .active{
     background:#F6B4C3;
 }
 /* ロゴサイズ */
 .logo {
-    width: 200px; /* 好きなサイズに変更 */
-    height: auto; /* 縦横比を維持 */
-    
+    width: 200px;
+    height: auto;
 }
-
 /* メイン */
 main{
     width:90%;
     margin:40px auto;
 }
-
 /* メッセージ */
 .message-box{
     width: 1000px;
@@ -60,13 +59,12 @@ main{
     justify-content: space-between;
     align-items: center;
 }
-
 .message-box p{
     font-size:24px;
     flex: 1;
     text-align: center;
 }
-
+/* 通知ボタン */
 .alert-btn{
     background-color: #F6B4C3;
     color: white;
@@ -78,20 +76,18 @@ main{
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
 }
-
 .alert-btn:hover{
     transform: translateY(-2px);
     opacity: 0.9;
 }
-
 /* ダッシュボード */
 .dashboard{
     display:flex;
     justify-content:space-between;
     gap:40px;
 }
-
 /* カード */
 .card{
     flex:1;
@@ -100,7 +96,6 @@ main{
     padding:35px;
     min-height:380px;
 }
-
 /* タイトル */
 .card h2{
     background:#F6B4C3;
@@ -110,27 +105,23 @@ main{
     margin-top:0;
     color: white;
 }
-
 /* チェックリスト */
 .check-list{
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-
 .check-list label{
     font-size: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 .check-list input[type="checkbox"]{
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
-
 /* ランキング */
 .ranking{
     font-size:20px;
@@ -142,7 +133,6 @@ main{
     gap:15px;
     margin-top:30px;
 }
-
 .rank-card{
     flex:1;
     background:white;
@@ -152,11 +142,9 @@ main{
     box-shadow:0 5px 12px rgba(0,0,0,.1);
     transition:.3s;
 }
-
 .rank-card:hover{
     transform:translateY(-8px);
 }
-
 .rank-number{
     width:50px;
     height:50px;
@@ -169,25 +157,20 @@ main{
     font-weight:bold;
     font-size:18px;
 }
-
 .ranking-top3 .rank-form:nth-child(1) .rank-number{
     background:#FFD700;
 }
-
 .ranking-top3 .rank-form:nth-child(2) .rank-number{
     background:#C0C0C0;
 }
-
 .ranking-top3 .rank-form:nth-child(3) .rank-number{
     background:#CD7F32;
 }
-
 .item-name{
     margin-top:18px;
     font-size:18px;
     font-weight:bold;
 }
-
 .item-count{
     margin-top:10px;
     font-size:28px;
@@ -197,7 +180,6 @@ main{
 .ranking-list{
     margin-top:30px;
 }
-
 .rank-row{
     display:flex;
     justify-content:space-between;
@@ -206,7 +188,6 @@ main{
     border-bottom:1px solid #ddd;
     font-size:16px;
 }
-
 .rank-row:last-child{
     border-bottom:none;
 }
@@ -214,16 +195,9 @@ main{
     flex:1;
     margin:0;
 }
-
 .rank-form .rank-card{
     width:100%;
     border:none;
     cursor:pointer;
     font:inherit;
-}
-
-/* 通知ボタン */
-.alert-btn {
-    color: #ffffff;      
-    text-decoration: none; /* 下線を消す */
 }
