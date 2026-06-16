@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+html {
+    overflow-y: scroll;
+}
+
 /*全体*/
 body{
     margin: 0;

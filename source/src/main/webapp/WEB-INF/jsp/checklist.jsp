@@ -49,7 +49,7 @@
 			<form id="login_form" action="ChecklistServlet" method="post">
 
 				<label> <br> <input type="text" name="item_name"
-					placeholder="名称">
+					placeholder="名称" required>
 				</label> <input type="submit" name="action" value="登録"> <input
 					type="submit" name="action" value="削除"> <span
 					id="error_message"></span>
@@ -59,21 +59,30 @@
 			<!-- チェックリストカード -->
 			<div class="check-card">
 
-			<h2 class="section-title">チェック前</h2>
+    <div class="check-container">
 
-				<ul id="beforeList">
-					<c:forEach var="e" items="${checklist}">
-						<li><input type="checkbox" class="item-check">
-							${e.item_name}</li>
-					</c:forEach>
-				</ul>
+        <div class="check-column">
+            <h2 class="section-title">チェック前</h2>
 
-				<h2 class="section-title">チェック後</h2>
+            <ul id="beforeList">
+                <c:forEach var="e" items="${checklist}">
+                    <li>
+                        <input type="checkbox" class="item-check">
+                        ${e.item_name}
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
 
-				<ul id="afterList"></ul>
+        <div class="check-column">
+            <h2 class="section-title">チェック後</h2>
 
-			</div>
+            <ul id="afterList"></ul>
+        </div>
 
+    </div>
+
+</div>
 		</main>
 
 	</div>
@@ -84,18 +93,12 @@
 
 		/* 登録、削除ボタンをクリックしたときの処理 */
 		formObj.onsubmit = function(event) {
-			/* 名称を必須入力項目とします */
-			if (!formObj.item_name.value) {
-				errorMessageObj.textContent = '※持ち物の名前を入力してください！';
-				event.preventDefault();
-			} else {
-				/* エラーメッセージを消します */
-				errorMessageObj.textContent = null;
+			
 				/* 確認ダイアログボックスを表示します */
 				if (window.confirm('実行します。よろしいですか？') === false) {
 					event.preventDefault();
 				}
-			}
+			
 		};
 
 		/* チェック移動 */

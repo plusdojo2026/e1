@@ -1,26 +1,31 @@
 /*全体*/
+/*全体*/
+html {
+    overflow-y: scroll;
+}
+
 body {
-	margin: 0;
-	font-family: sans-serif;
-	background-color: #D5FFD7;
-	color: #463B25;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #D5FFD7;
+    color: #463B25;
 }
 
 /*ヘッダー*/
 .header {
-	background-color: #7EAF92;
-	padding: 20px 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    background-color: #7EAF92;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav ul {
-	display: flex;
-	list-style: none;
-	gap: 30px;
-	margin: 0;
-	padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav a {
@@ -42,9 +47,9 @@ body {
 
 /* 検索画面 */
 .search-page {
-	position: relative;
-	height: 700px;
-	overflow: hidden;
+    position: relative;
+    height: 700px;
+    overflow: hidden;
 }
 /*上部エリア*/
 main {

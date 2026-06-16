@@ -1,5 +1,9 @@
 @charset "UTF-8";
+
 /*全体*/
+html {
+    overflow-y: scroll;
+}
 body {
     margin: 0;
     font-family: sans-serif;
