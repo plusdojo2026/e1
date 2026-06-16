@@ -67,7 +67,6 @@
 	</main>
 	
 <script>
-
 const monthlyData = [
     ${monthlyCount[0]},
     ${monthlyCount[1]},
@@ -83,6 +82,8 @@ const monthlyData = [
     ${monthlyCount[11]}
 ];
 
+
+const yMax = Math.max(Math.ceil(Math.max(...monthlyData) * 1.1), 20);
 
 const ctx = document.getElementById('monthChart').getContext('2d');
 
@@ -105,7 +106,7 @@ new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true,
-                max: 20,
+                max: yMax,
                 ticks: {
                     stepSize: 1
                 }
@@ -122,7 +123,6 @@ new Chart(ctx, {
         }
     }
 });
-
 </script>
 </body>
 </html>
