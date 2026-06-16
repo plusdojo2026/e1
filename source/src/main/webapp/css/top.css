@@ -170,15 +170,15 @@ main{
     font-size:18px;
 }
 
-.rank-card:nth-child(1) .rank-number{
+.ranking-top3 .rank-form:nth-child(1) .rank-number{
     background:#FFD700;
 }
 
-.rank-card:nth-child(2) .rank-number{
+.ranking-top3 .rank-form:nth-child(2) .rank-number{
     background:#C0C0C0;
 }
 
-.rank-card:nth-child(3) .rank-number{
+.ranking-top3 .rank-form:nth-child(3) .rank-number{
     background:#CD7F32;
 }
 
@@ -209,6 +209,17 @@ main{
 
 .rank-row:last-child{
     border-bottom:none;
+}
+.rank-form{
+    flex:1;
+    margin:0;
+}
+
+.rank-form .rank-card{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    font:inherit;
 }
 
 /* 通知ボタン */

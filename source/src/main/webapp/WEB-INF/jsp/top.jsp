@@ -13,7 +13,8 @@
 <body>
 	<!-- ヘッダー -->
 	<header class="header">
-		<a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<a href="#"><img src="images/header_logo.png" alt="Motta?"
+			class="logo"></a>
 		<nav class="nav">
 			<ul>
 				<li><a class="active" href="#">TOP</a></li>
@@ -21,7 +22,8 @@
 				<li><a href="ListServlet">一覧</a></li>
 				<li><a href="SearchServlet">検索</a></li>
 				<li><a href="ChecklistServlet">チェックリスト</a></li>
-				<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
+				<li><a href="LogoutServlet"
+					onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,26 +39,31 @@
 		<section class="dashboard">
 
 			<!--ランキング-->
-			<article class="card">
+			<article class="card">			
 				<h2>ランキング</h2>
 				<div class="ranking-top3">
-					<c:forEach var="r" items="${ranking}" begin="0" end="2" varStatus="status">
-						<div class="rank-card">
-							<div class="rank-number">${status.index + 1}位</div>
-							<div class="item-name">${r.itemName}</div>
-							<div class="item-count">${r.count}回</div>
+					<c:forEach var="r" items="${ranking}" begin="0" end="2"	varStatus="status">
+
+						<form action="SearchServlet" method="post" class="rank-form">
+							<input type="hidden" name="name" value="${r.itemName}">
+
+							<button type="submit" class="rank-card">
+								<div class="rank-number">${status.index + 1}位</div>
+								<div class="item-name">${r.itemName}</div>
+								<div class="item-count">${r.count}回</div>
+							</button>
+						</form>
+
+					</c:forEach>
+				</div>
+				
+				<div class="ranking-list">
+					<c:forEach var="r" items="${ranking}" begin="3" varStatus="status">
+						<div class="rank-row">
+							<span>${status.index + 1}位</span> <span>${r.itemName}</span> <span>${r.count}回</span>
 						</div>
 					</c:forEach>
 				</div>
-				<div class="ranking-list">
-					<c:forEach var="r" items="${ranking}" begin="3" varStatus="status">
-					    <div class="rank-row">
-					        <span>${status.index + 1}位</span>
-					        <span>${r.itemName}</span>
-					        <span>${r.count}回</span>
-					    </div>
-					</c:forEach>
-					</div>
 			</article>
 			<!--グラフ-->
 			<article class="card">
@@ -65,8 +72,8 @@
 			</article>
 		</section>
 	</main>
-	
-<script>
+
+	<script>
 const monthlyData = [
     ${monthlyCount[0]},
     ${monthlyCount[1]},
