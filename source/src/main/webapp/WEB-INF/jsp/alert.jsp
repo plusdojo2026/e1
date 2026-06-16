@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-	<title>通知設定</title>
+	<title>Motta?｜通知設定</title>
 	<link rel="stylesheet" href="/e1/css/alert.css">
 </head>
 <body>

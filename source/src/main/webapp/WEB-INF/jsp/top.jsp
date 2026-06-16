@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/e1/css/top.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<title>Moota?｜TOP</title>
+<title>Motta?｜TOP</title>
 </head>
 <body>
 	<!-- ヘッダー -->
@@ -67,7 +67,6 @@
 	</main>
 	
 <script>
-
 const monthlyData = [
     ${monthlyCount[0]},
     ${monthlyCount[1]},
@@ -83,6 +82,8 @@ const monthlyData = [
     ${monthlyCount[11]}
 ];
 
+
+const yMax = Math.max(Math.ceil(Math.max(...monthlyData) * 1.1), 20);
 
 const ctx = document.getElementById('monthChart').getContext('2d');
 
@@ -105,7 +106,7 @@ new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true,
-                max: 20,
+                max: yMax,
                 ticks: {
                     stepSize: 1
                 }
@@ -122,7 +123,6 @@ new Chart(ctx, {
         }
     }
 });
-
 </script>
 </body>
 </html>
