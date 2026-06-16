@@ -108,7 +108,7 @@ public class ChecklistsDao {
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
-
+	     // データベースを切断
 	    } finally {
 	        try { if (rs != null) rs.close(); } catch (Exception e) {}
 	        try { if (pStmt != null) pStmt.close(); } catch (Exception e) {}
@@ -180,8 +180,16 @@ public boolean updateChecked(int id, boolean checked) {
 
     } catch (Exception e) {
         e.printStackTrace();
-    }
-
+    } finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
     return false;
 }
 }
