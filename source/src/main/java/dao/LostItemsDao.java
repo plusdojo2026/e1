@@ -23,7 +23,7 @@ public class LostItemsDao extends Dao{
             String sql =
                     "SELECT * FROM lost_items " +
                     "WHERE user_id = ? " +
-                    "WHERE item_name LIKE ? " +
+                    "AND item_name LIKE ? " +
                     "AND location LIKE ? " +
                     "AND lost_date LIKE ? ";
 
@@ -73,7 +73,31 @@ public class LostItemsDao extends Dao{
 
         return list;
     }
-	
+	//削除機能
+    public boolean delete(int id) {
+
+        try {
+            Connection con = getConnection();
+
+            String sql =
+                "DELETE FROM lost_items WHERE id=?";
+
+            PreparedStatement pStmt =
+                con.prepareStatement(sql);
+
+            pStmt.setInt(1, id);
+
+            int result = pStmt.executeUpdate();
+
+            con.close();
+
+            return result == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 	// 一覧画面用
     public List<LostItems> selectAll(String userId, String sort){
 
