@@ -10,14 +10,14 @@
 </head>
 
 <body>
-
+	<!-- ワッパー -->
 	<div class="wrapper">
 
 		<!-- ヘッダー -->
 		<header class="header">
 
-			<a href="#"><img src="images/header_logo.png" alt="Motta?"
-				class="logo"></a>
+			<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+			
 
 
 			<nav class="nav">
@@ -104,7 +104,7 @@
 		let errorMessageObj = document.getElementById('error_message');
 
 		/* 登録、削除ボタンをクリックしたときの処理 */
-		formObj.onsubmit = function(event) {
+		formObj.onsubmit = function(event.) {
 
 			/* 確認ダイアログボックスを表示します */
 			if (window.confirm('実行します。よろしいですか？') === false) {
