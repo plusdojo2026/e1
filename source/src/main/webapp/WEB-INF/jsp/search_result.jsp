@@ -105,7 +105,7 @@ if(sort == null){sort = "new";}%>
 		
 				<div class="item-buttons">
 		
-					<button class="edit-btn">編集</button>
+					<!--<button class="edit-btn">編集</button>  -->
 		
 					<form action="DeleteServlet" method="post" 
 					onsubmit="return confirm('本当に削除してよろしいですか？');">

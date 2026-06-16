@@ -21,13 +21,16 @@ CREATE TABLE lost_items (
     weather VARCHAR(50),
     location VARCHAR(50) NOT NULL,
     reason VARCHAR(200),
-    user_id VARCHAR(50) NOT NULL
+    user_id VARCHAR(50) 
 );
 
 /*チェックリストデータテーブル（checklists）作成*/
 CREATE TABLE checklists (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    item_name VARCHAR(50) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
+    item_name VARCHAR(50) NOT NULL,
+    checked_flag BOOLEAN NOT NULL DEFAULT FALSE,
+    UNIQUE KEY unique_user_item (user_id, item_name)
 );
 
 /*通知データテーブル（alerts）作成*/
@@ -226,3 +229,8 @@ VALUES
 ('名刺', '2025-11-14', '曇り', '客先', '商談後確認漏れ'),
 ('タブレット', '2025-12-05', '晴れ', 'ホテル', '出張後の確認不足'),
 ('折りたたみ傘', '2025-12-22', '雨', '飲食店', '忘年会後に置き忘れ');
+
+/*サンプルデータを自分のアカウントで仮表示*/
+PDATE lost_items
+SET user_id = '/*任意のID*/'
+WHERE user_id = '';
