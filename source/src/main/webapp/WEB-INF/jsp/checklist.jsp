@@ -56,36 +56,48 @@
 
 			</form>
 
+
 			<!-- チェックリストカード -->
 			<div class="check-card">
 
-    <div class="check-container">
+				<div class="check-container">
+						
+					<!-- データベース上でチェック前とチェック後を識別するために分割している -->	
+												
+					<div class="check-column">
+						<h2 class="section-title">チェック前</h2>
 
-        <div class="check-column">
-            <h2 class="section-title">チェック前</h2>
+						<ul id="beforeList">
+							<c:forEach var="e" items="${checklist}">
+								<c:if test="${!e.checked_flag}">
+									<li><input type="checkbox" class="item-check"
+										data-id="${e.id}"> ${e.item_name}</li>
+								</c:if>
+							</c:forEach>
+						</ul>
+					</div>
 
-            <ul id="beforeList">
-                <c:forEach var="e" items="${checklist}">
-                    <li>
-                        <input type="checkbox" class="item-check">
-                        ${e.item_name}
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
+					<div class="check-column">
+						<h2 class="section-title">チェック後</h2>
 
-        <div class="check-column">
-            <h2 class="section-title">チェック後</h2>
+						<ul id="afterList">
+							<c:forEach var="e" items="${checklist}">
+								<c:if test="${e.checked_flag}">
+									<li><input type="checkbox" class="item-check"
+										data-id="${e.id}" checked> ${e.item_name}</li>
+								</c:if>
+							</c:forEach>
+						</ul>
 
-            <ul id="afterList"></ul>
-        </div>
-
-    </div>
-
-</div>
+					</div>
+				</div>
+			</div>
 		</main>
 
 	</div>
+
+
+
 
 	<script>
 		let formObj = document.getElementById('login_form');
@@ -93,32 +105,45 @@
 
 		/* 登録、削除ボタンをクリックしたときの処理 */
 		formObj.onsubmit = function(event) {
-			
-				/* 確認ダイアログボックスを表示します */
-				if (window.confirm('実行します。よろしいですか？') === false) {
-					event.preventDefault();
-				}
-			
-		};
 
-		/* チェック移動 */
-		document.addEventListener("change", function(e) {
-			if (e.target.classList.contains("item-check")) {
-
-				const li = e.target.closest("li");
-
-				if (e.target.checked) {
-					document.getElementById("afterList").appendChild(li);
-				} else {
-					document.getElementById("beforeList").appendChild(li);
-				}
+			/* 確認ダイアログボックスを表示します */
+			if (window.confirm('実行します。よろしいですか？') === false) {
+				event.preventDefault();
 			}
-		});
+
+		};
 
 		/* リセット */
 		formObj.onreset = function() {
 			errorMessageObj.textContent = '';
 		};
+
+		/* チェックリストでチェックをクリックされている状態で登録を押しても状態を維持する */
+		document.addEventListener("change", function(e) {
+			if (e.target.classList.contains("item-check")) {
+
+				const li = e.target.closest("li");
+				const id = e.target.dataset.id;
+				const checked = e.target.checked;
+
+				// ① クリックしたのを移動する
+				if (checked) {
+					document.getElementById("afterList").appendChild(li);
+				} else {
+					document.getElementById("beforeList").appendChild(li);
+				}
+
+				// ② チェック状態をサーバーに送ってDBを更新する処理
+				fetch("ChecklistServlet", {
+					method : "POST",
+					headers : {
+						"Content-Type" : "application/x-www-form-urlencoded"　//　普通のフォーム送信と同じ形式で送る処理
+					},
+					body : "action=toggle" + "&id=" + id + "&checked="
+							+ checked
+				});
+			}
+		});
 	</script>
 
 </body>
