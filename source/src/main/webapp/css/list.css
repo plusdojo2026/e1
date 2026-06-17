@@ -12,11 +12,13 @@ main{
     margin-bottom: 40px;
 }
 
+/*件数表示*/
 .count{
     font-size: 25px;
     font-weight: bold;
 }
 
+/*並び替え*/
 .sort-area{
     display: flex;
     align-items: center;
