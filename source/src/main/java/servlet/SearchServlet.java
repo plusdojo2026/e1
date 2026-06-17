@@ -67,6 +67,11 @@ protected void doPost(HttpServletRequest request,
     if (sort == null) {
         sort = "new";
     }
+    item.setStartDate(
+    	    request.getParameter("startDate") == null ? "" : request.getParameter("startDate"));
+
+    	item.setEndDate(
+    	    request.getParameter("endDate") == null ? "" : request.getParameter("endDate"));
 
     LostItemsDao dao = new LostItemsDao();
 

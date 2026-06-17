@@ -26,12 +26,15 @@ public class LostItemsDao extends Dao{
             	    "AND item_name LIKE ? " +
             	    "AND location LIKE ? ";
 
-            if (!item.getStartDate().isEmpty()) {
-                sql += "AND lost_date >= ? ";
-            }
-            if (!item.getEndDate().isEmpty()) {
-                sql += "AND lost_date <= ? ";
-            }
+            if (item.getStartDate() != null &&
+            	    !item.getStartDate().isEmpty()) {
+            	    sql += "AND lost_date >= ? ";
+            	}
+
+            	if (item.getEndDate() != null &&
+            	    !item.getEndDate().isEmpty()) {
+            	    sql += "AND lost_date <= ? ";
+            	}
             if ("old".equals(sort)) {
                 sql += "ORDER BY lost_date ASC";
             } else {
@@ -46,13 +49,15 @@ public class LostItemsDao extends Dao{
             pStmt.setString(idx++, "%" + item.getItem_name() + "%");
             pStmt.setString(idx++, "%" + item.getLocation() + "%");
 
-            if (!item.getStartDate().isEmpty()) {
-                pStmt.setString(idx++, item.getStartDate());
-            }
+            if (item.getStartDate() != null &&
+            	    !item.getStartDate().isEmpty()) {
+            	    sql += "AND lost_date >= ? ";
+            	}
 
-            if (!item.getEndDate().isEmpty()) {
-                pStmt.setString(idx++, item.getEndDate());
-            }
+            	if (item.getEndDate() != null &&
+            	    !item.getEndDate().isEmpty()) {
+            	    sql += "AND lost_date <= ? ";
+            	}
 
             ResultSet rs = pStmt.executeQuery();
 
