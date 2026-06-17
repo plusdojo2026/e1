@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/list.css">
-<title>Moota?｜一覧</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>Motta?｜一覧</title>
 </head>
 <body>
 	<!-- ヘッダー -->
@@ -60,7 +62,29 @@
 				<article class="item-card">
 					<div class="item-name">${item.item_name}</div>
 					<div class="item-date" data-date="${item.lost_date}">📅${item.lost_date}</div>
-					<div class="weather">${item.weather}</div>
+					<div class="weather">
+						<c:choose>
+							<c:when test="${item.weather == '晴れ'}">
+							<i class="fa-solid fa-sun"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '曇り'}">
+							<i class="fa-solid fa-cloud"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '雨'}">
+							<i class="fa-solid fa-umbrella"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '雪'}">
+							<i class="fa-regular fa-snowflake"></i>
+							</c:when>
+						</c:choose>
+					</div>
+					
 					<div class="item-place">📍${item.location}</div>
 					<div class="item-reason">原因：${item.reason}</div>
 				</article>
