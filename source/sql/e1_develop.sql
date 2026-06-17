@@ -231,6 +231,6 @@ VALUES
 ('折りたたみ傘', '2025-12-22', '雨', '飲食店', '忘年会後に置き忘れ');
 
 /*サンプルデータを自分のアカウントで仮表示*/
-PDATE lost_items
+UPDATE lost_items
 SET user_id = '/*任意のID*/'
 WHERE user_id = '';
