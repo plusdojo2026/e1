@@ -47,7 +47,7 @@
 			<div class="circle white left-bottom"></div>
 			<div class="circle white right-center"></div>
 
-			<form id="login_form" action="ChecklistServlet" method="post">
+			<form id="checklist_form" action="ChecklistServlet" method="post">
 
 				<label> <br> <input type="text" name="item_name"
 					placeholder="名称" required>
@@ -106,7 +106,7 @@
 
 
 	<script>
-		let formObj = document.getElementById('login_form');
+		let formObj = document.getElementById('checklist_form');
 		let errorMessageObj = document.getElementById('error_message');
 
 		/* 削除ボタンをクリックしたときの処理 */
