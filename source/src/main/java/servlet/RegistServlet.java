@@ -35,23 +35,26 @@ public class RegistServlet extends HttpServlet {
 
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
-			String item_name = request.getParameter("lost_items");
-			String name = request.getParameter("name");
-			String location = request.getParameter("location");
-			String date = request.getParameter("date");
+			String name = request.getParameter("item_name");
+			String date = request.getParameter("lost_date");
 			String weather = request.getParameter("weather");
+			String location = request.getParameter("location");
 			String reason = request.getParameter("reason");
+			String user_id = request.getParameter("user_id");
 			
-			// 登録処理を行う
-			RegistDao bDao = new RegistDao();
-
-			Regist list = new Regist();
+         // 登録処理を行う
+	RegistDao bDao = new RegistDao();
+		
+			if (bDao.insert(new Regist(0,name,date,weather,location,reason,user_id) )) {
+				// result.jspへ遷移
+	            request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
+			} else {
+				// resgistlt.jspへ遷移
+	            request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp").forward(request, response);
+			}
 			
-
-			if (bDao.insert(list)) {
-		  response.sendRedirect("/e1/RegistServlet");
-		}
-
+            
 	}
+		
 	}
 
