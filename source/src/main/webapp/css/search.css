@@ -1,49 +1,4 @@
 @charset "UTF-8";
-/*全体*/
-html {
-    overflow-y: scroll;
-}
-
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #D5FFD7;
-    color: #463B25;
-}
-
-/*ヘッダー*/
-.header {
-    background-color: #7EAF92;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav a {
-	text-decoration: none;
-	color: #463B25;
-	font-size: 20px;
-	padding: 10px 20px;
-	border-radius: 999px;
-}
-
-.active {
-	background: #F6B4C3;
-}
-/* ロゴサイズ */
-.logo {
-	width: 200px; /* 好きなサイズに変更 */
-	height: auto; /* 縦横比を維持 */
-}
 
 /* 検索画面 */
 .search-page {
@@ -170,11 +125,11 @@ main {
 }
 /* 検索フォーム */
 .search-form {
-	width: 400px;
+	width: 560px;
 	margin: 80px auto;
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 20px;
 }
 
 .search-form input {
@@ -184,7 +139,10 @@ main {
 	padding: 0 15px;
 	font-size: 24px;
 }
-
+.search-form input[type="text"] {
+	width: 100%;
+	box-sizing: border-box;
+}
 /* ボタンエリア */
 .button-area {
 	display: flex;
@@ -234,60 +192,16 @@ main {
 	border: 2px solid #6ed127;
 	box-shadow: none;
 }
-/* 通知設定画面 */
-.date-area {
-	text-align: center;
-	margin-top: 100px;
+
+/*日付検索のフォームを横並び*/
+.date-range {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 560px;
 }
 
-.date-area label {
-	display: block;
-	font-size: 24px;
-	margin-bottom: 15px;
-}
-
-.time-label {
-	margin-top: 30px;
-}
-
-.date-area input[type="date"], .date-area input[type="time"] {
-	width: 300px;
+.date-input {
+	width: 250px;
 	height: 50px;
-	font-size: 20px;
-	padding: 0 10px;
-	border: 2px solid #9CE26B;
-	border-radius: 10px;
-}
-/* ボタン */
-.button-area {
-	text-align: center;
-}
-
-.btn-register {
-	background: #F5A9BC;
-	color: white;
-	border: none;
-	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
-	margin-right: 20px;
-	cursor: pointer;
-}
-
-.btn-reset {
-	background: white;
-	color: #7BEA52;
-	border: 2px solid #7BEA52;
-	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
-	cursor: pointer;
-}
-/* フォームをクリックしたとき */
-.date-area input[type="date"]:focus, .date-area input[type="time"]:focus
-	{
-	outline: none;
-	border: 2px solid #33a74a;
 }

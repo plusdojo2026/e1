@@ -16,6 +16,13 @@
 	<!-- ヘッダー -->
 	<header class="header">
 		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+			</div>
 		<nav class="nav">
 			<ul>
 					<li><a href="TopServlet">TOP</a></li>
@@ -23,9 +30,10 @@
 					<li><a href="ListServlet" class="active">一覧</a></li>
 					<li><a href="SearchServlet">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="Logout">ログアウト</a></li>
+					<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 			</ul>
 		</nav>
+		</div>
 	</header>
 
 	<!-- メイン -->
@@ -239,6 +247,15 @@
 	// 初期表示
 	createPageButtons();
 	showPage(1);
+	
+	/* ハンバーガーメニュー */
+	var hamburger = document.querySelector('.hamburger-menu');
+	var nav = document.querySelector('.nav');
+	
+	hamburger.addEventListener('click', function () {
+	  hamburger.classList.toggle('active');
+	  nav.classList.toggle('active');
+	});
 </script>
 
 </body>

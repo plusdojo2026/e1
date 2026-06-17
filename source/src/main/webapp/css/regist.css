@@ -1,14 +1,3 @@
-html {
-    overflow-y: scroll;
-}
-
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #D5FFD7;
-    color: #463B25;
-}
-
 /* 画面全体レイアウト */
 .container {
 	width: 100%;
@@ -16,46 +5,11 @@ body {
 	display: flex;
 }
 
-/*ヘッダー*/
-.header {
-    background-color: #7EAF92;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav a {
-	text-decoration: none;
-	color: #463B25;
-	font-size: 20px;
-	padding: 10px 20px;
-	border-radius: 999px;
-}
-
-.active {
-	background: #F6B4C3;
-}
-
 /* ワッパー */
 .wrapper{
     min-height:100vh;
     position:relative;
     overflow:hidden;
-}
-
-/* ロゴサイズ */
-.logo {
-	width: 200px; /* 好きなサイズに変更 */
-	height: auto; /* 縦横比を維持 */
 }
 
 /* 検索画面 */

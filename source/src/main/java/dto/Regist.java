@@ -2,34 +2,38 @@ package dto;
 
 public class Regist {
 
-	private String name; // 名称//
-	private String location; // 発生場所//
-	private String date; // 日付//
-	private String weather; // 天気//
-	private String reason; // 原因//
-
-	public String getName() {
-		return name;
+	private int id;
+	private String item_name;
+	private String lost_date;
+	private String weather;
+	private String location;
+	private String reason;
+	private String user_id;
+	
+	
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getItem_name() {
+		return item_name;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
 	}
 
-	public String getDate() {
-		return date;
+	public String getLost_date() {
+		return lost_date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setLost_date(String lost_date) {
+		this.lost_date = lost_date;
 	}
 
 	public String getWeather() {
@@ -40,6 +44,14 @@ public class Regist {
 		this.weather = weather;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public String getReason() {
 		return reason;
 	}
@@ -48,9 +60,25 @@ public class Regist {
 		this.reason = reason;
 	}
 
-	public void lost_items(String item_name) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public String getUser_id() {
+		return user_id;
 	}
 
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public Regist() {
+		
+	}
+	
+	public Regist(int id,String item_name, String lost_date, String weather, String location, String reason, String user_id) {
+		this.id = 0;
+		this.item_name = item_name;
+		this.lost_date = lost_date;
+		this.weather = weather;
+		this.location = location;
+		this.reason = reason;
+		this.user_id = user_id;
+	}
 }

@@ -57,6 +57,8 @@ protected void doPost(HttpServletRequest request,
             request.getParameter("date") == null
             ? ""
             : request.getParameter("date"));
+    item.setStartDate(request.getParameter("startDate"));
+    item.setEndDate(request.getParameter("endDate"));
 
     // 並び替え条件取得
     String sort = request.getParameter("sort");

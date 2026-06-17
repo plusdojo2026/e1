@@ -21,12 +21,17 @@ public class LostItemsDao extends Dao{
             con = getConnection();
 
             String sql =
-                    "SELECT * FROM lost_items " +
-                    "WHERE user_id = ? " +
-                    "AND item_name LIKE ? " +
-                    "AND location LIKE ? " +
-                    "AND lost_date LIKE ? ";
+            	    "SELECT * FROM lost_items " +
+            	    "WHERE user_id = ? " +
+            	    "AND item_name LIKE ? " +
+            	    "AND location LIKE ? ";
 
+            if (!item.getStartDate().isEmpty()) {
+                sql += "AND lost_date >= ? ";
+            }
+            if (!item.getEndDate().isEmpty()) {
+                sql += "AND lost_date <= ? ";
+            }
             if ("old".equals(sort)) {
                 sql += "ORDER BY lost_date ASC";
             } else {
@@ -35,10 +40,19 @@ public class LostItemsDao extends Dao{
 
             PreparedStatement pStmt = con.prepareStatement(sql);
 
-            pStmt.setString(1, userId);
-            pStmt.setString(2, "%" + item.getItem_name() + "%");
-            pStmt.setString(3, "%" + item.getLocation() + "%");
-            pStmt.setString(4, "%" + item.getLost_date() + "%");
+            int idx = 1;
+
+            pStmt.setString(idx++, userId);
+            pStmt.setString(idx++, "%" + item.getItem_name() + "%");
+            pStmt.setString(idx++, "%" + item.getLocation() + "%");
+
+            if (!item.getStartDate().isEmpty()) {
+                pStmt.setString(idx++, item.getStartDate());
+            }
+
+            if (!item.getEndDate().isEmpty()) {
+                pStmt.setString(idx++, item.getEndDate());
+            }
 
             ResultSet rs = pStmt.executeQuery();
 
