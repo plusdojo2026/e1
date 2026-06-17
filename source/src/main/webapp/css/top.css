@@ -158,3 +158,128 @@ main{
     cursor:pointer;
     font:inherit;
 }
+
+/* レスポンシブ */
+@media screen and (max-width: 1024px) {
+
+    /* メッセージ */
+    .message-box{
+        width: 90%;
+        padding: 25px;
+    }
+
+    .message-box p{
+        font-size: 20px;
+    }
+
+    .alert-btn{
+        font-size: 20px;
+        padding: 15px 25px;
+    }
+
+    /* ダッシュボード */
+    .dashboard{
+        gap: 20px;
+    }
+
+    /* カード */
+    .card{
+        padding: 25px;
+    }
+
+    /* TOP3 */
+    .ranking-top3{
+        gap: 10px;
+    }
+
+}
+
+
+/* ==========================
+   スマホ（768px以下）
+========================== */
+@media screen and (max-width: 768px) {
+
+    main{
+        width:95%;
+        margin:20px auto;
+    }
+
+    /* メッセージ */
+    .message-box{
+        width:100%;
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+        box-sizing:border-box;
+    }
+
+    .message-box p{
+        font-size:18px;
+        margin:0;
+    }
+
+    .alert-btn{
+        font-size:18px;
+        padding:14px 25px;
+    }
+
+    /* ダッシュボードを縦並び */
+    .dashboard{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    /* カード */
+    .card{
+        min-height:auto;
+        padding:20px;
+        border-radius:25px;
+    }
+
+    .card h2{
+        font-size:20px;
+    }
+
+    /* チェックリスト */
+    .check-list{
+        gap:18px;
+    }
+
+    .check-list label{
+        font-size:18px;
+    }
+
+    /* TOP3を縦並び */
+    .ranking-top3{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .rank-card{
+        padding:15px;
+    }
+
+    .rank-number{
+        width:45px;
+        height:45px;
+    }
+
+    .item-name{
+        font-size:17px;
+    }
+
+    .item-count{
+        font-size:24px;
+    }
+
+    .ranking{
+        font-size:18px;
+    }
+
+    .rank-row{
+        font-size:15px;
+    }
+
+}

@@ -61,3 +61,49 @@ main{
 	outline: none;
 	border: 2px solid #33A74A;
 }
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+
+    main{
+        width:95%;
+        margin:20px auto;
+    }
+
+    .date-area{
+        margin-top:40px;
+    }
+
+    .date-area label{
+        font-size:20px;
+    }
+
+    .time-label{
+        margin-top:20px;
+    }
+
+    .date-area input[type="date"],
+    .date-area input[type="time"]{
+        width:100%;
+        max-width:320px;
+        height:45px;
+        font-size:18px;
+        box-sizing:border-box;
+    }
+
+    .button-area{
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+        margin-top:35px;
+    }
+
+    .btn-register,
+    .btn-reset{
+        width:220px;
+        height:50px;
+        font-size:18px;
+        margin-right:0;
+    }
+
+}
