@@ -48,6 +48,9 @@ if(sort == null){sort = "new";}%>
 <div class="sort-area">
 
 <form action="SearchServlet" method="post">
+	<!-- 月を保持 -->
+	<input type="hidden" name="month"
+       value="<%= request.getAttribute("month") != null ? request.getAttribute("month") : "" %>">
 
     <input type="hidden" name="startDate"
        value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">
