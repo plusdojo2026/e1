@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import dto.User;
 
 // usersテーブルを操作するDAOクラス
-public class UsersDao {
+public class UsersDao extends Dao {
 
 	// ログイン認証を行う ユーザーIDとパスワードが一致した場合trueを返す
 	public boolean isLoginOK(User user) {
