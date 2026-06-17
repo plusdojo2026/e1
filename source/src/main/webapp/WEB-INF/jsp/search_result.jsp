@@ -54,8 +54,11 @@ if(sort == null){sort = "new";}%>
     <input type="hidden" name="location"
            value="<%= searchItem != null ? searchItem.getLocation() : "" %>">
 
-    <input type="hidden" name="date"
-           value="<%= searchItem != null ? searchItem.getLost_date() : "" %>">
+    <input type="hidden" name="startDate"
+       value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">
+
+<input type="hidden" name="endDate"
+       value="<%= searchItem != null ? searchItem.getEndDate() : "" %>">
 
     <label for="sort">並び替え：</label>
 
