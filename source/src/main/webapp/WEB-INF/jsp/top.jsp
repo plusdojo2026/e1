@@ -74,62 +74,81 @@
 	</main>
 
 	<script>
-const monthlyData = [
-    ${monthlyCount[0]},
-    ${monthlyCount[1]},
-    ${monthlyCount[2]},
-    ${monthlyCount[3]},
-    ${monthlyCount[4]},
-    ${monthlyCount[5]},
-    ${monthlyCount[6]},
-    ${monthlyCount[7]},
-    ${monthlyCount[8]},
-    ${monthlyCount[9]},
-    ${monthlyCount[10]},
-    ${monthlyCount[11]}
-];
+	/*　12カ月文のデータ　*/
+	const monthlyData = [
+	    ${monthlyCount[0]},
+	    ${monthlyCount[1]},
+	    ${monthlyCount[2]},
+	    ${monthlyCount[3]},
+	    ${monthlyCount[4]},
+	    ${monthlyCount[5]},
+	    ${monthlyCount[6]},
+	    ${monthlyCount[7]},
+	    ${monthlyCount[8]},
+	    ${monthlyCount[9]},
+	    ${monthlyCount[10]},
+	    ${monthlyCount[11]}
+	];
 
-
-const yMax = Math.max(Math.ceil(Math.max(...monthlyData) * 1.1), 20);
-
-const ctx = document.getElementById('monthChart').getContext('2d');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [
-            '1月','2月','3月','4月','5月','6月',
-            '7月','8月','9月','10月','11月','12月'
-        ],
-        datasets: [{
-            label: '月別忘れ物件数',
-            data: monthlyData,
-            backgroundColor: 'rgba(255, 179, 193, 0.5)',
-            borderColor: 'rgba(255, 105, 135, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: yMax,
-                ticks: {
-                    stepSize: 1
-                }
-            }
-        },
-        animation: {
-            duration: 2000,
-            easing: 'easeInOutBounce'
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-</script>
+	/*　y軸の最大値　*/
+	const yMax = Math.max(Math.ceil(Math.max(...monthlyData) * 1.1), 20);
+	/*　キャンバス要素を取得し、2D描画コンテキストを取得　*/
+	const ctx = document.getElementById('monthChart').getContext('2d');
+	/*　Chart.jsを使って棒グラフを作成　*/
+	new Chart(ctx, {
+	    type: 'bar', // 棒グラフ
+	    data: {
+	        labels: [
+	            '1月','2月','3月','4月','5月','6月',
+	            '7月','8月','9月','10月','11月','12月'
+	        ],
+	        datasets: [{
+	            label: '月別忘れ物件数', // 凡例
+	            data: monthlyData,
+	            backgroundColor: 'rgba(255, 179, 193, 0.5)',
+	            borderColor: 'rgba(255, 105, 135, 1)',
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	    	/* クリックイベント */
+	    	onClick: function(evt, elements) {
+	            if (elements.length > 0) {
+	                const month = elements[0].index + 1;
+					/* POST送信用フォーム */
+	                const form = document.createElement("form");
+	                form.method = "post";
+	                form.action = "SearchServlet";
+					/* 送信するパラメータ */
+	                const input = document.createElement("input");
+	                input.type = "hidden";
+	                input.name = "month";
+	                input.value = month;
+	                form.appendChild(input);
+	                document.body.appendChild(form);
+	                form.submit();
+	            }
+	        },
+	        scales: {
+	            y: {
+	                beginAtZero: true,	// Y軸を0から開始
+	                max: yMax,			// 計算した最大値を設定
+	                ticks: {
+	                    stepSize: 1		// 目盛りの間隔を1に設定
+	                }
+	            }
+	        },
+	        animation: {
+	            duration: 2000,				// アニメーション時間（2秒）
+	            easing: 'easeInOutBounce'	// バウンドするようなアニメーション
+	        },
+	        plugins: {
+	            legend: {
+	                display: false		// 凡例を非表示
+	            }
+	        }
+	    }
+	});
+	</script>
 </body>
 </html>
