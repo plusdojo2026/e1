@@ -23,7 +23,7 @@ public class UsersDao {
 			// データベースへ接続
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"e1", "c3Us6Vdg2KPavBE3");
 
 			// ユーザーIDとパスワードを条件に検索するSQL
 			String sql = "SELECT count(*) FROM users WHERE user_id=? AND password=?";
@@ -77,7 +77,7 @@ public class UsersDao {
 			// データベースへ接続
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"e1", "c3Us6Vdg2KPavBE3");
 
 			// ユーザー登録用SQL
 			String sql = "INSERT INTO users VALUES (0, ?, ?, ?, ?)";
@@ -146,7 +146,7 @@ public class UsersDao {
 			// データベースへ接続
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/e1?" + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-					"root", "password");
+					"e1", "c3Us6Vdg2KPavBE3");
 
 			// メールアドレスまたはIDの重複を確認するSQL
 			String sql = "SELECT COUNT(*) FROM users WHERE mail_address=? OR user_id=?";

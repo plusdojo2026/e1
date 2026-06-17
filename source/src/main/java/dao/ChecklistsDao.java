@@ -23,7 +23,7 @@ public class ChecklistsDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"e1", "c3Us6Vdg2KPavBE3");
 
 			// SQL文を準備する
 			String sql = "INSERT INTO checklists (user_id, item_name, checked_flag) VALUES (?, ?, ?)";
@@ -82,8 +82,8 @@ public class ChecklistsDao {
 	        // データベースに接続する
 	        conn = DriverManager.getConnection(
 	            "jdbc:mysql://localhost:3306/e1?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-	            "root",
-	            "password"
+	            "e1",
+	            "c3Us6Vdg2KPavBE3"
 	        );
 
 	        // SQL文を準備する
@@ -128,7 +128,7 @@ public boolean delete(String item_name) {
 		// データベースに接続する
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				"root", "password");
+				"e1", "c3Us6Vdg2KPavBE3");
 		
 		// SQL文を完成させる（削除）
 		  String sql = "DELETE FROM checklists WHERE item_name = ?";
@@ -167,7 +167,7 @@ public boolean updateChecked(int id, boolean checked) {
 		// データベースに接続する
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				"root", "password");
+				"e1", "c3Us6Vdg2KPavBE3");
         
 
         String sql = "UPDATE checklists SET checked_flag = ? WHERE id = ?";
