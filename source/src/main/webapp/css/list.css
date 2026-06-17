@@ -1,48 +1,4 @@
 @charset "UTF-8";
-/*ヘッダーを挿入*/
-html {
-    overflow-y: scroll;
-}
-/*全体*/
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #D5FFD7;
-    color: #463B25;
-}
-/*ヘッダー*/
-.header{
-    background-color: #7EAF92;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.nav ul{
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-.nav a{
-    text-decoration: none;
-    color: #463B25;
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 999px;
-}
-
-.active{
-    background:#F6B4C3;
-}
-/* ロゴサイズ */
-.logo {
-    width: 200px; /* 好きなサイズに変更 */
-    height: auto; /* 縦横比を維持 */
-    
-}
-
 /*上部エリア*/
 main{
     width: 90%;
@@ -56,11 +12,13 @@ main{
     margin-bottom: 40px;
 }
 
+/*件数表示*/
 .count{
     font-size: 25px;
     font-weight: bold;
 }
 
+/*並び替え*/
 .sort-area{
     display: flex;
     align-items: center;
@@ -121,12 +79,28 @@ main{
 }
 
 /*天気*/
-.weather{
+.weather {
+    font-size: 24px;
+    text-align: center;
     width: 80px;
     padding-left: 25px;
     border-left: 2px dotted #F6B4C3;
-    font-size: 18px;
-    text-align: center;
+}
+/*晴れ*/
+.fa-sun {
+    color: #f7b500;
+}
+/*曇り*/
+.fa-cloud {
+    color: #999;
+}
+/*雨*/
+.fa-umbrella {
+    color: #4a90e2;
+}
+/*雪*/
+.fa-snowflake {
+    color: #7ec8e3;
 }
 
 /*場所*/

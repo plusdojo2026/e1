@@ -7,13 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/list.css">
-<title>Moota?｜一覧</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>Motta?｜一覧</title>
 </head>
 <body>
 	<!-- ヘッダー -->
 	<header class="header">
 		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+			</div>
 		<nav class="nav">
 			<ul>
 					<li><a href="TopServlet">TOP</a></li>
@@ -21,9 +30,10 @@
 					<li><a href="ListServlet" class="active">一覧</a></li>
 					<li><a href="SearchServlet">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="Logout">ログアウト</a></li>
+					<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 			</ul>
 		</nav>
+		</div>
 	</header>
 
 	<!-- メイン -->
@@ -60,7 +70,29 @@
 				<article class="item-card">
 					<div class="item-name">${item.item_name}</div>
 					<div class="item-date" data-date="${item.lost_date}">📅${item.lost_date}</div>
-					<div class="weather">${item.weather}</div>
+					<div class="weather">
+						<c:choose>
+							<c:when test="${item.weather == '晴れ'}">
+							<i class="fa-solid fa-sun"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '曇り'}">
+							<i class="fa-solid fa-cloud"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '雨'}">
+							<i class="fa-solid fa-umbrella"></i>
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${item.weather == '雪'}">
+							<i class="fa-regular fa-snowflake"></i>
+							</c:when>
+						</c:choose>
+					</div>
+					
 					<div class="item-place">📍${item.location}</div>
 					<div class="item-reason">原因：${item.reason}</div>
 				</article>
@@ -215,6 +247,15 @@
 	// 初期表示
 	createPageButtons();
 	showPage(1);
+	
+	/* ハンバーガーメニュー */
+	var hamburger = document.querySelector('.hamburger-menu');
+	var nav = document.querySelector('.nav');
+	
+	hamburger.addEventListener('click', function () {
+	  hamburger.classList.toggle('active');
+	  nav.classList.toggle('active');
+	});
 </script>
 
 </body>

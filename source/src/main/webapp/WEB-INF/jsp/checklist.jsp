@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Motta?｜チェックリスト</title>
 <link rel="stylesheet" href="/e1/css/checklist.css">
+<link rel="stylesheet" href="/e1/css/style.css">
 </head>
 
 <body>
