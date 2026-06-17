@@ -1,41 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<head>
-<meta charset="UTF-8">
-<title>忘れ物登録 | Motta?</title>
-<link rel="stylesheet" href="/e1/css/regist.css">
-</head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/e1/css/regist.css">
+<title>Moota?｜登録</title>
+</head>
 <body>
 
+	<div class="wrapper">
 
-<!-- ヘッダー -->
-<header class="header">
-<h1 class="logo"><a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a></h1>
-
-
-
-
-
-
-<nav class="nav">
-<ul>
-<li><a href="TopServlet">TOP</a></li>
-				<li><a href="RegistServlet" class="active">登録</a></li>
-				<li><a href="ListServlet">一覧</a></li>
-				<li><a href="SearchServlet">検索</a></li>
-				<li><a href="ChecklistServlet">チェックリスト</a></li>
-				<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
-</ul>
-</nav>
-</header>
-
-<!-- メイン -->
-<main>
+	<!-- ヘッダー -->
+	<header class="header">
+		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<nav class="nav">
+			<ul>
+					<li><a href="TopServlet">TOP</a></li>
+					<li><a href="RegistServlet" class="active">登録</a></li>
+					<li><a href="ListServlet">一覧</a></li>
+					<li><a href="SearchServlet">検索</a></li>
+					<li><a href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="Logout">ログアウト</a></li>
+			</ul>
+		</nav>
+	</header>
+	
   <!-- 背景丸 -->
     <div class="circle pink left-top"></div>
     <div class="circle pink right-top"></div>
@@ -46,47 +39,34 @@
     <div class="circle white left-bottom"></div>
     <div class="circle white right-center"></div>
 
-<form id="regist_form" action="list.html">
-<br>
+<!-- メイン -->
+<main class="regist-page">
+<form class="regist_form" action="RegistServlet" method="post">
 <!-- 名称入力 -->
 <input type="text" name="name" placeholder="名称">
-<label>
-<br>
 <!-- 発生場所-->
 <input type="text" name="location" placeholder="発生場所">
-</label>
-<label>
-<br>
 <!-- 日付入力 -->
 <input type="date" name="date">
-</label>
 <!-- 天気入力 -->
-<label>
-<br>
  <select name="weather" form="weather">
     <option value="1">晴れ</option>
     <option value="2">曇り</option>
     <option value="3">雨</option>
     <option value="4">雪</option>
  </select>
-</label>
-
 <!-- 原因入力 -->
-<label>
-<br>
 <input type="text" name="reason" class="cause" placeholder="原因">
-</label>
 
-<h3>
-<!-- 登録ボタン -->
-<input type="submit" value="登録">
-<!-- リセットボタン -->
-<input type="submit" value="リセット">
-</h3>
+<div class="button-area">
+				<input type="submit" class="regist-btn" name="touroku"	value="登録">
+
+				<input type="reset" class="reset-btn" name="reset" value="リセット">
+			</div>
 <span id="error_message"></span>
 </form>
 </main>
-
+</div>
 
 <script>
 'use strict';
