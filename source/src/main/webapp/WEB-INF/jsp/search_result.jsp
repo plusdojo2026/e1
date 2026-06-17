@@ -8,7 +8,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Motta Search_Result</title>
+<title>Motta? | 検索結果</title>
 <link rel="stylesheet" href="css/search_result.css">
 </head>
 	<body>
@@ -19,7 +19,7 @@
 		<nav class="nav">
 				<ul>
 					<li><a href="TopServlet">TOP</a></li>
-					<li><a href="#">登録</a></li>
+					<li><a href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a href="SearchServlet" class="active">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
@@ -105,13 +105,15 @@ if(sort == null){sort = "new";}%>
 		
 				<div class="item-buttons">
 		
-					<button class="edit-btn">
-						編集
-					</button>
+					<!--<button class="edit-btn">編集</button>  -->
 		
-					<button class="delete-btn">
-						削除
-					</button>
+					<form action="DeleteServlet" method="post" 
+					onsubmit="return confirm('本当に削除してよろしいですか？');">
+					
+					    <input type="hidden" name="id" value="<%= item.getId() %>">
+					    
+					    <button type="submit" class="delete-btn">削除</button>
+				    </form>
 		
 				</div>
 		

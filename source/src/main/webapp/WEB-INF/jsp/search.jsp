@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-	<title>検索</title>
+	<title>Motta? | 検索</title>
 	<link rel="stylesheet" href="/e1/css/search.css">
 </head>
 

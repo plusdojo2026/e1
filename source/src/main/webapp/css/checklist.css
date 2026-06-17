@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+html {
+    overflow-y: scroll;
+}
 /*ヘッダー*/
 
 .header{
@@ -192,7 +196,8 @@ input[type="text"]{
     padding:20px;
     font-size: 20px;
     border-radius:15px;
-    border:1px solid  #66FF00;
+    outline: none;
+	border: 2px solid #33A74A;
     
 }
 
@@ -217,3 +222,4 @@ input[value="削除"]{
     border:1px solid  #66FF00;
    
 }
+

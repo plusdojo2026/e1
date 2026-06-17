@@ -48,16 +48,25 @@ public class ChecklistServlet extends HttpServlet {
 		        throws ServletException, IOException {
 
 		    request.setCharacterEncoding("UTF-8");
-
+		    
+		    String userId = (String) request.getSession().getAttribute("user_id");
 		    String action = request.getParameter("action");
 		    String item_name = request.getParameter("item_name");
 
 		    ChecklistsDao dao = new ChecklistsDao();
+		    
+		    
+		   
 
 		    if ("登録".equals(action)) {
 
 		        Checklist list = new Checklist();
+		        list.setUser_id(userId);         
 		        list.setItem_name(item_name);
+		        list.setChecked_flag(false);      
+
+
+		  
 
 		        dao.insert(list);
 
@@ -66,7 +75,17 @@ public class ChecklistServlet extends HttpServlet {
 		        dao.delete(item_name);
 
 		    }
+		    
+		    
+		  //チェックリストでクリックされた際にTRUEにアップデートする
+		    else if ("toggle".equals(action)) {
 
+		        int id = Integer.parseInt(request.getParameter("id"));
+		        boolean checked = Boolean.parseBoolean(request.getParameter("checked"));
+
+		        dao.updateChecked(id, checked);
+		    }
+		    //チェックリストページにリダイレクト
 		    response.sendRedirect("/e1/ChecklistServlet");
 		}
 }
