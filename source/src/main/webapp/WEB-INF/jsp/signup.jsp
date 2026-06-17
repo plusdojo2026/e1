@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Motta Signup</title>
+<title>Motta?｜新規登録</title>
 <!-- 新規登録画面用CSS -->
 <link rel="stylesheet" href="css/signup.css">
 </head>
@@ -44,7 +44,7 @@
 					<!-- メールアドレス入力欄 -->
 					<div class="form-group3">
 						<label>メールアドレス</label> <input type="email" id="mail_address"
-							name="mail_address">
+							name="mail_address" required>
 
 						<!-- JavaScript用エラー表示 -->
 						<span id="mailError" class="error"></span>
@@ -52,7 +52,7 @@
 
 					<!-- 氏名入力欄 -->
 					<div class="form-group3">
-						<label>氏名</label> <input type="text" id="name" name="name">
+						<label>氏名</label> <input type="text" id="name" name="name" required>
 
 						<!-- JavaScript用エラー表示 -->
 						<span id="nameError" class="error"></span>
@@ -60,7 +60,7 @@
 
 					<!-- ID入力欄 -->
 					<div class="form-group3">
-						<label>ID</label> <input type="text" id="user_id" name="user_id">
+						<label>ID</label> <input type="text" id="user_id" name="user_id" required>
 
 						<!-- JavaScript用エラー表示 -->
 						<span id="idError" class="error"></span>
@@ -69,7 +69,7 @@
 					<!-- パスワード入力欄 -->
 					<div class="form-group2">
 						<label>パスワード</label> <input type="password" id="password"
-							name="password">
+							name="password" required>
 
 						<!-- JavaScript用エラー表示 -->
 						<span id="passwordError" class="error"></span>
