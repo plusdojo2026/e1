@@ -11,6 +11,7 @@
 <title>Motta? | 検索結果</title>
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/search_result.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 	<body>
 	
@@ -48,17 +49,17 @@ if(sort == null){sort = "new";}%>
 
 <form action="SearchServlet" method="post">
 
-    <input type="hidden" name="name"
-           value="<%= searchItem != null ? searchItem.getItem_name() : "" %>">
+    <input type="hidden" name="startDate"
+       value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">
+
+	<input type="hidden" name="endDate"
+       value="<%= searchItem != null ? searchItem.getEndDate() : "" %>">
 
     <input type="hidden" name="location"
            value="<%= searchItem != null ? searchItem.getLocation() : "" %>">
 
-    <input type="hidden" name="startDate"
-       value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">
-
-<input type="hidden" name="endDate"
-       value="<%= searchItem != null ? searchItem.getEndDate() : "" %>">
+    <input type="hidden" name="date"
+           value="<%= searchItem != null ? searchItem.getLost_date() : "" %>">
 
     <label for="sort">並び替え：</label>
 
@@ -96,7 +97,19 @@ if(sort == null){sort = "new";}%>
 				</div>
 		
 				<div class="weather">
-					<%= item.getWeather() %>
+					<% if("晴れ".equals(item.getWeather())) { %>
+					    <i class="fa-solid fa-sun"></i>
+					
+					<% } else if("曇り".equals(item.getWeather())) { %>
+					    <i class="fa-solid fa-cloud"></i>
+					
+					<% } else if("雨".equals(item.getWeather())) { %>
+					    <i class="fa-solid fa-umbrella"></i>
+					
+					<% } else if("雪".equals(item.getWeather())) { %>
+					    <i class="fa-regular fa-snowflake"></i>
+					
+					<% } %>		
 				</div>
 		
 				<div class="item-place">
