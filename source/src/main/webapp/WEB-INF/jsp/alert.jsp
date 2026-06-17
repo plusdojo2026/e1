@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 	<title>Motta?｜通知設定</title>
+	<link rel="stylesheet" href="/e1/css/style.css">
 	<link rel="stylesheet" href="/e1/css/alert.css">
 </head>
 <body>
