@@ -50,13 +50,13 @@
 
 				<label> <br> <input type="text" name="item_name"
 					placeholder="名称" required>
-				</label> <input type="submit" name="action" value="登録"> <input
-					type="submit" name="action" value="削除"> <span
+				</label> <input type="submit" name="action" value="登録" class="btn-register"> <input
+					type="submit" name="action" value="削除" class="btn-reset"> <span
 					id="error_message"></span>
 
 			</form>
 
-
+			<section class="dashboard">
 			<!-- チェックリストカード -->
 			<div class="check-card">
 
@@ -76,7 +76,10 @@
 							</c:forEach>
 						</ul>
 					</div>
-
+					</div>
+					</div>
+			<div class="check-card">
+			<div class="check-container">
 					<div class="check-column">
 						<h2 class="section-title">チェック後</h2>
 
@@ -88,10 +91,12 @@
 								</c:if>
 							</c:forEach>
 						</ul>
-
+					</div>
 					</div>
 				</div>
-			</div>
+			
+			
+		</section>	
 		</main>
 
 	</div>
@@ -103,16 +108,19 @@
 		let formObj = document.getElementById('login_form');
 		let errorMessageObj = document.getElementById('error_message');
 
-		/* 登録、削除ボタンをクリックしたときの処理 */
-		formObj.onsubmit = function(event.) {
+		/* 削除ボタンをクリックしたときの処理 */
+		formObj.onsubmit = function(event) {
 
-			/* 確認ダイアログボックスを表示します */
-			if (window.confirm('実行します。よろしいですか？') === false) {
-				event.preventDefault();
-			}
+		    // 削除ボタンが押された場合のみ確認
+		    if (event.submitter.value === '削除') {
+
+		        if (window.confirm('実行します。よろしいですか？') === false) {
+		            event.preventDefault();
+		        }
+
+		    }
 
 		};
-
 		/* リセット */
 		formObj.onreset = function() {
 			errorMessageObj.textContent = '';

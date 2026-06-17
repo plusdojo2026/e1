@@ -128,10 +128,15 @@ border-radius: 20px;
     right: -50px;
 }
 
-
+/* ダッシュボード */
+.dashboard{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+}
    /*チェックリスト */
 .check-card{
-    width:600px;
+    width:400px;
     margin:30px auto;
     padding:30px;
 
@@ -196,30 +201,46 @@ input[type="text"]{
     padding:20px;
     font-size: 20px;
     border-radius:15px;
-    outline: none;
-	border: 2px solid #33A74A;
-    
+	border: 2px solid #9CE26B;
+	 position:relative;
+     z-index: 1; 
 }
 
 input[type="submit"]{
-    padding:23px 30px;
-    border:none;
-    border-radius:15px;
-    cursor:pointer;
-     position: relative;
-    z-index: 1;
+	 position:relative;
+   z-index: 1; 
 }
 
-input[value="登録"]{
-    background:#ebb6c3;
-    color:white;
-    
+.btn-register {
+	background: #F5A9BC;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	width: 140px;
+	height: 60px;
+	font-size: 24px;
+	margin-right: 1px;
+	cursor: pointer;
+	 position:relative;
+	 z-index: 1; 
 }
 
-input[value="削除"]{
-    background:white;
-    color:#66FF00;
-    border:1px solid  #66FF00;
-   
+.btn-reset {
+	background: white;
+	color: #7BEA52;
+	border: 2px solid #7BEA52;
+	border-radius: 10px;
+	width: 140px;
+	height: 60px;
+	font-size: 24px;
+	cursor: pointer;
+	 position:relative;
+	 z-index: 1; 
 }
 
+/* フォームをクリックしたとき */
+ input[type="text"]:focus
+	{
+	outline: none;
+	border: 2px solid #33a74a;
+}
