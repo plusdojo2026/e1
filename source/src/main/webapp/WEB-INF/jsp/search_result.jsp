@@ -8,7 +8,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Motta? | 検索結果</title>
+<title>Motta?｜検索結果</title>
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/search_result.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -48,6 +48,9 @@ if(sort == null){sort = "new";}%>
 <div class="sort-area">
 
 <form action="SearchServlet" method="post">
+	<!-- 月を保持 -->
+	<input type="hidden" name="month"
+       value="<%= request.getAttribute("month") != null ? request.getAttribute("month") : "" %>">
 
     <input type="hidden" name="startDate"
        value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">

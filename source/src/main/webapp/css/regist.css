@@ -135,7 +135,7 @@ textarea{
 	z-index:1;
 }
 
-.regist_form {
+#regist_form {
 	width: 400px;
 	margin: 80px auto;
 	display: flex;
