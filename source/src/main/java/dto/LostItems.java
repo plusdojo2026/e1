@@ -8,6 +8,8 @@ private String weather;
 private String location;
 private String reason;
 private String user_id;
+private String startDate;
+private String endDate;
 
 public int getId() {
 return id;
@@ -56,4 +58,21 @@ public String getUser_id() {
 public void setUser_id(String user_id) {
     this.user_id = user_id;
 }
+
+public String getStartDate() {
+    return startDate;
+}
+
+public void setStartDate(String startDate) {
+    this.startDate = startDate;
+}
+
+public String getEndDate() {
+    return endDate;
+}
+
+public void setEndDate(String endDate) {
+    this.endDate = endDate;
+}
+
 }

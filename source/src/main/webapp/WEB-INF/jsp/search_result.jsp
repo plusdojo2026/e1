@@ -9,7 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Motta? | 検索結果</title>
-<link rel="stylesheet" href="css/search_result.css">
+<link rel="stylesheet" href="/e1/css/style.css">
+<link rel="stylesheet" href="/e1/css/search_result.css">
 </head>
 	<body>
 	

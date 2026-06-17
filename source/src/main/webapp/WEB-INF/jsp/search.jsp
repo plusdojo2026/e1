@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 	<title>Motta? | 検索</title>
+	<link rel="stylesheet" href="/e1/css/style.css">
 	<link rel="stylesheet" href="/e1/css/search.css">
 </head>
 
@@ -29,7 +30,11 @@
 
 			<input type="text" name="name" placeholder="名称">
 			<input type="text" name="location" placeholder="発生場所">
-			<input type="date" name="date" class="date-input">
+			<div class="date-range">
+			    <input type="date" name="startDate" class="date-input">
+			    <span>～</span>
+			    <input type="date" name="endDate" class="date-input">
+			</div>
 
 			<div class="button-area">
 				<button type="submit" class="search-btn">検索</button>
