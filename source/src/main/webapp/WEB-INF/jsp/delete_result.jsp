@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Motta? | 削除完了</title>
+<!-- ファビコン -->
+	<link rel="icon" href="images/favicon.ico">
+	<!-- 共通のCSS -->
+	<link rel="stylesheet" href="/e1/css/style.css">
+	<!-- 削除完了画面用CSS -->
 <link rel="stylesheet" href="/e1/css/delete_result.css">
 </head>
 <body>
