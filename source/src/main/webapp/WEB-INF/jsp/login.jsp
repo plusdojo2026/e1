@@ -11,6 +11,7 @@
 
 <!-- ログイン画面用CSS -->
 <link rel="stylesheet" href="css/login.css">
+<link rel="icon" href="images/favicon.ico">
 </head>
 <body>
 
@@ -52,18 +53,12 @@
 					<div class="form-group1">
 						<label>ID</label> <input type="text" id="user_id" name="user_id"
 							required>
-
-						<!-- JavaScript入力チェック用 -->
-						<span id="idError" class="error"></span>
 					</div>
 
 					<!-- パスワード入力欄 -->
 					<div class="form-group2">
 						<label>パスワード</label> <input type="password" id="password"
 							name="password" required>
-
-						<!-- JavaScript入力チェック用 -->
-						<span id="passwordError" class="error"></span>
 					</div>
 
 					<!-- ログインボタン -->

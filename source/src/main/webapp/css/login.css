@@ -53,7 +53,8 @@ body {
 	align-items: center;
 }
 
-.mobile-logo{
+/* スマホ用のロゴ非表示 */
+.mobile-logo {
 	display: none;
 }
 
@@ -180,14 +181,6 @@ body {
 	right: 50px;
 }
 
-/* 入力チェックエラー表示 */
-.error {
-	color: red;
-	font-size: 20px;
-	display: block;
-	margin-top: 5px;
-}
-
 /* サーブレットから渡されるエラーメッセージ */
 .error-message {
 	color: red;
@@ -198,16 +191,14 @@ body {
 	justify-content: center;
 }
 
-/* =========================
-   スマホ用レスポンシブ
-========================= */
+/* ↓ログイン画面 スマホ用レスポンシブ↓ */
 @media screen and (max-width: 500px) {
-	/* 左側ロゴエリアを非表示 */
+	/* PC画面の左側を非表示 */
 	.left-panel {
 		display: none;
 	}
 
-	/* 右側を画面全体に */
+	/* PC画面の右側を画面全体に */
 	.right-panel {
 		width: 100%;
 		min-height: 100vh;
@@ -215,6 +206,7 @@ body {
 		justify-content: flex-start;
 		align-items: center;
 		padding-top: 10px;
+		padding-bottom: 20px;
 	}
 
 	/* スマホ用Mottaのロゴの位置 */
@@ -236,6 +228,7 @@ body {
 		border: 1px solid #87b096;
 		border-radius: 35px;
 		padding: 30px 20px;
+		margin: 0px;
 	}
 
 	/* ログインの文字 */
@@ -270,7 +263,7 @@ body {
 		right: 25px;
 	}
 
-	/* エラーメッセージ */
+	/* サーブレットから渡されるエラーメッセージ */
 	.error-message {
 		font-size: 12px;
 		white-space: nowrap;

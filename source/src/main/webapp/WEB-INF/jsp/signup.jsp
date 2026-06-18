@@ -11,6 +11,7 @@
 <title>Motta?｜新規登録</title>
 <!-- 新規登録画面用CSS -->
 <link rel="stylesheet" href="css/signup.css">
+<link rel="icon" href="images/favicon.ico">
 </head>
 
 <body>
@@ -28,6 +29,12 @@
 
 		<!-- 右側：新規登録フォームエリア -->
 		<div class="right-panel">
+
+			<!-- スマホ用のMottaのロゴ -->
+			<div class="mobile-logo">
+				<img src="images/header_logo.png" alt="Motta" class="logo-image">
+			</div>
+
 			<div class="signup-box">
 
 				<!-- 画面タイトル -->
@@ -45,34 +52,24 @@
 					<div class="form-group3">
 						<label>メールアドレス</label> <input type="email" id="mail_address"
 							name="mail_address" required>
-
-						<!-- JavaScript用エラー表示 -->
-						<span id="mailError" class="error"></span>
 					</div>
 
 					<!-- 氏名入力欄 -->
 					<div class="form-group3">
-						<label>氏名</label> <input type="text" id="name" name="name" required>
-
-						<!-- JavaScript用エラー表示 -->
-						<span id="nameError" class="error"></span>
+						<label>氏名</label> <input type="text" id="name" name="name"
+							required>
 					</div>
 
 					<!-- ID入力欄 -->
 					<div class="form-group3">
-						<label>ID</label> <input type="text" id="user_id" name="user_id" required>
-
-						<!-- JavaScript用エラー表示 -->
-						<span id="idError" class="error"></span>
+						<label>ID</label> <input type="text" id="user_id" name="user_id"
+							required>
 					</div>
 
 					<!-- パスワード入力欄 -->
 					<div class="form-group2">
 						<label>パスワード</label> <input type="password" id="password"
 							name="password" required>
-
-						<!-- JavaScript用エラー表示 -->
-						<span id="passwordError" class="error"></span>
 					</div>
 
 					<!-- 登録ボタン -->

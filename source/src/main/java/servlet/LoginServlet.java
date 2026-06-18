@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 
 			// ログイン中ユーザーのIDを保存
 			session.setAttribute("user_id", user_id);
-			
+
 			// TOPページにリダイレクトする
 			response.sendRedirect("/e1/TopServlet");
 
