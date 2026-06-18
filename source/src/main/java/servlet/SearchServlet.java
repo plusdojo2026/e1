@@ -14,49 +14,48 @@ import javax.servlet.http.HttpSession;
 import dao.LostItemsDao;
 import dto.LostItems;
 
+//検索ページを表示するサーブレット
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
-
+	//検索ページを表示する
 @Override
 protected void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws ServletException, IOException {
-
+	// search.jspへフォワード
     request.getRequestDispatcher(
             "/WEB-INF/jsp/search.jsp")
             .forward(request, response);
 }
-
+//検索条件を受け取り、検索結果画面を表示する
 @Override
 protected void doPost(HttpServletRequest request,
         HttpServletResponse response)
         throws ServletException, IOException {
 
     System.out.println("SearchServlet doPost開始");
-
+ // リクエストの文字コードをUTF-8に設定
     request.setCharacterEncoding("UTF-8");
-    
+ // セッションを取得
     HttpSession session = request.getSession();
-
+ // ログイン中のユーザーIDを取得
     String userId =
             (String) session.getAttribute("user_id");
-
+ // 検索条件を格納するDTOを生成
     LostItems item = new LostItems();
-    
+ // 月別検索条件を取得
     String month = request.getParameter("month");
-
-   
-
+ // 名称の検索条件を取得（未入力なら空文字）
     item.setItem_name(
             request.getParameter("name") == null
             ? ""
             : request.getParameter("name"));
-
+ // 発生場所の検索条件を取得（未入力なら空文字)
     item.setLocation(
             request.getParameter("location") == null
             ? ""
             : request.getParameter("location"));
-
+ // 日付の検索条件を取得（未入力なら空文字）
     item.setLost_date(
             request.getParameter("date") == null
             ? ""
@@ -69,28 +68,28 @@ protected void doPost(HttpServletRequest request,
     if (sort == null) {
         sort = "new";
     }
+ // 開始日を取得（期間検索用）
     item.setStartDate(
     	    request.getParameter("startDate") == null ? "" : request.getParameter("startDate"));
-
+ // 終了日を取得（期間検索用）
     item.setEndDate(
     	    request.getParameter("endDate") == null ? "" : request.getParameter("endDate"));
-    
-
-
+ // DAOを生成
     LostItemsDao dao = new LostItemsDao();
-   
-
+ // 検索条件、ユーザーID、並び替え条件をもとに検索を実行
     List<LostItems> result = dao.select(item, userId, sort, month);
 
     System.out.println("検索結果件数：" + result.size());
-
+ // 検索結果をリクエストスコープに保存
     request.setAttribute("resultList", result);
+ // 並び替え条件を保持
     request.setAttribute("sort", sort);
 
-    // 検索条件保持用
+ // 入力した検索条件を保持
     request.setAttribute("item", item);
+ // 月別検索条件を保持
     request.setAttribute("month", month);
-
+ // 検索結果画面へ遷移
     RequestDispatcher dispatcher =
             request.getRequestDispatcher(
                     "/WEB-INF/jsp/search_result.jsp");

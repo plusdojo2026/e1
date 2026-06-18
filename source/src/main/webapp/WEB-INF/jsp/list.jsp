@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/list.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -69,7 +70,8 @@
 			<c:forEach var="item" items="${itemList}">
 				<article class="item-card">
 					<div class="item-name">${item.item_name}</div>
-					<div class="item-date" data-date="${item.lost_date}">📅${item.lost_date}</div>
+					<div class="date-weather-place">
+					<div class="item-date" data-date="${item.lost_date}"><i class="fa-solid fa-calendar-days"></i>  ${item.lost_date}</div>
 					<div class="weather">
 						<c:choose>
 							<c:when test="${item.weather == '晴れ'}">
@@ -92,9 +94,9 @@
 							</c:when>
 						</c:choose>
 					</div>
-					
-					<div class="item-place">📍${item.location}</div>
-					<div class="item-reason">原因：${item.reason}</div>
+					<div class="item-place"><i class="fa-solid fa-location-dot"></i>  ${item.location}</div>
+					</div>
+					<div class="item-reason"><i class="fa-solid fa-magnifying-glass"></i>  ${item.reason}</div>
 				</article>
 			</c:forEach>
 		</section>

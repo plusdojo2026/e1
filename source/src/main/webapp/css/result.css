@@ -154,3 +154,30 @@ body{
     top: 250px;
     right: -50px;
 }
+
+/* レスポンシブ */
+@media screen and (max-width: 768px){
+
+    .complete-page{
+        min-height:75vh;
+        padding:20px;
+        box-sizing:border-box;
+    }
+
+    .complete-box h2{
+        font-size:36px;
+        margin-bottom:35px;
+    }
+
+    .back-btn{
+        width:220px;
+        font-size:20px;
+        padding:12px 0;
+    }
+
+    /* 背景の丸を非表示 */
+    .circle{
+        display:none;
+    }
+
+}

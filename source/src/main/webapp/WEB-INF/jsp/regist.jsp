@@ -1,33 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
-<title>Motta?｜登録</title>
 </head>
 <body>
-
+<!-- ワッパー -->
 	<div class="wrapper">
 
 	<!-- ヘッダー -->
 	<header class="header">
 		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
-		<nav class="nav">
-			<ul>
+			<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
+
+
+			<nav class="nav">
+				<ul>
 					<li><a href="TopServlet">TOP</a></li>
-					<li><a href="RegistServlet" class="active">登録</a></li>
+					<li><a class="active" href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a href="SearchServlet">検索</a></li>
-					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="LogoutServlet">ログアウト</a></li>
-			</ul>
-		</nav>
+					<li><a  href="ChecklistServlet">チェックリスト</a></li>
+					<li><a href="LogoutServlet"
+						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 	
   <!-- 背景丸 -->
@@ -74,10 +84,18 @@
 </div>
 
 <script>
+
 'use strict';
 let formObj = document.getElementById('regist_form');
 let errorMessageObj = document.getElementById('error_message');
+/* ハンバーガーメニュー */
+var hamburger = document.querySelector('.hamburger-menu');
+var nav = document.querySelector('.nav');
 
+hamburger.addEventListener('click', function () {
+  hamburger.classList.toggle('active');
+  nav.classList.toggle('active');
+});
 /*入力フォーム*/
 formObj.onsubmit = function(event) {
 

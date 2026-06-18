@@ -8,6 +8,7 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/top.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <title>Motta?｜TOP</title>
 </head>
@@ -38,8 +39,10 @@
 	<main>
 		<!--メッセージ-->
 		<section class="message-box">
+		<img src="images/mottyon.png" alt="mottyon" class="mascot">
 			<p>
-				🔔おはようございます！<br> 今日のチェックリストを確認しましょう
+				
+				<i class="fa-solid fa-bell"></i>おはようございます！<br> 今日のチェックリストを確認しましょう
 			</p>
 			<a href="AlertServlet" class="alert-btn">通知を設定</a>
 		</section>

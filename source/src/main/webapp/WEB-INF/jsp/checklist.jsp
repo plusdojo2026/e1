@@ -9,6 +9,7 @@
 <title>Motta?｜チェックリスト</title>
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/checklist.css">
+<link rel="icon" href="images/favicon.ico">
 </head>
 
 <body>

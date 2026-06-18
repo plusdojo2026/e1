@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="java.util.List" %>
-<%@ page import="dto.LostItems" %>
+<%@ page import="java.util.List"%>
+<%@ page import="dto.LostItems"%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -10,159 +10,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motta?｜検索結果</title>
+<!-- ファビコン -->
+	<link rel="icon" href="images/favicon.ico">
+<!-- 共通のCSS -->
 <link rel="stylesheet" href="/e1/css/style.css">
+<!-- 検索結果画面用CSS -->
 <link rel="stylesheet" href="/e1/css/search_result.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-	<body>
-	
+<body>
 	<!-- ヘッダー -->
 	<header class="header">
-		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<a href="TopServlet"><img src="images/header_logo.png"
+			alt="Motta?" class="logo"></a>
 		<!-- ハンバーガーボタン -->
 		<div class="container">
-		    <div class="hamburger-menu">
-			    <div class="line"></div>
-			    <div class="line"></div>
-			    <div class="line"></div>
-		  	</div>
+			<div class="hamburger-menu">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
 			<nav class="nav">
 				<ul>
-					<li><a  href="TopServlet">TOP</a></li>
+					<li><a href="TopServlet">TOP</a></li>
 					<li><a href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a class="active" href="SearchServlet">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="LogoutServlet"	onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
+					<li><a href="LogoutServlet"
+						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-	
-		<main>
-	
-			<!-- 上部 -->
-			<div class="top-area">
-	
-				<%List<LostItems> list =(List<LostItems>)request.getAttribute("resultList");
-				
-				if(list == null){list = new java.util.ArrayList<LostItems>();}%>
-	
-				<div class="count"><%= list.size() %>件</div>
-	
-<%LostItems searchItem = (LostItems)request.getAttribute("item");
-String sort = (String)request.getAttribute("sort");
-if(sort == null){sort = "new";}%>
+	<!-- メイン -->
+	<main>
+		<!-- 上部 -->
+		<div class="top-area">
+			<!-- 検索結果数 -->
+			<%
+			List<LostItems> list = (List<LostItems>) request.getAttribute("resultList");
 
-<div class="sort-area">
+			if (list == null) {
+				list = new java.util.ArrayList<LostItems>();
+			}
+			%>
 
-<form action="SearchServlet" method="post">
-	<!-- 月を保持 -->
-	<input type="hidden" name="month"
-       value="<%= request.getAttribute("month") != null ? request.getAttribute("month") : "" %>">
-
-    <input type="hidden" name="startDate"
-       value="<%= searchItem != null ? searchItem.getStartDate() : "" %>">
-
-	<input type="hidden" name="endDate"
-       value="<%= searchItem != null ? searchItem.getEndDate() : "" %>">
-
-    <input type="hidden" name="location"
-           value="<%= searchItem != null ? searchItem.getLocation() : "" %>">
-
-    <input type="hidden" name="date"
-           value="<%= searchItem != null ? searchItem.getLost_date() : "" %>">
-
-    <label for="sort">並び替え：</label>
-
-    <select id="sort" name="sort" onchange="this.form.submit()">
-
-        <option value="new"
-            <%= "new".equals(sort) ? "selected" : "" %>>
-            日付（新しい順）
-        </option>
-
-        <option value="old"
-            <%= "old".equals(sort) ? "selected" : "" %>>
-            日付（古い順）
-        </option>
-
-    </select>
-
-</form>
-
-</div>
-</div>  <!-- top-area -->
-			<!-- 一覧 -->
-			<div class="list-area">
-	
-		<%for(LostItems item : list){%>
-		
-			<div class="item-card">
-		
-				<div class="item-name">
-					<%= item.getItem_name() %>
-				</div>
-		
-				<div class="item-date">
-					📅 <%= item.getLost_date() %>
-				</div>
-		
-				<div class="weather">
-					<% if("晴れ".equals(item.getWeather())) { %>
-					    <i class="fa-solid fa-sun"></i>
-					
-					<% } else if("曇り".equals(item.getWeather())) { %>
-					    <i class="fa-solid fa-cloud"></i>
-					
-					<% } else if("雨".equals(item.getWeather())) { %>
-					    <i class="fa-solid fa-umbrella"></i>
-					
-					<% } else if("雪".equals(item.getWeather())) { %>
-					    <i class="fa-regular fa-snowflake"></i>
-					
-					<% } %>		
-				</div>
-		
-				<div class="item-place">
-					📍 <%= item.getLocation() %>
-				</div>
-		
-				<div class="item-reason">
-					原因：<%= item.getReason() %>
-				</div>
-		
-				<div class="item-buttons">
-		
-					<!--<button class="edit-btn">編集</button>  -->
-		
-					<form action="DeleteServlet" method="post" 
-					onsubmit="return confirm('本当に削除してよろしいですか？');">
-					
-					    <input type="hidden" name="id" value="<%= item.getId() %>">
-					    
-					    <button type="submit" class="delete-btn">削除</button>
-				    </form>
-		
-				</div>
-		
+			<div class="count"><%=list.size()%>件
 			</div>
-		
-		<%}%>
-	
-	
+
+			<%
+			LostItems searchItem = (LostItems) request.getAttribute("item");
+			String sort = (String) request.getAttribute("sort");
+			if (sort == null) {
+				sort = "new";
+			}
+			%>
+			<!--日付で並び替え -->
+			<div class="sort-area">
+
+				<form action="SearchServlet" method="post">
+					<!-- 月を保持 -->
+					<input type="hidden" name="month"
+						value="<%=request.getAttribute("month") != null ? request.getAttribute("month") : ""%>">
+
+					<input type="hidden" name="startDate"
+						value="<%=searchItem != null ? searchItem.getStartDate() : ""%>">
+
+					<input type="hidden" name="endDate"
+						value="<%=searchItem != null ? searchItem.getEndDate() : ""%>">
+
+					<input type="hidden" name="location"
+						value="<%=searchItem != null ? searchItem.getLocation() : ""%>">
+
+					<input type="hidden" name="date"
+						value="<%=searchItem != null ? searchItem.getLost_date() : ""%>">
+
+					<label for="sort">並び替え：</label> <select id="sort" name="sort"
+						onchange="this.form.submit()">
+
+						<option value="new" <%="new".equals(sort) ? "selected" : ""%>>
+							日付（新しい順）</option>
+
+						<option value="old" <%="old".equals(sort) ? "selected" : ""%>>
+							日付（古い順）</option>
+
+					</select>
+
+				</form>
+
+			</div>
+		</div>
+		<!-- 一覧 -->
+		<div class="list-area">
+
+			<%
+			for (LostItems item : list) {
+			%>
+
+			<div class="item-card">
+
+				<div class="item-name">
+					<%=item.getItem_name()%>
 				</div>
-	<!--ページング-->
-            <section class="paging">
-                <button id="prevBtn">&lt;</button>
+				
+			<div class="date-weather-place">
+				<div class="item-date">
+					<i class="fa-solid fa-calendar-days"></i>
+					<%=item.getLost_date()%>
+				</div>
 
-                <div id="pageNumbers"></div>
+				<div class="weather">
+					<%
+					if ("晴れ".equals(item.getWeather())) {
+					%>
+					<i class="fa-solid fa-sun"></i>
 
-                <button id="nextBtn">&gt;</button>
-            </section>
-		</main>
-	
-		<script>
+					<%
+					} else if ("曇り".equals(item.getWeather())) {
+					%>
+					<i class="fa-solid fa-cloud"></i>
+
+					<%
+					} else if ("雨".equals(item.getWeather())) {
+					%>
+					<i class="fa-solid fa-umbrella"></i>
+
+					<%
+					} else if ("雪".equals(item.getWeather())) {
+					%>
+					<i class="fa-regular fa-snowflake"></i>
+
+					<%
+					}
+					%>
+				</div>
+
+				<div class="item-place">
+					<i class="fa-solid fa-location-dot"></i>
+					<%=item.getLocation()%>
+				</div>
+			</div>
+			
+				<div class="item-reason">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<%=item.getReason()%>
+				</div>
+
+				<div class="item-buttons">
+
+					<!--<button class="edit-btn">編集</button>  -->
+
+					<form action="DeleteServlet" method="post"
+						onsubmit="return confirm('本当に削除してよろしいですか？');">
+
+						<input type="hidden" name="id" value="<%=item.getId()%>">
+
+						<button type="submit" class="delete-btn">削除</button>
+					</form>
+
+				</div>
+
+			</div>
+
+			<%
+			}
+			%>
+
+
+		</div>
+		<!--ページング-->
+		<section class="paging">
+			<button id="prevBtn">&lt;</button>
+
+			<div id="pageNumbers"></div>
+
+			<button id="nextBtn">&gt;</button>
+		</section>
+	</main>
+
+	<script>
 		/* ハンバーガーメニュー */
 		var hamburger = document.querySelector('.hamburger-menu');
 		var nav = document.querySelector('.nav');
@@ -297,5 +325,5 @@ if(sort == null){sort = "new";}%>
 			createPageButtons();
 			showPage(1);
 		</script>
-	</body>
+</body>
 </html>

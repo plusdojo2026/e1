@@ -1,7 +1,8 @@
 @charset "UTF-8";
 /*上部エリア*/
 main{
-    width: 90%;
+    width: 85%;
+    max-width: 1200px;
     margin: 50px auto;
 }
 
@@ -56,11 +57,13 @@ main{
     align-items: center;
     gap: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    justify-content: flex-start;
 }
 
 /*忘れ物名*/
 .item-name{
-    width: 180px;
+    min-width: 180px;
+    width: 220px;
     flex-shrink: 0;
     background-color: #F6B4C3;
     border-radius: 25px;
@@ -73,9 +76,14 @@ main{
 /*日付*/
 .item-date{
     width: 180px;
-    padding-left: 25px;
+    text-align: center;
+    padding: 0 20px;
     border-left: 2px dotted #F6B4C3;
     font-size: 18px;
+}
+/*日付アイコン*/
+.fa-calendar-days{
+	color:#87cafe
 }
 
 /*天気*/
@@ -86,6 +94,7 @@ main{
     padding-left: 25px;
     border-left: 2px dotted #F6B4C3;
 }
+
 /*晴れ*/
 .fa-sun {
     color: #f7b500;
@@ -105,10 +114,20 @@ main{
 
 /*場所*/
 .item-place{
-    width: 120px;
-    padding-left: 25px;
+    width: 150px;
+    text-align: center;
+    padding: 0 20px;
     border-left: 2px dotted #F6B4C3;
     font-size: 18px;
+}
+/*場所アイコン*/
+.fa-location-dot{
+	color:#ff0000
+}
+.date-weather-place{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 /*原因*/
@@ -117,6 +136,10 @@ main{
     padding-left: 25px;
     border-left: 2px dotted #F6B4C3;
     font-size: 18px;
+}
+/*原因アイコン*/
+.fa-magnifying-glass{
+	color:#c0c0c0
 }
 
 /*ページング*/
@@ -151,4 +174,102 @@ main{
     background-color: #F6B4C3;
     color: #463B25;
     font-weight: bold;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 768px){
+
+    main{
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    /* 件数＋並び替え */
+    .top-area{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .count{
+        font-size: 20px;
+    }
+
+    .sort-area label{
+        font-size: 16px;
+    }
+
+    .sort-area select{
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    /* カード */
+    .item-card{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 15px;
+	}
+
+    .item-name{
+    width: auto;
+    min-width: 180px;
+    align-self: center;
+    padding: 12px 25px;
+    font-size: 18px;
+	}
+
+	.item-date,
+	.weather,
+	.item-place,
+	.item-reason{
+    width: auto;
+    flex: none;
+    padding-left: 0;
+    border-left: none;
+	}
+	
+	.item-place{
+    text-align: left;
+	}
+	
+	.date-weather-place{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .item-date,
+    .weather,
+    .item-place{
+        width: fit-content !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .weather{
+        padding-left: 0;
+        border-left: none;
+        font-size: 20px;
+    }
+
+
+    /* ページング */
+    .paging{
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .paging button{
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    #pageNumbers{
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

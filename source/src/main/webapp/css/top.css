@@ -15,11 +15,16 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 .message-box p{
     font-size:24px;
     flex: 1;
     text-align: center;
+}
+/*メッセージのベルマークの色*/
+.fa-bell{
+	color:#ffd700
 }
 /* 通知ボタン */
 .alert-btn{
@@ -158,46 +163,13 @@ main{
     cursor:pointer;
     font:inherit;
 }
-
-/* レスポンシブ */
-@media screen and (max-width: 1024px) {
-
-    /* メッセージ */
-    .message-box{
-        width: 90%;
-        padding: 25px;
-    }
-
-    .message-box p{
-        font-size: 20px;
-    }
-
-    .alert-btn{
-        font-size: 20px;
-        padding: 15px 25px;
-    }
-
-    /* ダッシュボード */
-    .dashboard{
-        gap: 20px;
-    }
-
-    /* カード */
-    .card{
-        padding: 25px;
-    }
-
-    /* TOP3 */
-    .ranking-top3{
-        gap: 10px;
-    }
-
+/* マスコット */
+.mascot {
+	width: 100px;
+    height: auto;
 }
 
-
-/* ==========================
-   スマホ（768px以下）
-========================== */
+/* レスポンシブ */
 @media screen and (max-width: 768px) {
 
     main{
@@ -281,5 +253,6 @@ main{
     .rank-row{
         font-size:15px;
     }
+    
 
 }
