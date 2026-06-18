@@ -29,6 +29,12 @@
 
 		<!-- 右側：ログインフォームエリア -->
 		<div class="right-panel">
+
+			<!-- スマホ用のMottaのロゴ -->
+			<div class="mobile-logo">
+				<img src="images/header_logo.png" alt="Motta" class="logo-image">
+			</div>
+
 			<div class="login-box">
 
 				<!-- 画面タイトル -->
@@ -44,7 +50,8 @@
 
 					<!-- ID入力欄 -->
 					<div class="form-group1">
-						<label>ID</label> <input type="text" id="user_id" name="user_id" required>
+						<label>ID</label> <input type="text" id="user_id" name="user_id"
+							required>
 
 						<!-- JavaScript入力チェック用 -->
 						<span id="idError" class="error"></span>

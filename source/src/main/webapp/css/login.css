@@ -10,7 +10,7 @@
 /* ページ全体の設定 */
 body {
 	font-family: "Yu Gothic", sans-serif;
-	background: #ffffff;
+	background: #d8f3d0;
 }
 
 /* 画面全体レイアウト */
@@ -192,4 +192,84 @@ body {
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
+}
+
+/* =========================
+   スマホ用レスポンシブ
+========================= */
+@media screen and (max-width: 500px) {
+	/* 左側ロゴエリアを非表示 */
+	.left-panel {
+		display: none;
+	}
+
+	/* 右側を画面全体に */
+	.right-panel {
+		width: 100%;
+		min-height: 100vh;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 10px;
+	}
+
+	/* スマホ用Mottaのロゴの位置 */
+	.mobile-logo {
+		display: block;
+	}
+
+	/* スマホ用Mottaのロゴの大きさ */
+	.mobile-logo img {
+		width: 200px;
+		height: auto;
+	}
+
+	/* ログインフォーム */
+	.login-box {
+		width: 90%;
+		max-width: 320px;
+		background: #f4f4f4;
+		border: 1px solid #87b096;
+		border-radius: 35px;
+		padding: 30px 20px;
+	}
+
+	/* ログインの文字 */
+	.login-box h2 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+
+	/* ID・パスワードのラベル */
+	.form-group1 label, .form-group2 label {
+		font-size: 14px;
+	}
+
+	/* ID・パスワードの入力欄 */
+	.form-group1 input, .form-group2 input {
+		height: 45px;
+		font-size: 14px;
+	}
+
+	/* ログインボタン */
+	.login-btn {
+		height: 48px;
+		font-size: 15px;
+	}
+
+	/* 新規登録ボタン */
+	.register-btn {
+		height: 48px;
+		font-size: 14px;
+	}
+	.register-btn .arrow {
+		right: 25px;
+	}
+
+	/* エラーメッセージ */
+	.error-message {
+		font-size: 12px;
+		white-space: nowrap;
+		text-align: center;
+	}
 }
