@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Motta?｜検索</title>
+	<!-- 共通のCSS -->
 	<link rel="stylesheet" href="/e1/css/style.css">
+	<!-- 検索画面用CSS -->
 	<link rel="stylesheet" href="/e1/css/search.css">
 </head>
 
@@ -21,6 +23,7 @@
 			    <div class="line"></div>
 			    <div class="line"></div>
 		  	</div>
+		  	<!-- ナビゲーション -->
 			<nav class="nav">
 				<ul>
 					<li><a href="TopServlet">TOP</a></li>
@@ -34,10 +37,10 @@
 			</nav>
 		</div>
 	</header>
+	<!-- メイン -->
 	<main class="search-page">
 		<!-- 検索フォーム -->
 		<form class="search-form" action="SearchServlet" method="post">
-
 			<input type="text" name="name" placeholder="名称">
 			<input type="text" name="location" placeholder="発生場所">
 			<div class="date-range">
@@ -45,7 +48,7 @@
 			    <span>～</span>
 			    <input type="date" name="endDate" class="date-input">
 			</div>
-
+			<!-- ボタン -->	
 			<div class="button-area">
 				<button type="submit" class="search-btn">検索</button>
 
