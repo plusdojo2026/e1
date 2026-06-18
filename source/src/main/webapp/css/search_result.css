@@ -80,7 +80,7 @@ font-weight: bold;
 .item-date{
 width: 180px;
 text-align: center;
-padding-left: 0 20px;
+padding: 0 20px;
 border-left: 2px dotted #F6B4C3;
 font-size: 18px;
 }
@@ -209,24 +209,6 @@ opacity: 0.8;
 font-size: 22px;
 }
 
-/*上部エリア*/
-main{
-    width: 90%;
-    margin: 50px auto;
-}
-
-.top-area{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.count{
-    font-size: 25px;
-    font-weight: bold;
-}
-
 /*ページング*/
 .paging{
     margin-top: 50px;
@@ -264,11 +246,6 @@ main{
 
 /* スマホ対応 */
 @media screen and (max-width: 768px){
-
-    main{
-        width: 95%;
-        margin: 20px auto;
-    }
 
     /* 件数＋並び替え */
     .top-area{
