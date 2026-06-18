@@ -15,7 +15,7 @@
 /* 検索画面 */
 .regist-page {
     position: relative;
-    height: 520px;
+    height: 490px;
     width:100%;
 }
 
@@ -122,6 +122,11 @@ input[type="date"],input[type="text"]{
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
 	z-index:1;
+}
+/* フォームをクリックしたとき */
+input[type="date"]:focus,input[type="text"]:focus,select:focus,textarea:focus{
+outline: none;
+border: 2px solid #33A74A;
 }
 
 textarea{
