@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
 </head>
@@ -61,7 +61,7 @@
 
 <!-- 天気入力 -->
  <select name="weather">
-    <option value="晴れ">晴れ</option>
+    <option value="${item.weather == '晴れ'}">晴れ</option>
     <option value="曇り">曇り</option>
     <option value="雨">雨</option>
     <option value="雪">雪</option>

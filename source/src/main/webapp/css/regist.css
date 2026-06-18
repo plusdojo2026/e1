@@ -1,10 +1,3 @@
-/* 画面全体レイアウト */
-.container {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-}
-
 /* ワッパー */
 .wrapper{
     min-height:100vh;
@@ -103,7 +96,7 @@ main {
 	font-size: 25px;
 	font-weight: bold;
 }
-
+/*天気選択*/
 select{
 	width: 324px;
 	height: 53px;
@@ -112,23 +105,28 @@ select{
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
 	z-index:1;
+	position: relative;
+    left: 20px;
 }
-
+/*日付選択、名称入力フォーム、発生場所入力フォーム*/
 input[type="date"],input[type="text"]{
 	width: 300px;
 	height: 50px;
+	margin:0,10px;
 	font-size: 20px;
 	padding: 0 10px;
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
 	z-index:1;
+	position: relative;
+    left: 20px;
 }
 /* フォームをクリックしたとき */
 input[type="date"]:focus,input[type="text"]:focus,select:focus,textarea:focus{
 outline: none;
 border: 2px solid #33A74A;
 }
-
+/*原因入力フォーム*/
 textarea{
 	resize: none;
 	width: 300px;
@@ -138,6 +136,8 @@ textarea{
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
 	z-index:1;
+	position: relative;
+    left: 20px;
 }
 
 #regist_form {
@@ -155,9 +155,10 @@ textarea{
 	margin-top: 50px;
 	align-items: center;
 	margin-bottom: 40px;
+	margin:20px;
 }
 
-/* 検索ボタン */
+/* 登録ボタン */
 .regist-btn {
 	width: 140px;
 	height: 50px;
@@ -183,6 +184,46 @@ textarea{
 	z-index:1;
 }
 
+@media screen and (max-width: 768px) {
 
+    /* 背景の丸を小さく */
+    .circle{
+        width:0px !important;
+        height:0px !important;
+    }
 
+}
+select{
+	width: 324px;
+	height: 53px;
+	font-size: 20px;
+	padding: 0 10px;
+	border: 2px solid #9CE26B;
+	border-radius: 10px;
+}
+
+input[type="date"],input[type="text"]{
+	width: 300px;
+	height: 50px;
+	font-size: 20px;
+	padding: 0 10px;
+	border: 2px solid #9CE26B;
+	border-radius: 10px;
+}
+/* フォームをクリックしたとき */
+input[type="date"]:focus,input[type="text"]:focus,select:focus,textarea:focus{
+outline: none;
+border: 2px solid #33A74A;
+}
+
+textarea{
+	resize: none;
+	width: 300px;
+	height: 100px;
+	font-size: 20px;
+	padding: 0 10px;
+	border: 2px solid #9CE26B;
+	border-radius: 10px;
+	z-index:1;
+}
 
