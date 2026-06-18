@@ -69,7 +69,8 @@
 			<c:forEach var="item" items="${itemList}">
 				<article class="item-card">
 					<div class="item-name">${item.item_name}</div>
-					<div class="item-date" data-date="${item.lost_date}">📅${item.lost_date}</div>
+					<div class="date-weather-place">
+					<div class="item-date" data-date="${item.lost_date}"><i class="fa-solid fa-calendar-days"></i>  ${item.lost_date}</div>
 					<div class="weather">
 						<c:choose>
 							<c:when test="${item.weather == '晴れ'}">
@@ -92,9 +93,9 @@
 							</c:when>
 						</c:choose>
 					</div>
-					
-					<div class="item-place">📍${item.location}</div>
-					<div class="item-reason">原因：${item.reason}</div>
+					<div class="item-place"><i class="fa-solid fa-location-dot"></i>  ${item.location}</div>
+					</div>
+					<div class="item-reason"><i class="fa-solid fa-magnifying-glass"></i>  ${item.reason}</div>
 				</article>
 			</c:forEach>
 		</section>
