@@ -135,9 +135,8 @@
 #beforeList li,
 #afterList li{
     margin:12px 0;
-    font-size:30px;
+    font-size:20px;
     text-align: left; 
-    white-space: nowrap;
 }
 /*チェックボックス*/
 .item-check{
