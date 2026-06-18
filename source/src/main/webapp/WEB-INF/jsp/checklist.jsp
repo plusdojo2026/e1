@@ -19,6 +19,14 @@
 
 			<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 			
+			
+			<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
 
 
 			<nav class="nav">
@@ -32,6 +40,7 @@
 						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 				</ul>
 			</nav>
+		</div>
 		</header>
 
 		<!-- メイン -->
@@ -122,6 +131,15 @@
 		    }
 
 		};
+		
+		/* ハンバーガーメニュー */
+		var hamburger = document.querySelector('.hamburger-menu');
+		var nav = document.querySelector('.nav');
+		
+		hamburger.addEventListener('click', function () {
+		  hamburger.classList.toggle('active');
+		  nav.classList.toggle('active');
+		});
 		/* リセット */
 		formObj.onreset = function() {
 			errorMessageObj.textContent = '';
