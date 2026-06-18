@@ -119,7 +119,7 @@
     align-items:flex-start;
     gap:60px;
 }
-
+/*チェックリストの項目幅*/
 .check-column{
     width:300px;
 }
@@ -131,7 +131,7 @@
     padding:0;
     text-align: left;
 }
-
+/*チェックリストの各項目*/
 #beforeList li,
 #afterList li{
     margin:12px 0;
@@ -139,13 +139,15 @@
     text-align: left; 
     white-space: nowrap;
 }
-
+/*チェックボックス*/
 .item-check{
     width:22px;
     height:22px;
 }
 
 /*登録ボタン関連*/
+
+/*名称のテキストボックス*/
 input[type="text"]{
     width:350px;
     padding:20px;
@@ -155,12 +157,12 @@ input[type="text"]{
 	 position:relative;
      z-index: 1; 
 }
-
+/*登録、削除ボタンの配置*/
 input[type="submit"]{
 	 position:relative;
    z-index: 1; 
 }
-
+/*登録ボタンの形など*/
 .btn-register {
 	background: #F5A9BC;
 	color: white;
@@ -174,7 +176,7 @@ input[type="submit"]{
 	 position:relative;
 	 z-index: 1; 
 }
-
+/*削除ボタンの形など*/
 .btn-reset {
 	background: white;
 	color: #7BEA52;
@@ -193,4 +195,134 @@ input[type="submit"]{
 	{
 	outline: none;
 	border: 2px solid #33a74a;
+}
+
+/* =========================
+   タブレット対応
+   ========================= */
+@media screen and (max-width: 1024px) {
+
+    /* 背景の丸を少し小さく */
+    .circle{
+        transform: scale(0.8);
+    }
+
+    /* チェックカード */
+    .check-card{
+        width: 80%;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 25px;
+    }
+
+    /* チェック前・チェック後の間隔を縮小 */
+    .check-container{
+        gap: 30px;
+    }
+
+    /* リスト幅 */
+    .check-column{
+        width: 250px;
+    }
+
+    /* リスト文字 */
+    #beforeList li,
+    #afterList li{
+        font-size: 24px;
+    }
+
+    /* タイトル */
+    .section-title{
+        width: 220px;
+        font-size: 20px;
+    }
+
+    /* テキストボックス */
+    input[type="text"]{
+        width: 80%;
+        max-width: 400px;
+        padding: 18px;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+
+    /* ボタン */
+    .btn-register,
+    .btn-reset{
+        width: 130px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+}
+
+/* =========================
+   スマホ対応
+   ========================= */
+@media screen and (max-width: 768px) {
+
+    /* 背景の丸を小さく */
+    .circle{
+        width:120px !important;
+        height:120px !important;
+    }
+
+    /* ダッシュボードを縦並び */
+    .dashboard{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* チェックカード */
+    .check-card{
+        width: 80%;
+        max-width: 400px;
+        margin: 15px auto;
+        padding: 20px;
+    }
+
+    /* チェック前・チェック後を縦並び */
+    .check-container{
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .check-column{
+        width: 100%;
+    }
+
+    /* リスト文字 */
+    #beforeList li,
+    #afterList li{
+        font-size: 20px;
+        white-space: normal;
+    }
+
+    /* タイトル */
+    .section-title{
+        width: 80%;
+        font-size: 18px;
+    }
+
+    /* テキストボックス */
+    input[type="text"]{
+        width: 90%;
+        max-width: 350px;
+        padding: 15px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    
+    
+
+    /* ボタン */
+    .btn-register,
+    .btn-reset{
+        width: 140px;
+        height: 50px;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
 }
