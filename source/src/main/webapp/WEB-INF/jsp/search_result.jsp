@@ -17,7 +17,14 @@
 	<!-- ヘッダー -->
 	<header class="header">
 		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
-		<nav class="nav">
+		<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
+			<nav class="nav">
 				<ul>
 					<li><a href="TopServlet">TOP</a></li>
 					<li><a href="RegistServlet">登録</a></li>
@@ -27,7 +34,8 @@
 					<li><a href="Logout">ログアウト</a></li>
 				</ul>
 			</nav>
-		</header>
+		</div>
+	</header>
 	
 		<main>
 	
@@ -138,6 +146,14 @@ if(sort == null){sort = "new";}%>
 		</main>
 	
 		<script>
+		/* ハンバーガーメニュー */
+		var hamburger = document.querySelector('.hamburger-menu');
+		var nav = document.querySelector('.nav');
+		
+		hamburger.addEventListener('click', function () {
+		  hamburger.classList.toggle('active');
+		  nav.classList.toggle('active');
+		});
 			const itemsPerPage = 5;
 			const items = document.querySelectorAll(".item-card");
 			

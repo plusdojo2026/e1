@@ -13,6 +13,13 @@
 	<!-- ヘッダー -->
 	<header class="header">
 		<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+		<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
 		<nav class="nav">
 			<ul>
 					<li><a href="TopServlet">TOP</a></li>
@@ -23,6 +30,7 @@
 					<li><a href="Logout">ログアウト</a></li>
 			</ul>
 		</nav>
+		</div>
 	</header>
 	<main class="search-page">
 		<!-- 検索フォーム -->
@@ -43,5 +51,15 @@
 			</div>
 		</form>
 	</main>
+	<script>
+	/* ハンバーガーメニュー */
+	var hamburger = document.querySelector('.hamburger-menu');
+	var nav = document.querySelector('.nav');
+	
+	hamburger.addEventListener('click', function () {
+	  hamburger.classList.toggle('active');
+	  nav.classList.toggle('active');
+	});
+	</script>
 </body>
 </html>
