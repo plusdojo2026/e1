@@ -53,6 +53,10 @@ body {
 	align-items: center;
 }
 
+.mobile-logo{
+	display: none;
+}
+
 /* フォーム全体 */
 .login-box {
 	width: 380px;
