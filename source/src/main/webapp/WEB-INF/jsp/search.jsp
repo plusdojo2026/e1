@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Motta?｜検索</title>
+	<!-- ファビコン -->
+	<link rel="icon" href="images/favicon.ico">
 	<!-- 共通のCSS -->
 	<link rel="stylesheet" href="/e1/css/style.css">
 	<!-- 検索画面用CSS -->
