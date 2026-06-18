@@ -8,6 +8,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motta?｜検索結果</title>
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/search_result.css">
@@ -27,12 +28,12 @@
 		  	</div>
 			<nav class="nav">
 				<ul>
-					<li><a href="TopServlet">TOP</a></li>
+					<li><a  href="TopServlet">TOP</a></li>
 					<li><a href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
-					<li><a href="SearchServlet" class="active">検索</a></li>
+					<li><a class="active" href="SearchServlet">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="Logout">ログアウト</a></li>
+					<li><a href="LogoutServlet"	onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 				</ul>
 			</nav>
 		</div>
