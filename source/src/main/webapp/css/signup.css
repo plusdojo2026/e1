@@ -54,6 +54,11 @@ body {
 	align-items: center;
 }
 
+/* スマホ用のロゴ非表示 */
+.mobile-logo {
+	display: none;
+}
+
 /* フォーム全体 */
 .signup-box {
 	width: 380px;
@@ -166,14 +171,6 @@ body {
 	right: 50px;
 }
 
-/* 入力チェックエラー表示 */
-.error {
-	color: red;
-	font-size: 20px;
-	display: block;
-	margin-top: 4px;
-}
-
 /* サーブレットから渡されるエラーメッセージ */
 .error-message {
 	color: red;
@@ -182,4 +179,101 @@ body {
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
+}
+
+/* ↓新規登録画面 スマホ用レスポンシブ↓ */
+@media screen and (max-width: 500px) {
+	/* PC画面の左側を非表示 */
+	.left-panel {
+		display: none;
+	}
+
+	/* 右側を画面全体に */
+	.right-panel {
+		width: 100%;
+		min-height: 90vh;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 10px;
+		padding-bottom: 0px;
+	}
+
+	/* スマホ用Mottaのロゴの位置 */
+	.mobile-logo {
+		display: block;
+	}
+
+	/* スマホ用Mottaのロゴのサイズ */
+	.mobile-logo img {
+		width: 200px;
+		height: auto;
+	}
+
+	/* 新規登録フォーム */
+	.signup-box {
+		width: 90%;
+		max-width: 320px;
+		background: #f4f4f4;
+		border: 1px solid #87b096;
+		border-radius: 35px;
+		padding: 12px 20px;
+		margin: 10px;
+	}
+
+	/* 新規登録タイトル */
+	.signup-box h2 {
+		font-size: 24px;
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+
+	/* メールアドレス・氏名・ID・パスワードのラベル */
+	.form-group2 label, .form-group3 label {
+		font-size: 14px;
+	}
+
+	/* メールアドレス・氏名・ID・パスワードの入力欄 */
+	.form-group2 input, .form-group3 input {
+		height: 45px;
+		font-size: 14px;
+	}
+
+	/* メールアドレス・氏名・ID・パスワードの入力欄の余白 */
+	.form-group2 {
+		margin-bottom: 0px;
+	}
+	.form-group3 {
+		margin-bottom: 0px;
+	}
+
+	/* 登録ボタン */
+	.signup-btn {
+		height: 48px;
+		font-size: 15px;
+	}
+
+	/* 区切り文字 */
+	.divider {
+		font-size: 11px;
+		margin: 10px 0;
+	}
+
+	/* ログイン画面へ戻るボタン */
+	.register-btn {
+		height: 48px;
+		font-size: 14px;
+	}
+	.register-btn .arrow {
+		right: 25px;
+	}
+
+	/* サーブレットから渡されるエラーメッセージ */
+	.error-message {
+		font-size: 12px;
+		text-align: center;
+		white-space: nowrap;
+		display: block;
+		margin-bottom: 15px;
+	}
 }
