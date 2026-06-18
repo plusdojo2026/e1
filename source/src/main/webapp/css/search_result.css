@@ -1,7 +1,8 @@
 @charset "UTF-8";
 /* ===== メインエリア ===== */
 main{
-width: 90%;
+width: 85%;
+max-width: 1200px;
 margin: 50px auto;
 }
 
@@ -54,15 +55,19 @@ gap: 25px;
 .item-card{
 background-color: white;
 border-radius: 30px;
-padding: 18px 25px;
+padding: 20px 30px;
 display: flex;
 align-items: center;
+gap: 20px;
 box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+justify-content: flex-start;
 }
 
 /* ===== 忘れ物名 ===== */
 .item-name{
-width: 180px;
+min-width: 180px;
+width: 220px;
+flex-shrink: 0;
 background-color: #F6B4C3;
 border-radius: 25px;
 text-align: center;
@@ -73,11 +78,15 @@ font-weight: bold;
 
 /* ===== 日付 ===== */
 .item-date{
-width: 220px;
-margin-left: 25px;
-padding-left: 40px;
+width: 180px;
+text-align: center;
+padding-left: 0 20px;
 border-left: 2px dotted #F6B4C3;
-font-size: 20px;
+font-size: 18px;
+}
+/* ===== 日付アイコン ===== */
+.fa-calendar-days{
+	color:#87cafe
 }
 
 /* ===== 天気 ===== */
@@ -106,18 +115,27 @@ font-size: 24px;
 
 /* ===== 場所 ===== */
 .item-place{
-width: 140px;
-padding-left: 40px;
+width: 150px;
+text-align: center;
+padding: 0 20px;
 border-left: 2px dotted #F6B4C3;
-font-size: 20px;
+font-size: 18px;
 }
-
+/* ===== 場所アイコン ===== */
+.fa-location-dot{
+	color:#ff0000
+}
+/* ===== 日付天気場所 ===== */
+.date-weather-place{
+    display: flex;
+    align-items: center;
+}
 /* ===== 原因 ===== */
 .item-reason{
 flex: 1;
-padding-left: 40px;
+padding-left: 25px;
 border-left: 2px dotted #F6B4C3;
-font-size: 20px;
+font-size: 18px;
 }
 
 /* ===== ボタンエリア ===== */
@@ -125,6 +143,10 @@ font-size: 20px;
 display: flex;
 gap: 12px;
 margin-left: 20px;
+}
+/* ===== 原因アイコン ===== */
+.fa-magnifying-glass{
+	color:#c0c0c0
 }
 
 /* ===== 編集ボタン ===== */
@@ -237,4 +259,117 @@ main{
     background-color: #F6B4C3;
     color: #463B25;
     font-weight: bold;
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width: 768px){
+
+    main{
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    /* 件数＋並び替え */
+    .top-area{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .count{
+        font-size: 20px;
+    }
+
+    .sort-area label{
+        font-size: 16px;
+    }
+
+    .sort-area select{
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    /* カード全体 */
+    .item-card{
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 20px 15px;
+    }
+
+    /* 忘れ物名 */
+    .item-name{
+        width: 70%;
+        max-width: 250px;
+        min-width: unset;
+        padding: 14px;
+        font-size: 18px;
+    }
+
+    /* 日付・天気・場所 */
+    .date-weather-place{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .item-date,
+    .weather,
+    .item-place{
+        width: auto;
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+        border-left: none;
+        font-size: 16px;
+    }
+
+    .weather{
+        font-size: 20px;
+    }
+
+    /* 理由 */
+    .item-reason{
+        width: 100%;
+        padding: 0;
+        border-left: none;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    /* ボタン */
+    .item-buttons{
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .delete-btn{
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    /* ページング */
+    .paging{
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .paging button{
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    #pageNumbers{
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -112,9 +112,10 @@
 				<div class="item-name">
 					<%=item.getItem_name()%>
 				</div>
-
+				
+			<div class="date-weather-place">
 				<div class="item-date">
-					📅
+					<i class="fa-solid fa-calendar-days"></i>
 					<%=item.getLost_date()%>
 				</div>
 
@@ -145,12 +146,14 @@
 				</div>
 
 				<div class="item-place">
-					📍
+					<i class="fa-solid fa-location-dot"></i>
 					<%=item.getLocation()%>
 				</div>
-
+			</div>
+			
 				<div class="item-reason">
-					原因：<%=item.getReason()%>
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<%=item.getReason()%>
 				</div>
 
 				<div class="item-buttons">
