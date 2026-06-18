@@ -4,6 +4,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motta? | 削除完了</title>
 <!-- ファビコン -->
 	<link rel="icon" href="images/favicon.ico">
@@ -15,7 +16,14 @@
 <body>
 
 <header class="header">
-    <a href="#"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+    <a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
+    <!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
 
     <nav class="nav">
         <ul>
@@ -27,6 +35,7 @@
 			<li><a href="LogoutServlet" onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
         </ul>
     </nav>
+    </div>
 </header>
 
 <main class="complete-page">
