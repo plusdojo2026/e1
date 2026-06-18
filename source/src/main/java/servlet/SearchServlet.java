@@ -42,6 +42,10 @@ protected void doPost(HttpServletRequest request,
             (String) session.getAttribute("user_id");
 
     LostItems item = new LostItems();
+    
+    String month = request.getParameter("month");
+
+   
 
     item.setItem_name(
             request.getParameter("name") == null
@@ -57,8 +61,6 @@ protected void doPost(HttpServletRequest request,
             request.getParameter("date") == null
             ? ""
             : request.getParameter("date"));
-    item.setStartDate(request.getParameter("startDate"));
-    item.setEndDate(request.getParameter("endDate"));
 
     // 並び替え条件取得
     String sort = request.getParameter("sort");
@@ -67,10 +69,18 @@ protected void doPost(HttpServletRequest request,
     if (sort == null) {
         sort = "new";
     }
+    item.setStartDate(
+    	    request.getParameter("startDate") == null ? "" : request.getParameter("startDate"));
+
+    item.setEndDate(
+    	    request.getParameter("endDate") == null ? "" : request.getParameter("endDate"));
+    
+
 
     LostItemsDao dao = new LostItemsDao();
+   
 
-    List<LostItems> result = dao.select(item, userId, sort);
+    List<LostItems> result = dao.select(item, userId, sort, month);
 
     System.out.println("検索結果件数：" + result.size());
 
@@ -79,6 +89,7 @@ protected void doPost(HttpServletRequest request,
 
     // 検索条件保持用
     request.setAttribute("item", item);
+    request.setAttribute("month", month);
 
     RequestDispatcher dispatcher =
             request.getRequestDispatcher(

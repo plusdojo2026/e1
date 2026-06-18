@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,24 +9,19 @@ import java.util.List;
 
 import dto.Checklist;
 
-public class ChecklistsDao {
+public class ChecklistsDao extends Dao {
 
 	public boolean insert(Checklist list) {
 		Connection conn = null;
 		boolean result = false;
 
 		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+			// データベース接続
+	        Connection con = getConnection();
 
 			// SQL文を準備する
 			String sql = "INSERT INTO checklists (user_id, item_name, checked_flag) VALUES (?, ?, ?)";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pStmt = con.prepareStatement(sql);
 
 			
 			// SQL文を完成させる（INSERT）
@@ -47,8 +41,6 @@ public class ChecklistsDao {
 				result = true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			// データベースを切断
@@ -76,19 +68,12 @@ public class ChecklistsDao {
 	    ResultSet rs = null;
 
 	    try {
-	        // JDBCドライバを読み込む
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-
-	        // データベースに接続する
-	        conn = DriverManager.getConnection(
-	            "jdbc:mysql://localhost:3306/e1?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-	            "root",
-	            "password"
-	        );
+	    	// データベース接続
+	        Connection con = getConnection();
 
 	        // SQL文を準備する
 	        String sql = "SELECT id, user_id, item_name, checked_flag FROM checklists";
-	        pStmt = conn.prepareStatement(sql);
+	        pStmt = con.prepareStatement(sql);
 
 	        rs = pStmt.executeQuery();
 	        
@@ -125,14 +110,12 @@ public boolean delete(String item_name) {
     try {
     	Class.forName("com.mysql.cj.jdbc.Driver");
 
-		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
-				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				"root", "password");
+    	// データベース接続
+        Connection con = getConnection();
 		
 		// SQL文を完成させる（削除）
 		  String sql = "DELETE FROM checklists WHERE item_name = ?";
-	        pStmt = conn.prepareStatement(sql);
+	        pStmt = con.prepareStatement(sql);
 
 	        pStmt.setString(1, item_name);
 
@@ -162,16 +145,12 @@ public boolean updateChecked(int id, boolean checked) {
     Connection conn = null;
 
     try {
-    	Class.forName("com.mysql.cj.jdbc.Driver");
-
-		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
-				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				"root", "password");
+    	// データベース接続
+        Connection con = getConnection();
         
 
         String sql = "UPDATE checklists SET checked_flag = ? WHERE id = ?";
-        PreparedStatement ps = conn.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement(sql);
 
         ps.setBoolean(1, checked);
         ps.setInt(2, id);

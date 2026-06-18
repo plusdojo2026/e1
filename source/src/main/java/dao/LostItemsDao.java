@@ -13,7 +13,7 @@ public class LostItemsDao extends Dao{
 	
 	Connection con = null;
     // 検索 + 並び替え
-    public List<LostItems> select(LostItems item, String userId, String sort) {
+	public List<LostItems> select(LostItems item, String userId, String sort, String month) {
 
         List<LostItems> list = new ArrayList<LostItems>();
 
@@ -25,13 +25,20 @@ public class LostItemsDao extends Dao{
             	    "WHERE user_id = ? " +
             	    "AND item_name LIKE ? " +
             	    "AND location LIKE ? ";
+            
+            if (month != null && !month.isEmpty()) {
+                sql += "AND MONTH(lost_date) = ? ";
+            }
 
-            if (!item.getStartDate().isEmpty()) {
-                sql += "AND lost_date >= ? ";
-            }
-            if (!item.getEndDate().isEmpty()) {
-                sql += "AND lost_date <= ? ";
-            }
+            if (item.getStartDate() != null &&
+            	    !item.getStartDate().isEmpty()) {
+            	    sql += "AND lost_date >= ? ";
+            	}
+
+            	if (item.getEndDate() != null &&
+            	    !item.getEndDate().isEmpty()) {
+            	    sql += "AND lost_date <= ? ";
+            	}
             if ("old".equals(sort)) {
                 sql += "ORDER BY lost_date ASC";
             } else {
@@ -45,12 +52,18 @@ public class LostItemsDao extends Dao{
             pStmt.setString(idx++, userId);
             pStmt.setString(idx++, "%" + item.getItem_name() + "%");
             pStmt.setString(idx++, "%" + item.getLocation() + "%");
+            
+            if (month != null && !month.isEmpty()) {
+                pStmt.setInt(idx++, Integer.parseInt(month));
+            }
 
-            if (!item.getStartDate().isEmpty()) {
+            if (item.getStartDate() != null &&
+                !item.getStartDate().isEmpty()) {
                 pStmt.setString(idx++, item.getStartDate());
             }
 
-            if (!item.getEndDate().isEmpty()) {
+            if (item.getEndDate() != null &&
+                !item.getEndDate().isEmpty()) {
                 pStmt.setString(idx++, item.getEndDate());
             }
 

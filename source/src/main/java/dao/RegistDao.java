@@ -20,7 +20,7 @@ public class RegistDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"e1", "c3Us6Vdg2KPavBE3");
 
 			// SQL文を準備する
 			String sql = "INSERT INTO lost_items (id,item_name,lost_date,weather,location,reason,user_id) " + "VALUES (0,?,?,?,?,?,?)";

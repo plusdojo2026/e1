@@ -19,6 +19,14 @@
 
 			<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
 			
+			
+			<!-- ハンバーガーボタン -->
+		<div class="container">
+		    <div class="hamburger-menu">
+			    <div class="line"></div>
+			    <div class="line"></div>
+			    <div class="line"></div>
+		  	</div>
 
 
 			<nav class="nav">
@@ -32,6 +40,7 @@
 						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 				</ul>
 			</nav>
+		</div>
 		</header>
 
 		<!-- メイン -->
@@ -47,7 +56,7 @@
 			<div class="circle white left-bottom"></div>
 			<div class="circle white right-center"></div>
 
-			<form id="login_form" action="ChecklistServlet" method="post">
+			<form id="checklist_form" action="ChecklistServlet" method="post">
 
 				<label> <br> <input type="text" name="item_name"
 					placeholder="名称" required>
@@ -106,7 +115,7 @@
 
 
 	<script>
-		let formObj = document.getElementById('login_form');
+		let formObj = document.getElementById('checklist_form');
 		let errorMessageObj = document.getElementById('error_message');
 
 		/* 削除ボタンをクリックしたときの処理 */
@@ -122,6 +131,15 @@
 		    }
 
 		};
+		
+		/* ハンバーガーメニュー */
+		var hamburger = document.querySelector('.hamburger-menu');
+		var nav = document.querySelector('.nav');
+		
+		hamburger.addEventListener('click', function () {
+		  hamburger.classList.toggle('active');
+		  nav.classList.toggle('active');
+		});
 		/* リセット */
 		formObj.onreset = function() {
 			errorMessageObj.textContent = '';

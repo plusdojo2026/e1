@@ -7,8 +7,10 @@ import java.sql.SQLException;
 public class Dao {
 	private String database = "e1";
     private String option = "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true";
-    private String user = "root";
-    private String password = "password";
+	private String user = "root";
+	private String password = "password";
+//    private String user = "e1";
+//    private String password = "c3Us6Vdg2KPavBE3";
 
 	public Dao() {
 		try {

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
-<title>Moota?｜登録</title>
+<title>Motta?｜登録</title>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a href="SearchServlet">検索</a></li>
 					<li><a href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="Logout">ログアウト</a></li>
+					<li><a href="LogoutServlet">ログアウト</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -42,22 +42,26 @@
 
 <!-- メイン -->
 <main class="regist-page">
-<form class="regist_form" action="RegistServlet" method="post">
+<form id="regist_form" action="RegistServlet" method="post">
 <!-- 名称入力 -->
-<input type="text" name="name" placeholder="名称">
-<!-- 発生場所-->
-<input type="text" name="location" placeholder="発生場所">
+<input type="text" name="item_name" id="item_name" placeholder="名称" required>
+
 <!-- 日付入力 -->
-<input type="date" name="date">
+<input type="date" id="date" name="lost_date" required>
+
 <!-- 天気入力 -->
- <select name="weather" form="weather">
-    <option value="1">晴れ</option>
-    <option value="2">曇り</option>
-    <option value="3">雨</option>
-    <option value="4">雪</option>
- </select>
+ <select name="weather">
+    <option value="晴れ">晴れ</option>
+    <option value="曇り">曇り</option>
+    <option value="雨">雨</option>
+    <option value="雪">雪</option>
+</select>
+
+ <!-- 発生場所-->
+<input type="text" id="location" name="location" placeholder="発生場所" required>
+
 <!-- 原因入力 -->
-<input type="text" name="reason" class="cause" placeholder="原因">
+<textarea name="reason" placeholder="原因"></textarea>
 
 <div class="button-area">
 				<input type="submit" class="regist-btn" name="touroku"	value="登録">
@@ -71,27 +75,28 @@
 
 <script>
 'use strict';
-let formObj = document.getElementById('login_form');
+let formObj = document.getElementById('regist_form');
 let errorMessageObj = document.getElementById('error_message');
 
-/* 登録ボタン */
+/*入力フォーム*/
 formObj.onsubmit = function(event) {
 
-	if (!formObj.name.value) {
+	if (!formObj.item_name.value) {
 		errorMessageObj.textContent = '※名称を入力してください！';
 		event.preventDefault();
 		} 
+	 if (!formObj.lost_date.value){
+		   errorMessageObj.textContent = '※日付を入力してください！';
+		   errorMessageObj.textContent = '';
+		   event.preventDefault();
+		}
 		if (!formObj.location.value){
 		errorMessageObj.textContent = '※発生場所を入力してください！';
 		errorMessageObj.textContent = '';
 		event.preventDefault();
 		}  
-		if (!formObj.date.value){
-		   errorMessageObj.textContent = '※日付を入力してください！';
-		   errorMessageObj.textContent = '';
-		   event.preventDefault();
+		
 		}
-		};
 
 
 /* リセット */

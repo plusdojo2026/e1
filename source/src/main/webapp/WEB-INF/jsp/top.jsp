@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/top.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -119,22 +120,35 @@
 	    },
 	    options: {
 	    	/* クリックイベント */
-	    	onClick: function(evt, elements) {
-	            if (elements.length > 0) {
-	                const month = elements[0].index + 1;
-					/* POST送信用フォーム */
-	                const form = document.createElement("form");
-	                form.method = "post";
-	                form.action = "SearchServlet";
-					/* 送信するパラメータ */
+	        onClick: function(evt, elements) {
+	            if (elements.length === 0) return;
+
+	            const month = elements[0].index + 1;
+
+	            /* 対象の年度 */
+	            const year = new Date().getFullYear();
+
+	            const mm = String(month).padStart(2, "0");
+	            const lastDay = new Date(year, month, 0).getDate();
+	            /* POST送信用フォーム */
+	            const form = document.createElement("form");
+	            form.method = "post";
+	            form.action = "SearchServlet";
+	            /* 送信するパラメータ */
+	            function addHidden(name, value) {
 	                const input = document.createElement("input");
 	                input.type = "hidden";
-	                input.name = "month";
-	                input.value = month;
+	                input.name = name;
+	                input.value = value;
 	                form.appendChild(input);
-	                document.body.appendChild(form);
-	                form.submit();
 	            }
+
+	            addHidden("name", "");
+	            addHidden("location", "");
+	            addHidden("month", month);
+
+	            document.body.appendChild(form);
+	            form.submit();
 	        },
 	        scales: {
 	            y: {

@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Motta Login</title>
+<title>Motta?｜ログイン</title>
 
 <!-- ログイン画面用CSS -->
 <link rel="stylesheet" href="css/login.css">
@@ -44,7 +44,7 @@
 
 					<!-- ID入力欄 -->
 					<div class="form-group1">
-						<label>ID</label> <input type="text" id="user_id" name="user_id">
+						<label>ID</label> <input type="text" id="user_id" name="user_id" required>
 
 						<!-- JavaScript入力チェック用 -->
 						<span id="idError" class="error"></span>
@@ -53,7 +53,7 @@
 					<!-- パスワード入力欄 -->
 					<div class="form-group2">
 						<label>パスワード</label> <input type="password" id="password"
-							name="password">
+							name="password" required>
 
 						<!-- JavaScript入力チェック用 -->
 						<span id="passwordError" class="error"></span>

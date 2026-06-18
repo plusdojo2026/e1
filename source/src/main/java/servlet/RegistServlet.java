@@ -32,7 +32,7 @@ public class RegistServlet extends HttpServlet {
 	}
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		 throws ServletException, IOException {
-
+			// セッション取得
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String name = request.getParameter("item_name");
@@ -40,7 +40,7 @@ public class RegistServlet extends HttpServlet {
 			String weather = request.getParameter("weather");
 			String location = request.getParameter("location");
 			String reason = request.getParameter("reason");
-			String user_id = request.getParameter("user_id");
+			String user_id = (String) request.getSession().getAttribute("user_id");
 			
          // 登録処理を行う
 	RegistDao bDao = new RegistDao();
