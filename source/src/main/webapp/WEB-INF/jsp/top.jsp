@@ -39,7 +39,9 @@
 	<main>
 		<!--メッセージ-->
 		<section class="message-box">
+		<img src="images/mottyon.png" alt="mottyon" class="mascot">
 			<p>
+				
 				<i class="fa-solid fa-bell"></i>おはようございます！<br> 今日のチェックリストを確認しましょう
 			</p>
 			<a href="AlertServlet" class="alert-btn">通知を設定</a>
