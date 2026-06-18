@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,13 +16,8 @@ public class UsersDao extends Dao {
 		boolean loginResult = false;
 
 		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
 			// データベースへ接続
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"e1", "c3Us6Vdg2KPavBE3");
+			conn = getConnection();
 
 			// ユーザーIDとパスワードを条件に検索するSQL
 			String sql = "SELECT count(*) FROM users WHERE user_id=? AND password=?";
@@ -45,20 +39,9 @@ public class UsersDao extends Dao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			loginResult = false;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			loginResult = false;
 		} finally {
-
 			// データベース接続を終了
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					loginResult = false;
-				}
-			}
+			closeConnection(conn);
 		}
 
 		// ログイン結果を返す
@@ -71,13 +54,8 @@ public class UsersDao extends Dao {
 		boolean signupResult = false;
 
 		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
 			// データベースへ接続
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/e1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"e1", "c3Us6Vdg2KPavBE3");
+			conn = getConnection();
 
 			// ユーザー登録用SQL
 			String sql = "INSERT INTO users VALUES (0, ?, ?, ?, ?)";
@@ -115,18 +93,10 @@ public class UsersDao extends Dao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} finally {
 
 			// データベース接続を終了
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			closeConnection(conn);
 		}
 
 		// 登録結果を返す
@@ -140,13 +110,8 @@ public class UsersDao extends Dao {
 		boolean result = false;
 
 		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
 			// データベースへ接続
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/e1?" + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-					"e1", "c3Us6Vdg2KPavBE3");
+			conn = getConnection();
 
 			// メールアドレスまたはIDの重複を確認するSQL
 			String sql = "SELECT COUNT(*) FROM users WHERE mail_address=? OR user_id=?";
@@ -170,13 +135,7 @@ public class UsersDao extends Dao {
 		} finally {
 
 			// データベース接続を終了
-			try {
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			closeConnection(conn);
 		}
 
 		// 重複チェック結果を返す
