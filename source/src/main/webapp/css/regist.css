@@ -117,9 +117,11 @@ input[type="date"],input[type="text"]{
 	padding: 0 10px;
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
+	color:#7d7d7d;
 	z-index:1;
 	position: relative;
     left: 20px;
+    
 }
 /* フォームをクリックしたとき */
 input[type="date"]:focus,input[type="text"]:focus,select:focus,textarea:focus{
@@ -184,6 +186,7 @@ textarea{
 	z-index:1;
 }
 
+/*レスポンシブデザイン用*/
 @media screen and (max-width: 768px) {
 
     /* 背景の丸を小さく */
@@ -193,6 +196,7 @@ textarea{
     }
 
 }
+/*天気入力フォーム*/
 select{
 	width: 324px;
 	height: 53px;
@@ -216,6 +220,7 @@ outline: none;
 border: 2px solid #33A74A;
 }
 
+/*原因入力フォーム*/
 textarea{
 	resize: none;
 	width: 300px;
