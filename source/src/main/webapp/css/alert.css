@@ -3,7 +3,7 @@
 /* メイン */
 main{
     width:90%;
-    margin:40px auto;
+    margin:50px auto;
 }
 /* 通知設定画面 */
 .date-area {
@@ -18,7 +18,8 @@ main{
 .time-label {
 	margin-top: 30px;
 }
-.date-area input[type="date"], .date-area input[type="time"] {
+.date-area input[type="date"],
+.date-area input[type="time"] {
 	width: 300px;
 	height: 50px;
 	font-size: 20px;
@@ -26,33 +27,33 @@ main{
 	border: 2px solid #9CE26B;
 	border-radius: 10px;
 }
-/* ボタン */
+/* ボタンエリア */
 .button-area {
 	display: flex;
 	justify-content: center;
 	gap: 20px;
 	margin-top: 50px;
-	text-align: center;
 }
+/*　登録ボタン　*/
 .btn-register {
-	background: #F5A9BC;
-	color: white;
+	width: 120px;
+	height: 50px;
 	border: none;
 	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
-	margin-right: 20px;
+	background-color: #F6B4C3;
+	color: white;
+	font-size: 18px;
 	cursor: pointer;
 }
+/*　リセットボタン　*/
 .btn-reset {
-	background: white;
-	color: #7BEA52;
-	border: 2px solid #7BEA52;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #9CE26B;
 	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
+	background-color: white;
+	color: #66CC33;
+	font-size: 18px;
 	cursor: pointer;
 }
 /* フォームをクリックしたとき */
