@@ -1,127 +1,15 @@
 @charset "UTF-8";
 
-/* 検索画面 */
-.search-page {
-    position: relative;
-    height: 700px;
-    overflow: hidden;
-}
 /*上部エリア*/
 main {
 	width: 90%;
 	margin: 50px auto;
 }
-
-.top-area {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 40px;
-}
-
-.count {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.sort-area {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.sort-area label {
-	font-size: 20px;
-}
-
-.sort-area select {
-	border: none;
-	border-radius: 20px;
-	padding: 12px 20px;
-	font-size: 18px;
-	background-color: white;
-}
-
-/*一覧*/
-.list-area {
-	display: flex;
-	flex-direction: column;
-	gap: 25px;
-}
-
-.item-card {
-	background-color: white;
-	border-radius: 30px;
-	padding: 25px;
-	display: flex;
-	align-items: center;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.item-name {
-	width: 180px;
-	background-color: #F6B4C3;
-	border-radius: 25px;
-	text-align: center;
-	padding: 20px;
-	font-size: 24px;
-	font-weight: bold;
-}
-
-.item-date {
-	width: 240px;
-	margin-left: 25px;
-	padding-left: 40px;
-	border-left: 2px dotted #F6B4C3;
-	font-size: 20px;
-}
-
-.weather {
-	width: 120px;
-	text-align: center;
-	border-left: 2px dotted #F6B4C3;
-	font-size: 18px;
-}
-
-.item-place {
-	width: 160px;
-	padding-left: 40px;
-	border-left: 2px dotted #F6B4C3;
-	font-size: 20px;
-}
-
-.item-reason {
-	flex: 1;
-	padding-left: 40px;
-	border-left: 2px dotted #F6B4C3;
-	font-size: 20px;
-}
-
-/*ページング*/
-.paging {
-	margin-top: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 15px;
-}
-
-.paging button {
-	width: 55px;
-	height: 55px;
-	border: none;
-	border-radius: 10px;
-	background-color: white;
-	font-size: 22px;
-	cursor: pointer;
-}
-
-.paging button:hover {
-	opacity: 0.8;
-}
-
-.paging span {
-	font-size: 22px;
+/* 検索画面 */
+.search-page {
+    position: relative;
+    height: 700px;
+    overflow: hidden;
 }
 /* 検索フォーム */
 .search-form {
@@ -131,13 +19,17 @@ main {
 	flex-direction: column;
 	gap: 20px;
 }
-
 .search-form input {
 	height: 50px;
 	border: 1px solid #9CE26B;
 	border-radius: 12px;
 	padding: 0 15px;
 	font-size: 24px;
+}
+.search-form input:focus {
+	outline: none;
+	border: 2px solid #6ed127;
+	box-shadow: none;
 }
 .search-form input[type="text"] {
 	width: 100%;
@@ -150,7 +42,6 @@ main {
 	gap: 20px;
 	margin-top: 50px;
 }
-
 /* 検索ボタン */
 .search-btn {
 	width: 120px;
@@ -162,7 +53,6 @@ main {
 	font-size: 18px;
 	cursor: pointer;
 }
-
 /* リセットボタン */
 .reset-btn {
 	width: 120px;
@@ -174,7 +64,6 @@ main {
 	font-size: 18px;
 	cursor: pointer;
 }
-
 .date-input {
 	color: #7d7d7d;
 	border: 2px solid #7CFF00;
@@ -182,17 +71,6 @@ main {
 	background: #ffffff;
 	outline: none;
 }
-
-.date-input:valid {
-	color: #000000;
-}
-
-.search-form input:focus {
-	outline: none;
-	border: 2px solid #6ed127;
-	box-shadow: none;
-}
-
 /*日付検索のフォームを横並び*/
 .date-range {
 	display: flex;
@@ -200,7 +78,6 @@ main {
 	justify-content: space-between;
 	width: 560px;
 }
-
 .date-input {
 	width: 250px;
 	height: 50px;
