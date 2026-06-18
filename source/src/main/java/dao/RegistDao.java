@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import dto.Regist;
 
-public class RegistDao {
+public class RegistDao extends Dao{
 
 	public boolean insert(Regist list) {
 		Connection conn = null;

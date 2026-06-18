@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
-<title>Motta?｜登録</title>
 </head>
 <body>
 <!-- ワッパー -->
@@ -29,10 +29,10 @@
 			<nav class="nav">
 				<ul>
 					<li><a href="TopServlet">TOP</a></li>
-					<li><a href="RegistServlet">登録</a></li>
+					<li><a class="active" href="RegistServlet">登録</a></li>
 					<li><a href="ListServlet">一覧</a></li>
 					<li><a href="SearchServlet">検索</a></li>
-					<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
+					<li><a  href="ChecklistServlet">チェックリスト</a></li>
 					<li><a href="LogoutServlet"
 						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
 				</ul>
@@ -84,6 +84,10 @@
 </div>
 
 <script>
+
+'use strict';
+let formObj = document.getElementById('regist_form');
+let errorMessageObj = document.getElementById('error_message');
 /* ハンバーガーメニュー */
 var hamburger = document.querySelector('.hamburger-menu');
 var nav = document.querySelector('.nav');
@@ -92,10 +96,6 @@ hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
   nav.classList.toggle('active');
 });
-'use strict';
-let formObj = document.getElementById('regist_form');
-let errorMessageObj = document.getElementById('error_message');
-
 /*入力フォーム*/
 formObj.onsubmit = function(event) {
 
