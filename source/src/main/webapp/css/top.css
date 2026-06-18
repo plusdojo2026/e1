@@ -21,6 +21,10 @@ main{
     flex: 1;
     text-align: center;
 }
+/*メッセージのベルマークの色*/
+.fa-bell{
+	color:#ffd700
+}
 /* 通知ボタン */
 .alert-btn{
     background-color: #F6B4C3;
