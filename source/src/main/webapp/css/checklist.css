@@ -150,18 +150,19 @@
 input[type="text"]{
     width:350px;
     height: 44px;
-    font-size: 20px;
+    font-size: 18px;
     border-radius:15px;
 	border: 2px solid #9CE26B;
 	 position:relative;
      z-index: 1; 
-     right:88px;
+     right:125px;
+     padding: 0 15px
 }
 /*登録、削除ボタンの配置*/
 input[type="submit"]{
 	 position:relative;
    z-index: 1; 
-   right:27px;
+   left:68px;
 }
 /*登録ボタンの形など*/
 .btn-register {
@@ -172,7 +173,7 @@ input[type="submit"]{
 	width: 120px;
 	height: 50px;
 	font-size: 18px;
-	margin-right: 1px;
+	margin-right: 25px;
 	cursor: pointer;
 	 position:relative;
 	 z-index: 1; 
