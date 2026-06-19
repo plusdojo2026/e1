@@ -9,6 +9,8 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <title>Motta?｜登録</title>
 </head>
 <body>
@@ -61,8 +63,8 @@
 <input type="date" id="date" name="lost_date" required>
 
 <!-- 天気入力 -->
- <select name="weather">
-    <option value="" selected disabled>晴れ</option>
+ <select id="weather" name="weather">
+    <option value="" selected disabled>天気</option>
     <option value="晴れ">晴れ</option>
     <option value="曇り">曇り</option>
     <option value="雨">雨</option>
@@ -87,6 +89,8 @@
 </main>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 
 'use strict';
@@ -144,6 +148,45 @@ document.querySelectorAll('#regist_form input, #regist_form select, #regist_form
 	element.addEventListener("input", updateColor);
 	element.addEventListener("change", updateColor);
 });
+
+//天気アイコン表示
+const icons = {
+    '晴れ':'<i class="fa-solid fa-sun"></i>',
+    '曇り':'<i class="fa-solid fa-cloud"></i>',
+    '雨':'<i class="fa-solid fa-umbrella"></i>',
+    '雪':'<i class="fa-regular fa-snowflake"></i>'
+};
+
+function formatWeather(state) {
+    if (!state.id) {
+        return state.text;
+    }
+
+    return $(
+        '<span>' +
+        state.text +
+        ' ' +
+        icons[state.text] +
+        '</span>'
+    );
+}
+
+$('#weather').select2({
+	minimumResultsForSearch: Infinity,
+    templateResult: formatWeather,
+    templateSelection: formatWeather,
+    escapeMarkup: function(markup) {
+        return markup;
+    }
+});
+$('#weather').on('change', function () {
+    $(this)
+        .next('.select2-container')
+        .toggleClass('filled', !!$(this).val());
+});
+
+// 初期状態も反映
+$('#weather').trigger('change');
 </script>
 
 </body>
