@@ -187,6 +187,16 @@ $('#weather').on('change', function () {
 
 // 初期状態も反映
 $('#weather').trigger('change');
+
+//リセット処理
+formObj.onreset = function() {
+
+	errorMessageObj.textContent = null;
+
+	setTimeout(function() {
+	    $('#weather').val('').trigger('change');
+	}, 0);
+};
 </script>
 
 </body>
