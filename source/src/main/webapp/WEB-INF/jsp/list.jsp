@@ -64,6 +64,14 @@
     </form>
 </div>
 </section>
+		<!--分析コメント-->
+		<section class="analysis-area">
+			<img src="images/naityon.png" alt="ないちょん" class="analysis-sub-chara">
+		    <img src="images/okottyon.png" alt="おこっちょん" class="analysis-chara">		
+		    <div class="speech-balloon">
+		        ${analysisComment}
+		    </div>
+		</section>
 
 		<!--一覧-->
 		<section class="list-area">
