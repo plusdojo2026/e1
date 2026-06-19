@@ -91,7 +91,7 @@
     margin:30px ;
     padding:30px;
     background:#FFFFFF;
-    border: 2px solid #66FF00; 
+    border: 2px solid #9CE26B; 
     border-radius:35px;
     position:relative;
     z-index:1;
@@ -149,17 +149,19 @@
 /*名称のテキストボックス*/
 input[type="text"]{
     width:350px;
-    padding:20px;
+    height: 44px;
     font-size: 20px;
     border-radius:15px;
 	border: 2px solid #9CE26B;
 	 position:relative;
      z-index: 1; 
+     right:88px;
 }
 /*登録、削除ボタンの配置*/
 input[type="submit"]{
 	 position:relative;
    z-index: 1; 
+   right:27px;
 }
 /*登録ボタンの形など*/
 .btn-register {
@@ -167,9 +169,9 @@ input[type="submit"]{
 	color: white;
 	border: none;
 	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
+	width: 120px;
+	height: 50px;
+	font-size: 18px;
 	margin-right: 1px;
 	cursor: pointer;
 	 position:relative;
@@ -179,11 +181,11 @@ input[type="submit"]{
 .btn-reset {
 	background: white;
 	color: #7BEA52;
-	border: 2px solid #7BEA52;
+	border: 1px solid #7BEA52;
 	border-radius: 10px;
-	width: 140px;
-	height: 60px;
-	font-size: 24px;
+	width: 120px;
+	height: 50px;
+	font-size: 18px;
 	cursor: pointer;
 	 position:relative;
 	 z-index: 1; 

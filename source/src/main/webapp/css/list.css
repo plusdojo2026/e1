@@ -33,9 +33,7 @@ main{
 .sort-area select{
     border: none;
     border-radius: 20px;
-
     padding: 12px 20px;
-
     font-size: 18px;
     background-color: white;
 }
@@ -179,11 +177,6 @@ main{
 /* スマホ対応 */
 @media screen and (max-width: 768px){
 
-    main{
-        width: 95%;
-        margin: 20px auto;
-    }
-
     /* 件数＋並び替え */
     .top-area{
         flex-direction: column;
@@ -204,7 +197,7 @@ main{
         padding: 10px 15px;
     }
 
-    /* カード */
+ 	/* カード */
     .item-card{
     flex-direction: column;
     align-items: stretch;
@@ -234,10 +227,15 @@ main{
     text-align: left;
 	}
 	
-	.date-weather-place{
+	/* 日付・天気・場所 */
+    .date-weather-place{
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        gap: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        text-align: left;
     }
     .item-date,
     .weather,
@@ -255,7 +253,7 @@ main{
     }
 
 
-    /* ページング */
+  /* ページング */
     .paging{
         gap: 8px;
         flex-wrap: wrap;

@@ -11,6 +11,8 @@ import dto.Checklist;
 
 public class ChecklistsDao extends Dao {
 
+	
+	//チェックリスト登録機能
 	public boolean insert(Checklist list) {
 		Connection conn = null;
 		boolean result = false;
@@ -27,7 +29,7 @@ public class ChecklistsDao extends Dao {
 			// SQL文を完成させる（INSERT）
 			pStmt.setString(1, list.getUser_id());
 			
-			
+			// ユーザー情報をSQLへ設定
 			if (list.getItem_name() != null) {
 				pStmt.setString(2, list.getItem_name());
 			} else {
@@ -95,8 +97,6 @@ public class ChecklistsDao extends Dao {
 	        e.printStackTrace();
 	     // データベースを切断
 	    } finally {
-	        try { if (rs != null) rs.close(); } catch (Exception e) {}
-	        try { if (pStmt != null) pStmt.close(); } catch (Exception e) {}
 	        try { if (conn != null) conn.close(); } catch (Exception e) {}
 	    }
 

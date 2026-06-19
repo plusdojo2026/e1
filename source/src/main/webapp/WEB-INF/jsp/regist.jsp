@@ -76,6 +76,7 @@
 <div class="button-area">
 <!-- 登録ボタン -->
 <input type="submit" class="regist-btn" name="touroku"	value="登録">
+				<input type="submit" class="regist-btn" name="regist"	value="登録">
 
 <!-- リセットボタン -->
 <input type="reset" class="reset-btn" name="reset" value="リセット">
