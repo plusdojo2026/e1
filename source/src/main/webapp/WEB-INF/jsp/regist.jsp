@@ -73,11 +73,13 @@
 
 <!-- 原因入力 -->
 <textarea name="reason" placeholder="原因"></textarea>
-
+<!-- ボタンエリア -->
 <div class="button-area">
-				<input type="submit" class="regist-btn" name="regist"	value="登録">
+<!-- 登録ボタン -->
+<input type="submit" class="regist-btn" name="touroku"	value="登録">
 
-				<input type="reset" class="reset-btn" name="reset" value="リセット">
+<!-- リセットボタン -->
+<input type="reset" class="reset-btn" name="reset" value="リセット">
 			</div>
 <span id="error_message"></span>
 </form>

@@ -25,12 +25,12 @@ public class RegistDao extends Dao {
 
 			pStmt = conn.prepareStatement(sql);
 			//　値のセット
-			pStmt.setString(1, list.getItem_name() != null ? list.getItem_name() : "");
-			pStmt.setString(2, list.getLost_date() != null ? list.getLost_date() : "");
-			pStmt.setString(3, list.getWeather() != null ? list.getWeather() : "");
-			pStmt.setString(4, list.getLocation() != null ? list.getLocation() : "");
-			pStmt.setString(5, list.getReason() != null ? list.getReason() : "");
-			pStmt.setString(6, list.getUser_id() != null ? list.getUser_id() : "");
+			pStmt.setString(1, list.getItem_name() != null ? list.getItem_name() : "");		//忘れ物名称
+			pStmt.setString(2, list.getLost_date() != null ? list.getLost_date() : "");		//忘れ物した日付
+			pStmt.setString(3, list.getWeather() != null ? list.getWeather() : "");		//忘れた日の天気
+			pStmt.setString(4, list.getLocation() != null ? list.getLocation() : "");		//忘れ物発生場所
+			pStmt.setString(5, list.getReason() != null ? list.getReason() : "");		//忘れ物をした原因
+			pStmt.setString(6, list.getUser_id() != null ? list.getUser_id() : "");		//ユーザーId
 
 			// SQL実行
 			result = (pStmt.executeUpdate() == 1);
