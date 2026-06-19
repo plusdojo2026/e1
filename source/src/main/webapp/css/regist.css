@@ -1,3 +1,4 @@
+@ -1,135 +1,149 @@
 @charset "UTF-8";
 
 /* 上部エリア */
@@ -11,40 +12,6 @@ main {
 	height: 700px;
 	overflow: hidden;
 }
-/*日付選択、名称入力フォーム、発生場所入力フォーム*/
-input[type="date"],input[type="text"]{
-	width: 300px;
-	height: 50px;
-	margin:0,10px;
-	font-size: 20px;
-	padding: 0 10px;
-	border: 2px solid #9CE26B;
-	border-radius: 10px;
-	color:#7d7d7d;
-	z-index:1;
-	position: relative;
-    left: 20px;
-    
-}
-/* フォームをクリックしたとき */
-input[type="date"]:focus,input[type="text"]:focus,select:focus,textarea:focus{
-outline: none;
-border: 2px solid #33A74A;
-}
-/*原因入力フォーム*/
-textarea{
-	resize: none;
-	width: 300px;
-	height: 100px;
-	font-size: 20px;
-	padding: 0 10px;
-	border: 2px solid #9CE26B;
-	border-radius: 10px;
-	z-index:1;
-	position: relative;
-    left: 20px;
-}
-
 /* 登録フォーム */
 #regist_form {
 	position: relative;
@@ -56,7 +23,8 @@ textarea{
 	gap: 20px;
 }
 /* 入力フォーム */
-#regist_form input,
+#regist_form input[type="text"],
+#regist_form input[type="date"],
 #regist_form select,
 #regist_form textarea {
 	border: 1px solid #9CE26B;
@@ -93,15 +61,15 @@ textarea{
 	width: 100%;
 	color: #7d7d7d;
 }
-/* 入力済み */
-#regist_form input.filled,
+#regist_form input[type="text"].filled,
+#regist_form input[type="date"].filled,
 #regist_form select.filled,
 #regist_form textarea.filled {
 	color: #463B25;
 }
 
-/* フォーカス時 */
-#regist_form input:focus,
+#regist_form input[type="text"]:focus,
+#regist_form input[type="date"]:focus,
 #regist_form select:focus,
 #regist_form textarea:focus {
 	color: #463B25;
@@ -135,8 +103,6 @@ textarea{
 	font-size: 18px;
 	cursor: pointer;
 }
-
-/*レスポンシブデザイン用*/
 /* エラーメッセージ */
 #error_message {
 	display: block;
@@ -153,16 +119,6 @@ textarea{
 		margin: 30px auto;
 	}
 
-}
-/*天気入力フォーム*/
-select{
-	width: 324px;
-	height: 53px;
-	font-size: 20px;
-	padding: 0 10px;
-	border: 2px solid #9CE26B;
-	border-radius: 10px;
-}
 	.regist-page {
 		height: auto;
 		padding-bottom: 40px;
@@ -174,17 +130,6 @@ select{
 		gap: 18px;
 	}
 
-/*原因入力フォーム*/
-textarea{
-	resize: none;
-	width: 300px;
-	height: 100px;
-	font-size: 20px;
-	padding: 0 10px;
-	border: 2px solid #9CE26B;
-	border-radius: 10px;
-	z-index:1;
-}
 	#regist_form input,
 	#regist_form select,
 	#regist_form textarea {
@@ -202,4 +147,4 @@ textarea{
 		height: 45px;
 		font-size: 16px;
 	}
-
+}

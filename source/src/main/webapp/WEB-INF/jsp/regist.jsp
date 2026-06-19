@@ -9,6 +9,7 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/regist.css">
+<title>Motta?｜登録</title>
 </head>
 <body>
 <!-- ワッパー -->
