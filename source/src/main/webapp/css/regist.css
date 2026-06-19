@@ -57,6 +57,20 @@ main {
 #regist_form select,
 #regist_form textarea {
 	width: 100%;
+	color: #7d7d7d;
+}
+/* 入力済み */
+#regist_form input.filled,
+#regist_form select.filled,
+#regist_form textarea.filled {
+	color: #463B25;
+}
+
+/* フォーカス時 */
+#regist_form input:focus,
+#regist_form select:focus,
+#regist_form textarea:focus {
+	color: #463B25;
 }
 /* ボタンエリア */
 .button-area {

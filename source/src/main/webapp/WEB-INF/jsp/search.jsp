@@ -67,6 +67,21 @@
 	  hamburger.classList.toggle('active');
 	  nav.classList.toggle('active');
 	});
+	// 入力後の文字色変更
+	document.querySelectorAll('.date-input').forEach(function(input) {
+
+		function updateColor() {
+			if (input.value) {
+				input.classList.add("filled");
+			} else {
+				input.classList.remove("filled");
+			}
+		}
+
+		updateColor();
+
+		input.addEventListener("change", updateColor);
+	});
 	</script>
 </body>
 </html>

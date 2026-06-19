@@ -59,6 +59,19 @@
 	  hamburger.classList.toggle('active');
 	  nav.classList.toggle('active');
 	});
+	document.querySelectorAll('input[type="date"], input[type="time"]').forEach(input => {
+
+	    function changeColor() {
+	        if (input.value) {
+	            input.classList.add('filled');
+	        } else {
+	            input.classList.remove('filled');
+	        }
+	    }
+
+	    changeColor();
+	    input.addEventListener('change', changeColor);
+	});
 	</script>
 	</body> 
 </html>

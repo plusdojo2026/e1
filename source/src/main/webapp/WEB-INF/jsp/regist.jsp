@@ -61,7 +61,8 @@
 
 <!-- 天気入力 -->
  <select name="weather">
-    <option value="${item.weather == '晴れ'}">晴れ</option>
+    <option value="" selected disabled>晴れ</option>
+    <option value="晴れ">晴れ</option>
     <option value="曇り">曇り</option>
     <option value="雨">雨</option>
     <option value="雪">雪</option>
@@ -123,6 +124,23 @@ formObj.onreset = function() {
   /* エラーメッセージを消します */
   errorMessageObj.textContent = null;
 };
+//入力されたら文字色を変更
+document.querySelectorAll('#regist_form input, #regist_form select, #regist_form textarea')
+.forEach(function(element) {
+
+	function updateColor() {
+		if (element.value.trim() !== "") {
+			element.classList.add("filled");
+		} else {
+			element.classList.remove("filled");
+		}
+	}
+
+	updateColor();
+
+	element.addEventListener("input", updateColor);
+	element.addEventListener("change", updateColor);
+});
 </script>
 
 </body>

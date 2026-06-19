@@ -71,6 +71,11 @@ main {
 	background: #ffffff;
 	outline: none;
 }
+/* 入力後 */
+.date-input.filled,
+.date-input:focus {
+	color: #463B25;
+}
 /*日付検索のフォームを横並び*/
 .date-range {
 	display: flex;
