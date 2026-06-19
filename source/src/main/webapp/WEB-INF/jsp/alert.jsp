@@ -75,19 +75,30 @@
 	  hamburger.classList.toggle('active');
 	  nav.classList.toggle('active');
 	});
+	/*入力後の文字色変更*/
+	const formObj = document.querySelector('.date-area');
 	document.querySelectorAll('input[type="date"], input[type="time"]').forEach(input => {
-
-	    function changeColor() {
-	        if (input.value) {
+	    function updateColor() {
+	        if (input.value.trim() !== '') {
 	            input.classList.add('filled');
 	        } else {
 	            input.classList.remove('filled');
 	        }
 	    }
-
-	    changeColor();
-	    input.addEventListener('change', changeColor);
+	    updateColor();
+	    input.addEventListener('input', updateColor);
+	    input.addEventListener('change', updateColor);
 	});
+	/*リセット処理*/
+	formObj.onreset = function() {
+    setTimeout(function() {
+        document.querySelectorAll(
+            'input[type="date"], input[type="time"]'
+        ).forEach(function(input) {
+            input.classList.remove('filled');
+        });
+    }, 0);
+};
 	</script>
 	</body> 
 </html>

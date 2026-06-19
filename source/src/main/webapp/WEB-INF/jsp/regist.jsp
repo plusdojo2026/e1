@@ -194,8 +194,17 @@ formObj.onreset = function() {
 	errorMessageObj.textContent = null;
 
 	setTimeout(function() {
-	    $('#weather').val('').trigger('change');
-	}, 0);
+		// 全入力項目の色を初期化
+        document.querySelectorAll(
+            '#regist_form input, #regist_form select, #regist_form textarea'
+        ).forEach(function(element) {
+            element.classList.remove('filled');
+        });
+
+        // Select2も初期化
+        $('#weather').val('').trigger('change');
+
+    }, 0);
 };
 </script>
 

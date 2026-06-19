@@ -68,20 +68,36 @@
 	  nav.classList.toggle('active');
 	});
 	// 入力後の文字色変更
-	document.querySelectorAll('.date-input').forEach(function(input) {
+	document.querySelectorAll('.search-form input').forEach(function(input) {
 
-		function updateColor() {
-			if (input.value) {
-				input.classList.add("filled");
-			} else {
-				input.classList.remove("filled");
-			}
+	function updateColor() {
+		if (input.value.trim() !== '') {
+			input.classList.add('filled');
+		} else {
+			input.classList.remove('filled');
 		}
+	}
 
-		updateColor();
+	updateColor();
 
-		input.addEventListener("change", updateColor);
-	});
+	input.addEventListener('input', updateColor);
+	input.addEventListener('change', updateColor);
+});
+	
+	//リセット処理
+	const formObj = document.querySelector('.search-form');
+
+	formObj.onreset = function() {
+
+	setTimeout(function() {
+
+		document.querySelectorAll('.search-form input')
+			.forEach(function(input) {
+				input.classList.remove('filled');
+			});
+
+	}, 0);
+};
 	</script>
 </body>
 </html>
