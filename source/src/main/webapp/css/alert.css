@@ -78,10 +78,59 @@ main {
 	font-size: 18px;
 	cursor: pointer;
 }
+/* 登録済み通知一覧 */
+.list-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+/* 通知カード */
+.alert-card{
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 30px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/* ==========================
-   タブレット（768px以下）
-========================== */
+/* 通知日時 */
+.alert-date{
+    font-size:22px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* ベルアイコン */
+.fa-bell{
+    color:#F6B4C3;
+    font-size:24px;
+}
+
+/* 削除ボタン */
+.delete-btn{
+    width: 120px;
+	height: 50px;
+	border: 1px solid #9CE26B;
+	border-radius: 10px;
+	background-color: white;
+	color: #66CC33;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.delete-btn:hover{
+    opacity:0.85;
+}
+
+/* レスポンシブ */
 @media screen and (max-width: 768px) {
 
 	main {
@@ -114,4 +163,22 @@ main {
 		height: 45px;
 		font-size: 16px;
 	}
+	/*　一覧表示　*/
+	
+    .alert-card{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+        padding:18px;
+    }
+
+    .alert-date{
+        font-size:18px;
+    }
+
+    .delete-btn{
+        width:100%;
+        padding:12px;
+    }
+	
 }

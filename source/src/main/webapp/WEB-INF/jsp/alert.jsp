@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="icon" href="images/favicon.ico">
 <link rel="stylesheet" href="/e1/css/style.css">
 <link rel="stylesheet" href="/e1/css/alert.css">
@@ -48,7 +49,22 @@
         	<button type="submit" class="btn-register">登録</button>
             <button type="reset" class="btn-reset">リセット</button>
         </div>
-	</form>  
+	</form>
+	<!-- 登録済み通知 -->
+	<section class="list-area">
+		<c:forEach var="alert" items="${alertList}">
+			<article class="alert-card">
+				<div class="alert-date">
+					<i class="fa-solid fa-bell"></i> ${alert.alertDate}
+				</div>
+				<form action="DeleteAlertServlet" method="post">
+					<input type="hidden" name="id" value="${alert.id}">
+					<button class="delete-btn"
+						onclick="return confirm('この通知を削除しますか？');">削除</button>
+				</form>
+			</article>
+		</c:forEach>
+	</section>
 	</main>   
 	<script>
 	/* ハンバーガーメニュー */
