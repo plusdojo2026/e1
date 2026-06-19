@@ -24,7 +24,7 @@ main {
 	border: 1px solid #9CE26B;
 	border-radius: 12px;
 	padding: 0 15px;
-	font-size: 24px;
+	font-size: 18px;
 }
 .search-form input:focus {
 	outline: none;
@@ -86,4 +86,72 @@ main {
 .date-input {
 	width: 250px;
 	height: 50px;
+}
+
+/* ---------- タブレット対応 ---------- */
+@media screen and (max-width: 768px) {
+
+	main {
+		width: 95%;
+		margin: 30px auto;
+	}
+
+	.search-page {
+		height: auto;
+	}
+
+	.search-form {
+		width: 100%;
+		margin: 50px auto;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+
+	/* 日付入力を縦並び */
+	.date-range {
+		width: 100%;
+		flex-direction: column;
+		gap: 15px;
+		align-items: stretch;
+	}
+
+	.date-input {
+		width: 100%;
+	}
+
+	/* ボタンを少し小さく */
+	.button-area {
+		gap: 15px;
+		margin-top: 40px;
+	}
+
+	.search-btn,
+	.reset-btn {
+		width: 100px;
+		height: 45px;
+		font-size: 16px;
+	}
+}
+/* ---------- スマホ対応 ---------- */
+@media screen and (max-width: 480px) {
+
+    .date-range {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        box-sizing: border-box;
+    }
+
+    .date-input {
+        width: calc((100% - 25px) / 2);
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .date-range span {
+        flex-shrink: 0;
+    }
+
 }
