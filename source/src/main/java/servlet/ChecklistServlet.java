@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ChecklistsDao;
 import dto.Checklist;
@@ -29,12 +30,15 @@ public class ChecklistServlet extends HttpServlet {
 		protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		        throws ServletException, IOException {
 
+			HttpSession session = request.getSession();
+
+		    String userId = (String) session.getAttribute("user_id");
+
 		    ChecklistsDao dao = new ChecklistsDao();
 
-		    List<Checklist> checklist = dao.findAll(); 
-
-		    request.setAttribute("checklist", checklist);
+		    List<Checklist> checklist = dao.findByUserId(userId);
 		    
+		    request.setAttribute("checklist", checklist);
 		    
 		    //チェックリストページにフォワード
 		    RequestDispatcher dispatcher =

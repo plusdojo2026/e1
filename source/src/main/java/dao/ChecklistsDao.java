@@ -61,7 +61,7 @@ public class ChecklistsDao extends Dao {
 
 
 	// チェックリスト全件表示
-	public List<Checklist> findAll() {
+	public List<Checklist> findByUserId(String user_id) {
 
 	    List<Checklist> list = new ArrayList<>();
 
@@ -74,9 +74,11 @@ public class ChecklistsDao extends Dao {
 	        Connection con = getConnection();
 
 	        // SQL文を準備する
-	        String sql = "SELECT id, user_id, item_name, checked_flag FROM checklists";
+	        String sql = "SELECT id, user_id, item_name, checked_flag FROM checklists WHERE user_id = ?";
 	        pStmt = con.prepareStatement(sql);
-
+	        
+	        pStmt.setString(1, user_id);
+	        
 	        rs = pStmt.executeQuery();
 	        
 	        
