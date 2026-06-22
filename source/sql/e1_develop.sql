@@ -34,10 +34,7 @@ CREATE TABLE checklists (
 );
 
 /*通知データテーブル（alerts）作成*/
-CREATE TABLE alerts (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    alert_date VARCHAR(50) NOT NULL
-);
+CREATE TABLE alerts (id INT AUTO_INCREMENT PRIMARY KEY,user_id VARCHAR(50) NOT NULL,alert_date VARCHAR(50) NOT NULL);
 
 /*忘れ物データテーブル（lost_items）にデータ登録*/
 INSERT INTO lost_items
