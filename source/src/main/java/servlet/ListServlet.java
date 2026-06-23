@@ -40,6 +40,14 @@ public class ListServlet extends HttpServlet {
         // ログインユーザーID取得
         String userId =
             (String) session.getAttribute("user_id");
+        
+        // 未ログインならログイン画面へ
+        if (userId == null) {
+            response.sendRedirect(
+                    request.getContextPath()
+                    + "/LoginServlet");
+            return;
+        }
 
     	// DAOのインスタンスを生成
     	LostItemsDao dao = new LostItemsDao();
