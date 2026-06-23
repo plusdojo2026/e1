@@ -25,20 +25,33 @@ public class ChecklistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
 
-		protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		        throws ServletException, IOException {
+	    // セッション取得
+	    HttpSession session = request.getSession();
 
-			HttpSession session = request.getSession();
+	   
+	
+	    // ログイン中のユーザーIDを取得
+	    String userId = (String) session.getAttribute("user_id");
+	    
+	    // 未ログインならログイン画面へ
+        if (userId == null) {
+            response.sendRedirect(
+                    request.getContextPath()
+                    + "/LoginServlet");
+            return;
+        }
 
-		    String userId = (String) session.getAttribute("user_id");
+	    ChecklistsDao dao = new ChecklistsDao();
 
-		    ChecklistsDao dao = new ChecklistsDao();
+	    List<Checklist> checklist = dao.findByUserId(userId);
 
-		    List<Checklist> checklist = dao.findByUserId(userId);
-		    
-		    request.setAttribute("checklist", checklist);
+	    request.setAttribute("checklist", checklist);
+	
 		    
 		    //チェックリストページにフォワード
 		    RequestDispatcher dispatcher =
@@ -63,20 +76,42 @@ public class ChecklistServlet extends HttpServlet {
 		   
 
 		    if ("登録".equals(action)) {
-
+		    		
+		    	//文字数チェック
+		    	if (item_name.length() > 50) {
+		    	    request.setAttribute("error_message", "名称は50文字以内で入力してください");
+		    	    doGet(request, response);
+		    	    return;
+		    	}
+		    	
+		    	if (item_name.matches(".*<[^>]*>.*")) {
+		    	    request.setAttribute("error_message", "HTMLタグは使用できません");
+		    	    doGet(request, response);
+		    	    return;
+		    	}
+		    	
+		    
+		    	
+		    	
 		        Checklist list = new Checklist();
 		        list.setUser_id(userId);         
 		        list.setItem_name(item_name);
 		        list.setChecked_flag(false);      
 
+		        boolean result = dao.insert(list);
 
+		        if (!result) {
+		            request.setAttribute("error_message", "同じ名称のチェックリストは登録できません");
+		            doGet(request, response);
+		            return;
+		        }
 		  
 
-		        dao.insert(list);
+		       
 
 		    } else if ("削除".equals(action)) {
 
-		        dao.delete(item_name);
+		        dao.delete(userId, item_name);
 
 		    }
 		    

@@ -106,7 +106,7 @@ public class ChecklistsDao extends Dao {
 	}
 
 //チェックリスト削除機能
-public boolean delete(String item_name) {
+public boolean delete(String user_id, String item_name) {
 	 Connection conn = null;
 	    PreparedStatement pStmt = null;
     try {
@@ -116,10 +116,11 @@ public boolean delete(String item_name) {
         Connection con = getConnection();
 		
 		// SQL文を完成させる（削除）
-		  String sql = "DELETE FROM checklists WHERE item_name = ?";
+		  String sql =  "DELETE FROM checklists WHERE user_id = ? AND BINARY item_name = ?"; // ユーザー識別と文字の大小の識別
 	        pStmt = con.prepareStatement(sql);
 
-	        pStmt.setString(1, item_name);
+	        pStmt.setString(1, user_id);
+	        pStmt.setString(2, item_name);
 
 	        int result = pStmt.executeUpdate();
 	        return result > 0;
