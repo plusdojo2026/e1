@@ -181,6 +181,15 @@ body {
 	justify-content: center;
 }
 
+/* 入力欄の文字制限とタグ攻撃のエラーメッセージ */
+.field-error {
+	color: red;
+	font-size: 17px;
+	margin-bottom: 10px;
+	white-space: nowrap;
+	display: block;
+}
+
 /* ↓新規登録画面 スマホ用レスポンシブ↓ */
 @media screen and (max-width: 500px) {
 	/* PC画面の左側を非表示 */
@@ -276,5 +285,14 @@ body {
 		white-space: nowrap;
 		display: block;
 		margin-bottom: 15px;
+	}
+
+	/* HTMLタグと入力の文字制限のエラーメッセージ */
+	.field-error {
+		color: red;
+		font-size: 10px;
+		margin-bottom: 10px;
+		white-space: nowrap;
+		display: block;
 	}
 }

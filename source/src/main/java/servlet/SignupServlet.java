@@ -39,6 +39,50 @@ public class SignupServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String mail_address = request.getParameter("mail_address");
+		
+		// HTMLタグチェック
+		String tagPattern = ".*<[^>]+>.*";
+
+		if (user_id.matches(tagPattern)) {
+			request.setAttribute("userIdError", "IDにHTMLタグは使用できません");
+		}
+
+		if (name.matches(tagPattern)) {
+			request.setAttribute("nameError", "氏名にHTMLタグは使用できません");
+		}
+
+		if (mail_address.matches(tagPattern)) {
+			request.setAttribute("mailError", "メールアドレスにHTMLタグは使用できません");
+		}
+
+		if (password.matches(tagPattern)) {
+			request.setAttribute("passwordError", "パスワードにHTMLタグは使用できません");
+		}
+		
+		//入力文字数チェック
+		if (user_id.length() > 50) {
+			request.setAttribute("userIdError", "IDは50文字以内で入力してください");
+		}
+
+		if (password.length() > 255) {
+			request.setAttribute("passwordError", "パスワードは255文字以内で入力してください");
+		}
+
+		if (name.length() > 100) {
+			request.setAttribute("nameError", "氏名は100文字以内で入力してください");
+		}
+
+		if (mail_address.length() > 100) {
+			request.setAttribute("mailError", "メールアドレスは100文字以内で入力してください");
+		}
+
+		// どれかエラーがあればjspへ返す
+		if (request.getAttribute("userIdError") != null || request.getAttribute("passwordError") != null
+				|| request.getAttribute("nameError") != null || request.getAttribute("mailError") != null) {
+
+			request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
+			return;
+		}
 
 		// Usersテーブル操作用DAOを生成
 		UsersDao usersDao = new UsersDao();

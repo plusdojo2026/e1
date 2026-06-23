@@ -52,24 +52,32 @@
 					<div class="form-group3">
 						<label>メールアドレス</label> <input type="email" id="mail_address"
 							name="mail_address" required>
+						<p class="field-error" id="mailError"></p>
+						<%=request.getAttribute("mailError") != null ? request.getAttribute("mailError") : ""%>
 					</div>
 
 					<!-- 氏名入力欄 -->
 					<div class="form-group3">
 						<label>氏名</label> <input type="text" id="name" name="name"
 							required>
+						<p class="field-error" id="nameError"></p>
+						<%= request.getAttribute("nameError") != null ? request.getAttribute("nameError") : "" %>
 					</div>
 
 					<!-- ID入力欄 -->
 					<div class="form-group3">
 						<label>ID</label> <input type="text" id="user_id" name="user_id"
 							required>
+						<p class="field-error" id="userIdError"></p>
+						<%=request.getAttribute("userIdError") != null ? request.getAttribute("userIdError") : ""%>
 					</div>
 
 					<!-- パスワード入力欄 -->
 					<div class="form-group2">
 						<label>パスワード</label> <input type="password" id="password"
 							name="password" required>
+						<p class="field-error" id="passwordError"></p>
+						<%=request.getAttribute("passwordError") != null ? request.getAttribute("passwordError") : ""%>
 					</div>
 
 					<!-- 登録ボタン -->
