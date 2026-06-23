@@ -22,10 +22,19 @@ public class SearchServlet extends HttpServlet {
 protected void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws ServletException, IOException {
-	// search.jspへフォワード
-    request.getRequestDispatcher(
-            "/WEB-INF/jsp/search.jsp")
-            .forward(request, response);
+
+    // セッション取得
+    HttpSession session = request.getSession(false);
+
+    // 未ログインならログイン画面へ
+    if (session == null || session.getAttribute("user_id") == null) {
+        response.sendRedirect(request.getContextPath() + "/LoginServlet");
+        return;
+    }
+
+    // search.jspへフォワード
+    request.getRequestDispatcher("/WEB-INF/jsp/search.jsp")
+           .forward(request, response);
 }
 //検索条件を受け取り、検索結果画面を表示する
 @Override
@@ -33,14 +42,18 @@ protected void doPost(HttpServletRequest request,
         HttpServletResponse response)
         throws ServletException, IOException {
 
+    // セッション取得
+    HttpSession session = request.getSession(false);
+
+    // 未ログインならログイン画面へ
+    if (session == null || session.getAttribute("user_id") == null) {
+        response.sendRedirect(request.getContextPath() + "/LoginServlet");
+        return;
+    }
     System.out.println("SearchServlet doPost開始");
- // リクエストの文字コードをUTF-8に設定
     request.setCharacterEncoding("UTF-8");
- // セッションを取得
-    HttpSession session = request.getSession();
- // ログイン中のユーザーIDを取得
-    String userId =
-            (String) session.getAttribute("user_id");
+    // ログイン中のユーザーIDを取得
+    String userId = (String) session.getAttribute("user_id");
  // 検索条件を格納するDTOを生成
     LostItems item = new LostItems();
  // 月別検索条件を取得

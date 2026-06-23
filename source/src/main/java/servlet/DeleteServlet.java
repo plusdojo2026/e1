@@ -7,19 +7,43 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LostItemsDao;
 
 // 忘れ物情報の削除を行うサーブレット
+
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request,
+	        HttpServletResponse response)
+	        throws ServletException, IOException {
 
+	    HttpSession session = request.getSession(false);
+
+	    // 未ログインならログイン画面へ
+	    if (session == null || session.getAttribute("user_id") == null) {
+	        response.sendRedirect(request.getContextPath() + "/LoginServlet");
+	        return;
+	    }
+
+	    // ログイン済みでもGETでDeleteServletは使わせない
+	    response.sendRedirect(request.getContextPath() + "/TopServlet");
+	}
     // 削除ボタンが押されたときの処理
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+    	 // セッション取得
+        HttpSession session = request.getSession(false);
 
+        // 未ログインならログイン画面へ
+        if (session == null || session.getAttribute("user_id") == null) {
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            return;
+        }
         // リクエストパラメータから削除対象のIDを取得
         int id = Integer.parseInt(
                 request.getParameter("id"));
