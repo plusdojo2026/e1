@@ -28,6 +28,14 @@ public class TopServlet extends HttpServlet {
 
         	// ログイン中のユーザーIDを取得
         	String userId = (String) session.getAttribute("user_id");
+        	
+        	// 未ログインならログイン画面へ
+            if (userId == null) {
+                response.sendRedirect(
+                        request.getContextPath()
+                        + "/LoginServlet");
+                return;
+            }
 
         	// Lost_itemsテーブル操作用のDaoの生成
         	TopDao dao = new TopDao();
