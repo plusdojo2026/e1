@@ -97,7 +97,7 @@ body {
 /* ログインIDの入力欄を選択した時 */
 .form-group1 input[type="text"]:focus {
 	outline: none;
-	border: 1px solid #a7334e;
+	border: 2px solid #da81b2;
 }
 
 /* パスワードの入力欄 */
