@@ -126,7 +126,7 @@
 	let formObj = document.getElementById('checklist_form');
 	let errorMessageObj = document.getElementById('error_message');
 	
-	const inputName = formObj.item_name.value.trim(); //入力欄に入力された文字を取得して、前後の空白を削除し、inputNameに保存する
+	
     
 		
 	/* 登録・削除ボタンをクリックしたときの処理 */
@@ -140,7 +140,7 @@
 				
 	 	  
 	 	   
-	        const inputName = formObj.item_name.value.trim();
+	        const inputName = formObj.item_name.value.trim(); //入力欄に入力された文字を取得して、前後の空白を削除し、inputNameに保存する
 	        
 	        // HTMLタグチェック
 		    if (/<[^>]*>/.test(inputName)) {
