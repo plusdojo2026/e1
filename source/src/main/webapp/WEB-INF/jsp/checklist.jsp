@@ -12,6 +12,9 @@
 <link rel="icon" href="images/favicon.ico">
 </head>
 
+
+
+
 <body>
 	<!-- ワッパー -->
 	<div class="wrapper">
@@ -19,28 +22,29 @@
 		<!-- ヘッダー -->
 		<header class="header">
 
-			<a href="TopServlet"><img src="images/header_logo.png" alt="Motta?" class="logo"></a>
-			
-			
+			<a href="TopServlet"><img src="images/header_logo.png"
+				alt="Motta?" class="logo"></a>
+
+
 			<!-- ハンバーガーボタン -->
-		<div class="container">
-		    <div class="hamburger-menu">
-			    <div class="line"></div>
-			    <div class="line"></div>
-			    <div class="line"></div>
-		  	</div>
-			<nav class="nav">
-				<ul>
-					<li><a href="TopServlet">TOP</a></li>
-					<li><a href="RegistServlet">登録</a></li>
-					<li><a href="ListServlet">一覧</a></li>
-					<li><a href="SearchServlet">検索</a></li>
-					<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
-					<li><a href="LogoutServlet"
-						onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
-				</ul>
-			</nav>
-		</div>
+			<div class="container">
+				<div class="hamburger-menu">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+				</div>
+				<nav class="nav">
+					<ul>
+						<li><a href="TopServlet">TOP</a></li>
+						<li><a href="RegistServlet">登録</a></li>
+						<li><a href="ListServlet">一覧</a></li>
+						<li><a href="SearchServlet">検索</a></li>
+						<li><a class="active" href="ChecklistServlet">チェックリスト</a></li>
+						<li><a href="LogoutServlet"
+							onclick="return confirm('ログアウトしますか？');">ログアウト</a></li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 
 		<!-- メイン -->
@@ -60,53 +64,55 @@
 
 				<label> <br> <input type="text" name="item_name"
 					placeholder="名称" required>
-				</label> <input type="submit" name="action" value="登録" class="btn-register"> <input
-					type="submit" name="action" value="削除" class="btn-reset"> <span
-					id="error_message"></span>
+				</label> <input type="submit" name="action" value="登録" class="btn-register">
+				<input type="submit" name="action" value="削除" class="btn-reset">
+				<span id="error_message"></span>
 
 			</form>
 
 			<section class="dashboard">
-			<!-- チェックリストカード -->
-			<div class="check-card">
+				<!-- チェックリストカード -->
+				<div class="check-card">
 
-				<div class="check-container">
-						
-					<!-- データベース上でチェック前とチェック後を識別するために分割している -->	
-												
-					<div class="check-column">
-						<h2 class="section-title">チェック前</h2>
+					<div class="check-container">
 
-						<ul id="beforeList">
-							<c:forEach var="e" items="${checklist}">
-								<c:if test="${!e.checked_flag}">
-									<li><input type="checkbox" class="item-check"
-										data-id="${e.id}"> ${e.item_name}</li>
-								</c:if>
-							</c:forEach>
-						</ul>
-					</div>
-					</div>
-					</div>
-			<div class="check-card">
-			<div class="check-container">
-					<div class="check-column">
-						<h2 class="section-title">チェック後</h2>
+						<!-- データベース上でチェック前とチェック後を識別するために分割している -->
 
-						<ul id="afterList">
-							<c:forEach var="e" items="${checklist}">
-								<c:if test="${e.checked_flag}">
-									<li><input type="checkbox" class="item-check"
-										data-id="${e.id}" checked> ${e.item_name}</li>
-								</c:if>
-							</c:forEach>
-						</ul>
-					</div>
+						<div class="check-column">
+							<h2 class="section-title">チェック前</h2>
+
+							<ul id="beforeList">
+								<c:forEach var="e" items="${checklist}">
+									<c:if test="${!e.checked_flag}">
+										<li><input type="checkbox" class="item-check"
+											data-id="${e.id}"> <c:out value="${e.item_name}" />
+										</li>
+									</c:if>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 				</div>
-			
-			
-		</section>	
+				<div class="check-card">
+					<div class="check-container">
+						<div class="check-column">
+							<h2 class="section-title">チェック後</h2>
+
+							<ul id="afterList">
+								<c:forEach var="e" items="${checklist}">
+									<c:if test="${e.checked_flag}">
+										<li><input type="checkbox" class="item-check"
+											data-id="${e.id}" checked> <c:out
+												value="${e.item_name}" /></li>
+									</c:if>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+			</section>
 		</main>
 
 	</div>
@@ -115,22 +121,55 @@
 
 
 	<script>
-		let formObj = document.getElementById('checklist_form');
-		let errorMessageObj = document.getElementById('error_message');
+	
 
-		/* 削除ボタンをクリックしたときの処理 */
-		formObj.onsubmit = function(event) {
-
-		    // 削除ボタンが押された場合のみ確認
-		    if (event.submitter.value === '削除') {
-
-		        if (window.confirm('実行します。よろしいですか？') === false) {
-		            event.preventDefault();
-		        }
-
+	let formObj = document.getElementById('checklist_form');
+	let errorMessageObj = document.getElementById('error_message');
+	
+	const inputName = formObj.item_name.value.trim(); //入力欄に入力された文字を取得して、前後の空白を削除し、inputNameに保存する
+    
+		
+	/* 登録・削除ボタンをクリックしたときの処理 */
+	formObj.onsubmit = function(event) {
+			
+		
+	
+		   
+	    // 登録ボタンが押された場合
+	    if (event.submitter.value === '登録') {
+				
+	 	  
+	 	   
+	        const inputName = formObj.item_name.value.trim();
+	        
+	        // HTMLタグチェック
+		    if (/<[^>]*>/.test(inputName)) {
+		        alert("HTMLタグは使用できません");
+		        event.preventDefault();
+		        return;
 		    }
+	        
+	        const items = document.querySelectorAll("#beforeList li, #afterList li"); // チェックリスト全項目を参照する
 
-		};
+	        for (const item of items) {
+	            const itemText = item.textContent.trim();
+	         // 同一名称防止
+	            if (itemText === inputName) {
+	                window.alert("同じ名称は登録できません");
+	                event.preventDefault();
+	                return;
+	            }
+	        }
+	    }
+
+	    // 削除ボタンが押された場合
+	    if (event.submitter.value === '削除') {
+
+	        if (window.confirm('実行します。よろしいですか？') === false) {
+	            event.preventDefault();
+	        }
+	    }
+	};
 		
 		/* ハンバーガーメニュー */
 		var hamburger = document.querySelector('.hamburger-menu');
@@ -164,7 +203,7 @@
 				fetch("ChecklistServlet", {
 					method : "POST",
 					headers : {
-						"Content-Type" : "application/x-www-form-urlencoded"　//　普通のフォーム送信と同じ形式で送る処理
+						"Content-Type" : "application/x-www-form-urlencoded" // 普通のフォーム送信と同じ形式で送る処理
 					},
 					body : "action=toggle" + "&id=" + id + "&checked="
 							+ checked

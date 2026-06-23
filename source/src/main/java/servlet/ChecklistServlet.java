@@ -26,73 +26,69 @@ public class ChecklistServlet extends HttpServlet {
 	 *      response)
 	 */
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		        throws ServletException, IOException {
+		// セッション取得
+		HttpSession session = request.getSession();
 
-			HttpSession session = request.getSession();
+		// ログイン中のユーザーIDを取得
+		String userId = (String) session.getAttribute("user_id");
 
-		    String userId = (String) session.getAttribute("user_id");
-
-		    ChecklistsDao dao = new ChecklistsDao();
-
-		    List<Checklist> checklist = dao.findByUserId(userId);
-		    
-		    request.setAttribute("checklist", checklist);
-		    
-		    //チェックリストページにフォワード
-		    RequestDispatcher dispatcher =
-		        request.getRequestDispatcher("/WEB-INF/jsp/checklist.jsp");
-
-		    dispatcher.forward(request, response);
+		// 未ログインならログイン画面へ
+		if (userId == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+			return;
 		}
-		
-		//チェックリスト登録削除機能
-		protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		        throws ServletException, IOException {
 
-		    request.setCharacterEncoding("UTF-8");
-		    
-		    String userId = (String) request.getSession().getAttribute("user_id");
-		    String action = request.getParameter("action");
-		    String item_name = request.getParameter("item_name");
+		ChecklistsDao dao = new ChecklistsDao();
 
-		    ChecklistsDao dao = new ChecklistsDao();
-		    
-		    
-		   
+		List<Checklist> checklist = dao.findByUserId(userId);
 
-		    if ("登録".equals(action)) {
+		request.setAttribute("checklist", checklist);
 
-		        Checklist list = new Checklist();
-		        list.setUser_id(userId);         
-		        list.setItem_name(item_name);
-		        list.setChecked_flag(false);      
+		// チェックリストページにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/checklist.jsp");
 
+		dispatcher.forward(request, response);
+	}
 
-		  
+	// チェックリスト登録削除機能
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		        dao.insert(list);
+		request.setCharacterEncoding("UTF-8");
 
-		    } else if ("削除".equals(action)) {
+		String userId = (String) request.getSession().getAttribute("user_id");
+		String action = request.getParameter("action");
+		String item_name = request.getParameter("item_name");
 
-		        dao.delete(item_name);
+		ChecklistsDao dao = new ChecklistsDao();
 
-		    }
-		    
-		    
-		  //チェックリストでクリックされた際にTRUEにアップデートする
-		    else if ("toggle".equals(action)) {
+		if ("登録".equals(action)) {
 
-		        int id = Integer.parseInt(request.getParameter("id"));
-		        boolean checked = Boolean.parseBoolean(request.getParameter("checked"));
+			Checklist list = new Checklist();
+			list.setUser_id(userId);
+			list.setItem_name(item_name);
+			list.setChecked_flag(false);
 
-		        dao.updateChecked(id, checked);
-		    }
-		    //チェックリストページにリダイレクト
-		    response.sendRedirect("/e1/ChecklistServlet");
+			dao.insert(list);
+
+		} else if ("削除".equals(action)) {
+
+			dao.delete(userId, item_name);
+
 		}
+
+		// チェックリストでクリックされた際にTRUEにアップデートする
+		else if ("toggle".equals(action)) {
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			boolean checked = Boolean.parseBoolean(request.getParameter("checked"));
+
+			dao.updateChecked(id, checked);
+		}
+		// チェックリストページにリダイレクト
+		response.sendRedirect("/e1/ChecklistServlet");
+	}
 }
-	
-
-
