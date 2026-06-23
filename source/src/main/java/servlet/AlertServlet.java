@@ -19,8 +19,7 @@ public class AlertServlet extends HttpServlet {
 	
 	// 通知画面を表示する
 	@Override
-	protected void doGet(HttpServletRequest request,
-	        HttpServletResponse response)
+	protected void doGet(HttpServletRequest request,HttpServletResponse response)
 	        throws ServletException, IOException {
 
 	    try {
