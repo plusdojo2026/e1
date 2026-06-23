@@ -33,15 +33,28 @@ body {
     font-size: 20px;
     padding: 10px 20px;
     border-radius: 999px;
+    transition: color 0.3s;
 }
+.nav a:hover{
+    color: #ffffff;
+    
+}
+
 /*　現在ページの表示　*/
 .active{
-    background:#F6B4C3;
+   	background: #F6B4C3;
+    color: #fff;
+    transform: translateY(-1px);
 }
 /* ロゴサイズ */
 .logo {
     width: 200px;
     height: auto;
+    transition: all 0.3s ease;
+}
+.logo:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
 }
 /* ハンバーガーボタン */
 .menu-btn {

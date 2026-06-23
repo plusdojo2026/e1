@@ -37,7 +37,6 @@ main{
     padding: 18px 35px;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     text-decoration: none;
 }
 .alert-btn:hover{
@@ -101,7 +100,7 @@ main{
     border-radius:20px;
     padding:20px;
     text-align:center;
-    box-shadow:0 5px 12px rgba(0,0,0,.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition:.3s;
 }
 .rank-card:hover{
