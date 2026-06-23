@@ -142,6 +142,14 @@
 	 	   
 	        const inputName = formObj.item_name.value.trim(); //入力欄に入力された文字を取得して、前後の空白を削除し、inputNameに保存する
 	        
+	        
+	     // 文字数チェック
+	        if (inputName.length > 50) {
+	            alert("名称は50文字以内で入力してください");
+	            event.preventDefault();
+	            return;
+	        }
+	        
 	        // HTMLタグチェック
 		    if (/<[^>]*>/.test(inputName)) {
 		        alert("HTMLタグは使用できません");
