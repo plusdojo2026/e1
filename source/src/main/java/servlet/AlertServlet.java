@@ -19,16 +19,23 @@ public class AlertServlet extends HttpServlet {
 	
 	// 通知画面を表示する
 	@Override
-	protected void doGet(HttpServletRequest request,
-	        HttpServletResponse response)
+	protected void doGet(HttpServletRequest request,HttpServletResponse response)
 	        throws ServletException, IOException {
 
 	    try {
 	    	// alertsテーブル操作用のDaoの生成
 	        AlertDao dao = new AlertDao();
-
+	        // セッション取得
 	        HttpSession session = request.getSession();
 	        String userId = (String) session.getAttribute("user_id");
+	        
+	        // 未ログインならログイン画面へ
+	        if (userId == null) {
+	            response.sendRedirect(
+	                    request.getContextPath()
+	                    + "/LoginServlet");
+	            return;
+	        }
 
 	        List<Alert> alertList = dao.select(userId);
 
