@@ -76,12 +76,21 @@ public class ChecklistServlet extends HttpServlet {
 		   
 
 		    if ("登録".equals(action)) {
+		    		
+		    	//文字数チェック
+		    	if (item_name.length() > 50) {
+		    	    request.setAttribute("error_message", "名称は50文字以内で入力してください");
+		    	    doGet(request, response);
+		    	    return;
+		    	}
 		    	
 		    	if (item_name.matches(".*<[^>]*>.*")) {
 		    	    request.setAttribute("error_message", "HTMLタグは使用できません");
 		    	    doGet(request, response);
 		    	    return;
 		    	}
+		    	
+		    
 		    	
 		    	
 		        Checklist list = new Checklist();
