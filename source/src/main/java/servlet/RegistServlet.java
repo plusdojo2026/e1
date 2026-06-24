@@ -49,6 +49,10 @@ public class RegistServlet extends HttpServlet {
 	}
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		 throws ServletException, IOException {
+			// キャッシュを禁止
+		    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		    response.setHeader("Pragma", "no-cache");
+		    response.setDateHeader("Expires", 0);
 			// セッション取得
         	HttpSession session = request.getSession();
         	String userId = (String) session.getAttribute("user_id");			// リクエストパラメータを取得する
