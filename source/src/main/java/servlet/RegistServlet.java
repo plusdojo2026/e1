@@ -28,6 +28,17 @@ public class RegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
+		 // セッション取得
+	    HttpSession session = request.getSession();
+	    String userId = (String) session.getAttribute("user_id");
+
+	    // 未ログインならログイン画面へ
+	    if (userId == null) {
+	        response.sendRedirect(
+	                request.getContextPath()
+	                + "/LoginServlet");
+	        return;
+	    }
 		// ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp");
 		dispatcher.forward(request, response);
@@ -37,7 +48,14 @@ public class RegistServlet extends HttpServlet {
 			// セッション取得
         	HttpSession session = request.getSession();
         	String userId = (String) session.getAttribute("user_id");			// リクエストパラメータを取得する
-			request.setCharacterEncoding("UTF-8");
+        	// 未ログインならログイン画面へ
+        	if (userId == null) {
+        	    response.sendRedirect(
+        	            request.getContextPath()
+        	            + "/LoginServlet");
+        	    return;
+        	}
+        	request.setCharacterEncoding("UTF-8");
 			String name = request.getParameter("item_name");
 			String date = request.getParameter("lost_date");
 			String weather = request.getParameter("weather");
@@ -71,14 +89,6 @@ public class RegistServlet extends HttpServlet {
 	    	}
          // 登録処理を行う
 	RegistDao bDao = new RegistDao();
-
-	// 未ログインならログイン画面へ
-	        if (user_id == null) {
-	            response.sendRedirect(
-	                    request.getContextPath()
-	                    + "/LoginServlet");
-	            return;
-	        }
 		
 			if (bDao.insert(new Regist(0,name,date,weather,location,reason,user_id) )) {
 				// result.jspへ遷移
@@ -90,10 +100,6 @@ public class RegistServlet extends HttpServlet {
 			
             
 	}
-		private void setAttribute(String string, String string2) {
-			// TODO 自動生成されたメソッド・スタブ
-			
-		}
 		
 	}
 
