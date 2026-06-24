@@ -152,7 +152,10 @@ main {
     	box-sizing: border-box;
     	height: 50px;
     	min-height: 50px;
+    	padding: 0 15px;
     	line-height: normal;
+    	-webkit-appearance: none;
+		appearance: none;
 	}
 	.button-area {
 		margin-top: 35px;
