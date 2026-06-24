@@ -150,6 +150,9 @@ main {
 		font-size: 16px;
 		width: 100%;
     	box-sizing: border-box;
+    	height: 50px;
+    	min-height: 50px;
+    	line-height: normal;
 	}
 	.button-area {
 		margin-top: 35px;
@@ -161,6 +164,7 @@ main {
 		width: 110px;
 		height: 45px;
 		font-size: 16px;
+		white-space: nowrap;
 	}
 	/* 通知一覧 */
 	.list-area{
