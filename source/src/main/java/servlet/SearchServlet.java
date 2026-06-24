@@ -19,10 +19,13 @@ import dto.LostItems;
 public class SearchServlet extends HttpServlet {
 	//検索ページを表示する
 @Override
-protected void doGet(HttpServletRequest request,
-        HttpServletResponse response)
+protected void doGet(HttpServletRequest request,HttpServletResponse response)
         throws ServletException, IOException {
 
+	// キャッシュを禁止
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
     // セッション取得
     HttpSession session = request.getSession(false);
 

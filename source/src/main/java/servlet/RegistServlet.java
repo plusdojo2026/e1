@@ -27,6 +27,10 @@ public class RegistServlet extends HttpServlet {
 	//登録画面の表示
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+    	// キャッシュを禁止
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
 	
 		 // セッション取得
 	    HttpSession session = request.getSession();
