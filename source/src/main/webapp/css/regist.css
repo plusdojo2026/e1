@@ -180,6 +180,18 @@ main {
 	#regist_form textarea {
 		font-size: 16px;
 	}
+	
+	#regist_form input[type="date"] {
+	height: 50px !important;
+	min-height: 50px;
+	padding: 0 15px;
+	font-size: 16px;
+	line-height: 50px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	appearance: none;
+	}
 
 	.button-area {
 		margin-top: 35px;
