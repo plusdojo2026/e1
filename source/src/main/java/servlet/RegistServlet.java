@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.RegistDao;
 import dto.Regist;
@@ -34,7 +35,8 @@ public class RegistServlet extends HttpServlet {
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		 throws ServletException, IOException {
 			// セッション取得
-			// リクエストパラメータを取得する
+        	HttpSession session = request.getSession();
+        	String userId = (String) session.getAttribute("user_id");			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String name = request.getParameter("item_name");
 			String date = request.getParameter("lost_date");
@@ -42,9 +44,41 @@ public class RegistServlet extends HttpServlet {
 			String location = request.getParameter("location");
 			String reason = request.getParameter("reason");
 			String user_id = (String) request.getSession().getAttribute("user_id");
-			
+			//HTMLタグチェック
+			if (name.matches(".*<[^>]*>.*")
+					|| location.matches(".*<[^>]*>.*")
+					|| reason.matches(".*<[^>]*>.*")) {
+					request.setAttribute("error_message", "HTMLタグは使用できません");
+					doGet(request, response);
+					return;
+					}
+			//文字数チェック
+	    	if (name.length() > 50) {
+	    	    request.setAttribute("error_message", "名称は50文字以内で入力してください");
+	    	    doGet(request, response);
+	    	    return;
+	    	}
+	    	//文字数チェック
+	    	if (location.length() > 50) {
+	    	    request.setAttribute("error_message", "発生場所は50文字以内で入力してください");
+	    	    doGet(request, response);
+	    	    return;
+	    	}//文字数チェック
+	    	if (reason.length() > 200) {
+	    	    request.setAttribute("error_message", "原因は200文字以内で入力してください");
+	    	    doGet(request, response);
+	    	    return;
+	    	}
          // 登録処理を行う
 	RegistDao bDao = new RegistDao();
+
+	// 未ログインならログイン画面へ
+	        if (user_id == null) {
+	            response.sendRedirect(
+	                    request.getContextPath()
+	                    + "/LoginServlet");
+	            return;
+	        }
 		
 			if (bDao.insert(new Regist(0,name,date,weather,location,reason,user_id) )) {
 				// result.jspへ遷移
@@ -56,6 +90,10 @@ public class RegistServlet extends HttpServlet {
 			
             
 	}
+		private void setAttribute(String string, String string2) {
+			// TODO 自動生成されたメソッド・スタブ
+			
+		}
 		
 	}
 
