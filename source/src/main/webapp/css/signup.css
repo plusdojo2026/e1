@@ -10,7 +10,7 @@
 /* ページ全体の設定 */
 body {
 	font-family: "Yu Gothic", sans-serif;
-	background: #ffffff;
+	background: #d8f3d0;
 }
 
 /* 画面全体レイアウト */
@@ -290,7 +290,7 @@ body {
 	/* HTMLタグと入力の文字制限のエラーメッセージ */
 	.field-error {
 		color: red;
-		font-size: 10px;
+		font-size: 12px;
 		margin-bottom: 10px;
 		white-space: nowrap;
 		display: block;
